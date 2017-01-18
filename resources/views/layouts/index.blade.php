@@ -20,14 +20,16 @@
 
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="{{asset('js/materialize.min.js')}}"></script>
-<script type="text/javascript">
-	(function($){
-  $(function(){
+<script>
+	$(document).ready(function(){
 
     $('.button-collapse').sideNav();
 
-  }); // end of document ready
-})(jQuery); // end of jQuery name space
+    $('.slider').slider();
+    $('.carousel').carousel({
+      dist:0,
+    });
+  }); // end of document ready // end of jQuery name space
 </script>
 </body>
 </html>

@@ -2,21 +2,28 @@
 
 @section('content')
 </head>
+<br>
 <body>
-<div class="flex-center position-ref full-height">
-    @if (Route::has('login'))
-        <div class="top-right links">
-            <a href="{{ url('/login') }}">Login</a>
-            <a href="{{ url('/register') }}">Register</a>
-        </div>
-    @endif
+  <div>
+    <ul class="carousel">
+      <li class="carousel-item">
+        <a href="#"><img src="{{asset('images/homecarousel/6.png')}}" alt=""></a>
+      </li>
+      <li class="carousel-item">
+        <img src="{{asset('images/homecarousel/7.png')}}" alt="">
+      </li>
+      <li class="carousel-item">
+        <img src="{{asset('images/homecarousel/8.png')}}" alt="">
+      </li>
+      <li class="carousel-item">
+        <img src="{{asset('images/homecarousel/9.png')}}" alt="">
+      </li>
+      <li class="carousel-item">
+        <img src="{{asset('images/homecarousel/10.png')}}" alt="">
+      </li>
+    </ul>
+  </div>
+    <hr>
 
-    <div class="content">
-        <div class="title m-b-md">
-            Sub Laboratorium Akper
-        </div>
-
-    </div>
-</div>
 </body>
 @endsection
