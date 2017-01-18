@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Gilacoding | CRUD Laravel 5.2 dengan Materializecss</title>
+	<title>Sub Lab Akper</title>
 	<link rel="stylesheet" href="{{asset('css/materialize.min.css')}}">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
