@@ -25,10 +25,10 @@
 
     $('.button-collapse').sideNav();
 
-    $('.slider').slider();
     $('.carousel').carousel({
       dist:0,
     });
+    $('.scrollspy').scrollSpy();
   }); // end of document ready // end of jQuery name space
 </script>
 </body>
