@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Sub Laboratorium Akper',
+    'name' => 'SUB LAB AKPER',
 
     /*
     |--------------------------------------------------------------------------
