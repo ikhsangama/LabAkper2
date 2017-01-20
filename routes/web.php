@@ -12,13 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
 
-Route::get('/register', function(){
-  return view('register');
-});
+Route::get('/register', 'RegisterController@create');
 
 Route::get('/login', function(){
   return view('login');
 });
+
+// Route::resource('pengguna', 'PenggunaController');

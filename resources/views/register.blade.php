@@ -8,20 +8,20 @@
   <hr>
   <div class="card-panel s12 m12 l12">
     <div class="row">
-      <form class="col s12">
-
+      <form class="col s12" action="/inventaris}" method="post">
+{{ csrf_field() }}
         <div class="row">
           <div class="input-field col s6">
             <i class="material-icons prefix">account_circle</i>
-            <input placeholder="Gunakan nama lengkap" id="icon_prefix" type="text" class="validate" length="25" autofocus required  >
+            <input name="nama" placeholder="Gunakan nama lengkap" id="icon_prefix" type="text" class="validate" length="25" autofocus required  >
             <label for="icon_prefix">Nama</label>
           </div>
             <div class="input-field col s4 m4 l4">
               <i class="material-icons prefix">school</i>
-              <select>
+              <select name="level">
                 <option value="" disabled selected>Pilih</option>
-                <option value="1">D III</option>
-                <option value="2">D IV</option>
+                <option value="D III">D III</option>
+                <option value="D IV">D IV</option>
               </select>
               <label for="icon_prefix">Program Studi</label>
             </div>
@@ -30,7 +30,7 @@
         <div class="row">
           <div class="input-field col s6">
             <i class="material-icons prefix">contact_mail</i>
-            <input placeholder="contoh@email.com" id="icon_prefix" type="email" class="validate" length="30"   >
+            <input name="email" placeholder="contoh@email.com" id="icon_prefix" type="email" class="validate" length="30"   >
             <label for="icon_prefix">Email</label>
           </div>
         </div>
@@ -38,7 +38,7 @@
         <div class="row">
           <div class="input-field col s6">
             <i class="material-icons prefix">lock</i>
-            <input id="icon_prefix" type="password" class="validate"   >
+            <input name="password" id="icon_prefix" type="password" class="validate">
             <label for="icon_prefix">Password</label>
           </div>
           <div class="input-field col s6">
@@ -50,7 +50,7 @@
         <div class="row">
           <div class="input-field col s6">
             <i class="material-icons prefix">credit_card</i>
-            <input id="icon_prefix" type="text" class="validate"   >
+            <input name="nim" id="icon_prefix" type="text" class="validate"   >
             <label for="icon_prefix">NIM</label>
           </div>
           <div class="file-field input-field col s6">
@@ -68,7 +68,7 @@
         <div class="row">
           <div class="input-field col s4 m4 l4">
             <i class="material-icons prefix">phone</i>
-            <input id="icon_telephone" type="tel" class="validate"   >
+            <input name="telp" id="icon_telephone" type="tel" class="validate"   >
             <label for="icon_telephone">Telepon</label>
           </div>
         </div>
@@ -77,7 +77,7 @@
 
         <div class="form-group">
             <div class="col l8 m6 s4 offset-l8 m6 s4">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn" name="submit" value="Create">
                     Register
                 </button>
             </div>

@@ -2,7 +2,7 @@
 
 @section('content')
 <br>
-<h2 class="center blue-text text-accent 5"><b>Sistem Informasi Inventaris <br>Sub Laboratorium Akper Semarang</b></h2>
+<h2 class="center blue-text text-accent 5"><b>INVENTARIS</h2>
 
   <div class="section scrollspy" id="menucarousel "name="menucarousel">
     <ul class="carousel">
