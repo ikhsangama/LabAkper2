@@ -1,9 +1,9 @@
 @extends('layouts.index')
 
 @section('content')
-</head>
-<h2 class="center blue-text text-accent 3"><b>Sistem Informasi Inventaris <br>Sub Laboratorium Akper Semarang</b></h2>
-<body>
+<br>
+<h2 class="center blue-text text-accent 5"><b>Sistem Informasi Inventaris <br>Sub Laboratorium Akper Semarang</b></h2>
+
   <div class="section scrollspy" id="menucarousel "name="menucarousel">
     <ul class="carousel">
       <li class="carousel-item">
@@ -19,7 +19,7 @@
         <a href="#saranaprasarana"><img src="{{asset('images/homecarousel/9.png')}}" alt=""></a>
       </li>
       <li class="carousel-item">
-        <a href="#"><img src="{{asset('images/homecarousel/10.png')}}" alt=""></a>
+        <a href="#tata"><img src="{{asset('images/homecarousel/10.png')}}" alt=""></a>
       </li>
     </ul>
   </div>
@@ -66,9 +66,9 @@
      <a id="layanan" class="center indigo-text"><h3>Layanan</h3></a>
    </div>
 
-    <ul class="card-panel collapsible  indigo lighten-5" data-collapsible="expandable">
+    <ul class="card-panel collapsible indigo lighten-5" data-collapsible="expandable">
       <li class="white">
-        <div class="collapsible-header active  indigo lighten-5"><i class="material-icons">check</i>
+        <div class="collapsible-header waves-effect active  indigo lighten-5"><i class="material-icons">check</i>
           <h4>Pendidikan</h4>
         </div>
         <div class="collapsible-body">
@@ -82,7 +82,7 @@
           </p></div>
       </li>
       <li>
-        <div class="collapsible-header indigo lighten-5"><i class="material-icons">check</i>
+        <div class="collapsible-header waves-effect indigo lighten-5"><i class="material-icons">check</i>
           <h4>Penelitian</h4>
         </div>
         <div class="collapsible-body">
@@ -90,7 +90,7 @@
         </div>
       </li>
       <li>
-        <div class="collapsible-header indigo lighten-5"><i class="material-icons">check</i>
+        <div class="collapsible-header waves-effect indigo lighten-5"><i class="material-icons">check</i>
           <h4>Pengabdian Kepada Masyarakat</h4>
         </div>
         <div class="collapsible-body">
@@ -108,7 +108,7 @@
     <!--awal coba -->
     <ul class="card-panel collapsible  purple lighten-5" data-collapsible="expandable">
       <li class="white">
-        <div class="collapsible-header active  purple lighten-5"><i class="material-icons">check</i>
+        <div class="collapsible-header waves-effect active  purple lighten-5"><i class="material-icons">check</i>
           <h4>Sarana</h4>
         </div>
         <div class="collapsible-body">
@@ -136,7 +136,7 @@
         </div>
       </li>
       <li class="white">
-        <div class="collapsible-header  purple lighten-5"><i class="material-icons">check</i>
+        <div class="collapsible-header  waves-effect purple lighten-5"><i class="material-icons">check</i>
           <h4>Prasarana</h4>
         </div>
         <div class="collapsible-body">
@@ -166,7 +166,7 @@
 <hr>
 
 <div>
-  <a id="tatatertib" class="center red-text"><h3>Tata Tertib</h3></a>
+  <a id="tata" class="center red-text"><h3>Tata Tertib</h3></a>
 </div>
 
 <div class="card-panel red lighten-5">
@@ -206,15 +206,28 @@
  </p>
 </div>
 
+<hr>
 
-<!-- coba -->
-<!-- <iframe src="{{asset('docs/tatatertib.docx')}}"></iframe>
-<object src="{{asset('docs/tatatertib.docx')}}"><embed src="{{asset('docs/tatatertib.docx')}}"></embed></object> -->
+<!-- script -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="{{asset('js/materialize.min.js')}}"></script>
+<script>
 
-<iframe src="http://docs.google.com/gview?url=http://path.com/to/your/pdf.pdf&embedded=true" 
-style="width:600px; height:500px;" frameborder="0"></iframe>
-<!-- akhircoba -->
+	$(document).ready(function(){
+    $('.materialboxed').materialbox({
 
+    });
+    $('.button-collapse').sideNav({
 
-</body>
+    });
+    $('.carousel').carousel({
+      dist:0,
+    });
+    $('.carousel').carousel('next', 5);
+    $('.scrollspy').scrollSpy();
+
+  }); // end of document ready // end of jQuery name space
+</script>
+<!-- akhirscript -->
+
 @endsection

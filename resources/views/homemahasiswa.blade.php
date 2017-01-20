@@ -68,7 +68,7 @@
         <div class="row">
           <div class="input-field col s4 m4 l4">
             <i class="material-icons prefix">phone</i>
-            <input id="icon_telephone" type="tel" class="validate"   >
+            <input id="icon_telephone" type="tel" class="validate">
             <label for="icon_telephone">Telepon</label>
           </div>
         </div>
@@ -77,12 +77,11 @@
 
         <div class="form-group">
             <div class="col l8 m6 s4 offset-l8 m6 s4">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn" href="/profile">
                     Register
                 </button>
             </div>
         </div>
-
 
       </form>
     </div>
