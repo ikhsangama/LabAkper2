@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Validator;    //untuk validasi
-use Carbon\Carbon;    //untuk timestamp
+// use Carbon\Carbon;    //untuk timestamp
 use App\Http\Requests;
 use App\Models\Pengguna; //karena kelas pengguna didalam folder model
 
@@ -41,23 +41,25 @@ class RegisterController extends Controller
     {
 
         $this->validate($request, [
-            'nama' => 'required|between:3,30',
+            'nama' => 'required|between:3,30|alpha',
             'level' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|unique:pengguna',
             'password' => 'required|between:3,30|confirmed',
-            'telp' => 'required',
-        ])->validate();
+            'nim' => 'required|min:3|unique:pengguna',
+            'telp' => 'required|min:3|unique:pengguna',
+        ]);
 
           // The blog post is valid, store in database...
 
         $pengguna = new Pengguna;
         $pengguna->nama = $request->nama;
         $pengguna->level = $request->level;
+        $pengguna->email = $request->email;
         $pengguna->password = encrypt($request->password);
         $pengguna->nim = $request->nim;
         $pengguna->telp = $request->telp;
         // $pengguna->foto = $request ->foto;
-        $pengguna->created_at = Carbon::now();
+        // $pengguna->created_at = Carbon::now();
         $pengguna->save();
 
         return view ('inventaris');
