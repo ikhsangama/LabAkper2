@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/register', 'RegisterController@create');
+Route::post('/login', 'RegisterController@create');
 Route::post('/inventaris', 'RegisterController@store');
 
 

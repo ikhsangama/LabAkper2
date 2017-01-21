@@ -17,7 +17,7 @@
             <label for="icon_prefix">Nama</label>
           </div>
             <div class="input-field col s4 m4 l4">
-              <i class="material-icons prefix">school</i>
+              <i name="level" class="material-icons prefix">school</i>
               <select>
                 <option value="" disabled selected>Pilih</option>
                 <option value="1">D III</option>
@@ -30,7 +30,7 @@
         <div class="row">
           <div class="input-field col s6">
             <i class="material-icons prefix">contact_mail</i>
-            <input placeholder="contoh@email.com" id="icon_prefix" type="email" class="validate" length="30"   >
+            <input name="email" placeholder="contoh@email.com" id="icon_prefix" type="email" class="validate" length="30"   >
             <label for="icon_prefix">Email</label>
           </div>
         </div>
@@ -43,21 +43,21 @@
           </div>
           <div class="input-field col s6">
             <input placeholder="ulangi password secara benar" id="icon_prefix" type="password" class="validate">
-            <label for="icon_prefix">Konfirmasi Password</label>
+            <label name="password_confirmation" for="icon_prefix">Konfirmasi Password</label>
           </div>
         </div>
 
         <div class="row">
           <div class="input-field col s6">
             <i class="material-icons prefix">credit_card</i>
-            <input id="icon_prefix" type="text" class="validate"   >
+            <input name="nim" id="icon_prefix" type="text" class="validate"   >
             <label for="icon_prefix">NIM</label>
           </div>
           <div class="file-field input-field col s6">
             <div class="btn waves-effect">
               <i class="material-icons">add_a_photo</i>
               <span><label for="icon_prefix"></label></span>
-              <input type="file">
+              <input name"foto" type="file">
             </div>
             <div class="file-path-wrapper">
               <input class="file-path validate" type="text" placeholder="masukkan foto KTM">
@@ -68,7 +68,7 @@
         <div class="row">
           <div class="input-field col s4 m4 l4">
             <i class="material-icons prefix">phone</i>
-            <input id="icon_telephone" type="tel" class="validate"   >
+            <input name="telp" id="icon_telephone" type="number" class="validate"   >
             <label for="icon_telephone">Telepon</label>
           </div>
         </div>

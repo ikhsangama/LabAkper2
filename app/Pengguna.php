@@ -8,7 +8,8 @@ class Pengguna extends Model
 {
     protected $table = 'pengguna';
 
-    public $timestamps = false;
+    protected $guarded = ['created_at', 'updated_at'];
 
-    protected $fillable = ['nama', 'password']
+    protected $fillable = ['nama', 'password', 'telp'];
+
 }

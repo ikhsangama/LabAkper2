@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Validator;
+use Carbon\Carbon;
 use App\Http\Requests;
 use App\Models\Pengguna;
 
@@ -37,9 +39,21 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request, [
+            'nama' => 'required|min:3',
+        ]);
+
+          // The blog post is valid, store in database...
+
         $pengguna = new Pengguna;
         $pengguna->nama = $request->nama;
-        $pengguna->password = $request->password;
+        $pengguna->level = $request->level;
+        $pengguna->password = encrypt($request->password);
+        $pengguna->nim = $request->nim;
+        $pengguna->telp = $request->telp;
+        // $pengguna->foto = $request ->foto;
+        $pengguna->created_at = Carbon::now();
         $pengguna->save();
 
         return view ('inventaris');
