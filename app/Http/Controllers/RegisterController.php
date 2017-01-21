@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Requests;
+use App\Models\Pengguna;
+
 class RegisterController extends Controller
 {
     /**
@@ -23,7 +26,7 @@ class RegisterController extends Controller
      */
     public function create()
     {
-        return view('/register');
+        return view ('/register');
     }
 
     /**
@@ -36,15 +39,10 @@ class RegisterController extends Controller
     {
         $pengguna = new Pengguna;
         $pengguna->nama = $request->nama;
-        $pengguna->level = $request->level;
-        $pengguna->email = $request->email;
         $pengguna->password = $request->password;
-        $pengguna->nim = $request->nim;
-        $pengguna->foto = $request->foto;
-        $pengguna->telp = $request->telp;
         $pengguna->save();
 
-        return redirect('inventaris/' .$id);
+        return view ('inventaris');
     }
 
     /**

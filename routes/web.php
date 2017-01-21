@@ -12,13 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/register', 'RegisterController@create');
+Route::post('/inventaris', 'RegisterController@store');
 
-Route::get('/login', function(){
-  return view('login');
-});
 
-// Route::resource('pengguna', 'PenggunaController');
+//
+// Route::get('/login', function(){
+//   return view('login');
+// });

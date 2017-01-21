@@ -8,12 +8,12 @@
   <hr>
   <div class="card-panel s12 m12 l12">
     <div class="row">
-      <form action="/inventaris" class="col s12" method="post">
+      <form class="col s12">
 
         <div class="row">
           <div class="input-field col s6">
             <i class="material-icons prefix">account_circle</i>
-            <input name="nama" placeholder="Gunakan nama lengkap" id="icon_prefix" type="text" class="validate" length="25" autofocus required  >
+            <input placeholder="Gunakan nama lengkap" id="icon_prefix" type="text" class="validate" length="25" autofocus required  >
             <label for="icon_prefix">Nama</label>
           </div>
             <div class="input-field col s4 m4 l4">
@@ -38,11 +38,11 @@
         <div class="row">
           <div class="input-field col s6">
             <i class="material-icons prefix">lock</i>
-            <input name="password" id="icon_prefix" type="password" class="validate" required>
+            <input id="icon_prefix" type="password" class="validate"   >
             <label for="icon_prefix">Password</label>
           </div>
           <div class="input-field col s6">
-            <input placeholder="ulangi password secara benar" id="icon_prefix" type="password" class="validate">
+            <input placeholder="ulangi password secara benar" id="icon_prefix" type="password" class="validate"   >
             <label for="icon_prefix">Konfirmasi Password</label>
           </div>
         </div>
@@ -68,7 +68,7 @@
         <div class="row">
           <div class="input-field col s4 m4 l4">
             <i class="material-icons prefix">phone</i>
-            <input id="icon_telephone" type="tel" class="validate"   >
+            <input id="icon_telephone" type="tel" class="validate">
             <label for="icon_telephone">Telepon</label>
           </div>
         </div>
@@ -77,11 +77,11 @@
 
         <div class="form-group">
             <div class="col l8 m6 s4 offset-l8 m6 s4">
-              {{ csrf_field() }}
-                <input type="submit" class="btn" value="Register">
+                <button type="submit" class="btn" href="/profile">
+                    Register
+                </button>
             </div>
         </div>
-
 
       </form>
     </div>
