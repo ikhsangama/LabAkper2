@@ -13,17 +13,33 @@
         <div class="row">
           <div class="input-field col s6">
             <i class="material-icons prefix">account_circle</i>
-            <input name="nama" placeholder="Gunakan nama lengkap" id="icon_prefix" type="text" class="validate" length="25" autofocus required  >
+            <input name="nama" placeholder="Gunakan nama lengkap" id="icon_prefix" type="text" class="validate" autofocus maxlength="30" required>
             <label for="icon_prefix">Nama</label>
+
+<!-- validation             -->
+            @if ($errors->has('nama'))
+            <div class="container red-text text accent-3">
+              {{ $errors->first('nama') }}
+            </div>
+            @endif
+<!-- endvalidation             -->
           </div>
             <div class="input-field col s4 m4 l4">
-              <i name="level" class="material-icons prefix">school</i>
-              <select>
+              <i id="program studi" class="material-icons prefix" required>school</i>
+              <select name="level">
                 <option value="" disabled selected>Pilih</option>
-                <option value="1">D III</option>
-                <option value="2">D IV</option>
+                <option value="D III">D III</option>
+                <option value="D IV">D IV</option>
               </select>
               <label for="icon_prefix">Program Studi</label>
+
+              <!-- validation             -->
+              @if ($errors->has('level'))
+              <div class="container red-text text accent-3">
+                {{ $errors->first('level') }}
+              </div>
+              @endif
+              <!-- endvalidation             -->
             </div>
         </div>
 
@@ -32,6 +48,13 @@
             <i class="material-icons prefix">contact_mail</i>
             <input name="email" placeholder="contoh@email.com" id="icon_prefix" type="email" class="validate" length="30"   >
             <label for="icon_prefix">Email</label>
+            <!-- validation             -->
+            @if ($errors->has('email'))
+            <div class="container red-text text accent-3">
+              {{ $errors->first('email') }}
+            </div>
+            @endif
+            <!-- endvalidation             -->
           </div>
         </div>
 
@@ -40,10 +63,24 @@
             <i class="material-icons prefix">lock</i>
             <input name="password" id="icon_prefix" type="password" class="validate" required>
             <label for="icon_prefix">Password</label>
+            <!-- validation             -->
+            @if ($errors->has('password'))
+            <div class="container red-text text accent-3">
+              {{ $errors->first('password') }}
+            </div>
+            @endif
+            <!-- endvalidation             -->
           </div>
           <div class="input-field col s6">
-            <input placeholder="ulangi password secara benar" id="icon_prefix" type="password" class="validate">
-            <label name="password_confirmation" for="icon_prefix">Konfirmasi Password</label>
+            <input  name="password_confirmation" placeholder="ulangi password secara benar" id="icon_prefix" type="password" class="validate" required>
+            <label for="icon_prefix">Konfirmasi Password</label>
+            <!-- validation             -->
+            @if ($errors->has('password_confirmation'))
+            <div class="container red-text text accent-3">
+              {{ $errors->first('password_confirmation') }}
+            </div>
+            @endif
+            <!-- endvalidation             -->
           </div>
         </div>
 

@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Validator;
-use Carbon\Carbon;
+use Validator;    //untuk validasi
+use Carbon\Carbon;    //untuk timestamp
 use App\Http\Requests;
-use App\Models\Pengguna;
+use App\Models\Pengguna; //karena kelas pengguna didalam folder model
 
 class RegisterController extends Controller
 {
@@ -41,8 +41,12 @@ class RegisterController extends Controller
     {
 
         $this->validate($request, [
-            'nama' => 'required|min:3',
-        ]);
+            'nama' => 'required|between:3,30',
+            'level' => 'required',
+            'email' => 'required',
+            'password' => 'required|between:3,30|confirmed',
+            'telp' => 'required',
+        ])->validate();
 
           // The blog post is valid, store in database...
 
@@ -58,6 +62,19 @@ class RegisterController extends Controller
 
         return view ('inventaris');
     }
+
+// validatormassage
+
+
+
+// public function messages()
+// {
+//     return [
+//         'nama.required' => 'isi nama',
+//         'nama.min:3' => 'minimal 3',
+//     ];
+// }
+// validatormassage
 
     /**
      * Display the specified resource.
