@@ -8,7 +8,7 @@
   <hr>
   <div class="card-panel s12 m12 l12">
     <div class="row">
-      <form action="/profile" class="col s12" method="post" enctype="multipart/form-data">
+      <form action="{{ url('/register') }}" class="col s12" method="post" enctype="multipart/form-data">
 
         <div class="row">
           <div class="input-field col s6">
