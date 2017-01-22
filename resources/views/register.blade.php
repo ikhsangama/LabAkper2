@@ -8,7 +8,7 @@
   <hr>
   <div class="card-panel s12 m12 l12">
     <div class="row">
-      <form action="/inventaris" class="col s12" method="post">
+      <form action="/inventaris" class="col s12" method="post" enctype="multipart/form-data">
 
         <div class="row">
           <div class="input-field col s6">
@@ -90,16 +90,19 @@
             <input name="nim" id="icon_prefix" type="text" class="validate"   >
             <label for="icon_prefix">NIM</label>
           </div>
+
+        <div class="row">
           <div class="file-field input-field col s6">
-            <div class="btn waves-effect">
-              <i class="material-icons">add_a_photo</i>
-              <span><label for="icon_prefix"></label></span>
-              <input name"foto" type="file">
+            <div class="btn">
+              <span>File</span>
+              <input type="file" id="inputgambar" name="ktm" class="validate"/>
             </div>
             <div class="file-path-wrapper">
-              <input class="file-path validate" type="text" placeholder="masukkan foto KTM">
+              <input class="file-path validate" type="text">
             </div>
           </div>
+      </div>
+
         </div>
 
         <div class="row">

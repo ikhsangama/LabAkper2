@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Validator;    //untuk validasi
-// use Carbon\Carbon;    //untuk timestamp
+use Carbon\Carbon;    //untuk timestamp
 use App\Http\Requests;
 use App\Models\Pengguna; //karena kelas pengguna didalam folder model
 
@@ -40,17 +40,23 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
 
-        $this->validate($request, [
-            'nama' => 'required|between:3,30|alpha',
-            'level' => 'required',
-            'email' => 'required|email|unique:pengguna',
-            'password' => 'required|between:3,30|confirmed',
-            'nim' => 'required|min:3|unique:pengguna',
-            'telp' => 'required|min:3|unique:pengguna',
-        ]);
+        // $this->validate($request, [
+        //     'nama' => 'required|between:3,30|alpha',
+        //     'level' => 'required',
+        //     'email' => 'required|email|unique:pengguna',
+        //     'password' => 'required|between:3,30|confirmed',
+        //     'nim' => 'required|min:3|unique:pengguna',
+        //     'telp' => 'required|min:3|unique:pengguna',
+        // ]);
 
           // The blog post is valid, store in database...
 
+        // gambar
+        $file       = $request->file('featured_img');
+        $fileName   = $request->nim . "-" . time() .".png";
+        $request->file('ktm')->move("ktm/", $fileName);
+        //endgambar
+         dd('done!');
         $pengguna = new Pengguna;
         $pengguna->nama = $request->nama;
         $pengguna->level = $request->level;
