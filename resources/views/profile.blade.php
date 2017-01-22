@@ -4,8 +4,8 @@
 </head>
 <body>
   <div>
-    <h1>Inventaris</h1>
-    <h2>{{$Pengguna}}</h2>
+    <h1>Profile</h1>
+    
   </div>
 
 </body>

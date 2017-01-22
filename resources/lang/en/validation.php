@@ -52,7 +52,7 @@ return [
         'string'  => ':attribute maksimal :max karakter.',
         'array'   => ':attribute maksimal :max item.',
     ],
-    'mimes'                => 'The :attribute must be a file of type: :values.',
+    'mimes'                => ':attribute harus berupa file: :values.',
     'mimetypes'            => 'The :attribute must be a file of type: :values.',
     'min'                  => [
         'numeric' => ':attribute minimal :min.',
@@ -80,7 +80,7 @@ return [
     ],
     'string'               => 'The :attribute must be a string.',
     'timezone'             => 'The :attribute must be a valid zone.',
-    'unique'               => ':attribute sudah pernah diisi.',
+    'unique'               => ':attribute sudah pernah digunakan.',
     'uploaded'             => 'The :attribute failed to upload.',
     'url'                  => 'The :attribute format is invalid.',
 

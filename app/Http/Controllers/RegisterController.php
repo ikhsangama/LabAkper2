@@ -40,35 +40,35 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
 
-        // $this->validate($request, [
-        //     'nama' => 'required|between:3,30|alpha',
-        //     'level' => 'required',
-        //     'email' => 'required|email|unique:pengguna',
-        //     'password' => 'required|between:3,30|confirmed',
-        //     'nim' => 'required|min:3|unique:pengguna',
-        //     'telp' => 'required|min:3|unique:pengguna',
-        // ]);
+        $this->validate($request, [
+            'nama' => 'required|between:3,30|alpha',
+            'level' => 'required',
+            'email' => 'required|email|unique:pengguna',
+            'password' => 'required|between:3,30|confirmed',
+            'nim' => 'required|min:3|unique:pengguna',
+            'ktm' => 'required|mimes:jpeg,jpg,png|max:4000',
+            'telp' => 'required|min:3|unique:pengguna',
+        ]);
 
-          // The blog post is valid, store in database...
+        // The blog post is valid, store in database...
 
         // gambar
         $file       = $request->file('featured_img');
         $fileName   = $request->nim . "-" . time() .".png";
-        $request->file('ktm')->move("ktm/", $fileName);
+        $request->file('ktm')->storeAs("public/ktm", $fileName);
         //endgambar
-         dd('done!');
         $pengguna = new Pengguna;
         $pengguna->nama = $request->nama;
         $pengguna->level = $request->level;
         $pengguna->email = $request->email;
-        $pengguna->password = encrypt($request->password);
+        $pengguna->password = bcrypt($request->password);
         $pengguna->nim = $request->nim;
         $pengguna->telp = $request->telp;
-        // $pengguna->foto = $request ->foto;
+        $pengguna->ktm = $fileName;
         // $pengguna->created_at = Carbon::now();
         $pengguna->save();
 
-        return view ('inventaris');
+        return redirect ('/login');
     }
 
 // validatormassage

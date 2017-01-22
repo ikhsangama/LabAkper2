@@ -16,8 +16,12 @@ Route::get('/', function () {
 });
 
 Route::get('/register', 'RegisterController@create');
-Route::post('/login', 'RegisterController@create');
-Route::post('/inventaris', 'RegisterController@store');
+Route::get('/login', function(){
+  return view('login');
+});
+Route::post('/profile', 'RegisterController@store');
+//coba
+Route::get('inventaris/{id}', 'RegisterController@show');
 
 
 //
