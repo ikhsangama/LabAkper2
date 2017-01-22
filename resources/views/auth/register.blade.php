@@ -133,25 +133,4 @@
 
 <!-- akhircoba -->
 
-<!-- script -->
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="{{asset('js/materialize.min.js')}}"></script>
-<script>
-
-	$(document).ready(function(){
-    $('.button-collapse').sideNav({
-
-    });
-    $('.scrollspy').scrollSpy({
-
-    });
-    $('select').material_select({
-
-    });
-
-    $('.modal').modal();
-  }); // end of document ready // end of jQuery name space
-</script>
-<!-- akhirscript -->
-
 @endsection
