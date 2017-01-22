@@ -12,19 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
 
-Route::get('/register', 'RegisterController@create');
-Route::get('/login', function(){
-  return view('login');
-});
-Route::post('/profile', 'RegisterController@store');
-//coba
-Route::get('inventaris/{id}', 'RegisterController@show');
+Auth::routes();
 
-
-//
-// Route::get('/login', function(){
-//   return view('login');
-// });
+Route::get('/home', 'HomeController@index');
