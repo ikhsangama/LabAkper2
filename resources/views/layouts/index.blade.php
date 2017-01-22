@@ -19,27 +19,7 @@
   <div class="container">
   	@yield('content')
   </div>
-  <!-- script -->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="{{asset('js/materialize.min.js')}}"></script>
-  <script>
-
-    $(document).ready(function(){
-      $('.materialboxed').materialbox({
-
-      });
-      $('.button-collapse').sideNav({
-
-      });
-      $('.carousel').carousel({
-        dist:0,
-      });
-      $('.carousel').carousel('next', 5);
-      $('.scrollspy').scrollSpy();
-      $('.dropdown-button').dropdown();
-
-    }); // end of document ready // end of jQuery name space
-  </script>
+  
 </body>
 @section('footer')
   @include('layouts.footer')
