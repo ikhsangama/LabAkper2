@@ -64,7 +64,7 @@ class LoginController extends Controller
           //menguji status, 0 atau 1
           if (Auth::user()->status==0){
             Auth::logout();
-            return redirect('/login')->with('warning', 'akun belum aktif');
+            return redirect('/login')->with('warning', 'Akun belum aktif, lakukan verifikasi email terlebih dahulu');
           }
             return $this->sendLoginResponse($request);
         }

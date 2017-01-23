@@ -93,7 +93,7 @@ class RegisterController extends Controller
 
         $pengguna->save();
         Mail::to($pengguna->email)->send(new userRegistered($pengguna));
-        return redirect('/login')->with('warning', 'silahkan lakukan verifikasi email untuk login');;
+        return redirect('/login')->with('warning', 'Silahkan lakukan verifikasi email untuk login');;
     }
 
     protected function verify_register($token, $id)
@@ -101,7 +101,7 @@ class RegisterController extends Controller
       $pengguna = User::find($id);
       //menguji token verifikasi
       if ($pengguna->token != $token){
-        return redirect('login')->with('warning', 'verifikasi email tidak cocok');
+        return redirect('login')->with('warning', 'Verifikasi email tidak cocok');
       }
       //status user jadi 1
       $pengguna->status =1;
