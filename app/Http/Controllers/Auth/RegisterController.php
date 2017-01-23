@@ -5,8 +5,12 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use Validator;
 //coba
-use Illuminate\Http\Request;
 use App\Http\Requests;
+use Illuminate\Http\Request;
+//Mail
+use App\Mail\userRegistered;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Auth\Events\Registered; //event, RegistersUsers
 //
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -71,25 +75,40 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
 
+        $pengguna = new User;
+        $pengguna->nama = $request->nama;
+        $pengguna->level = $request->level;
+        $pengguna->email = $request->email;
+        $pengguna->password = bcrypt($request->password);
+        $pengguna->nim = $request->nim;
+        $pengguna->telp = $request->telp;
+        //gambar
         $file       = $request->file('ktm');
         $fileName   = $request->nim . "-" . time() .".png";
         $request->file('ktm')->storeAs("public/ktm", $fileName);
         //endgambar
-        $user = new User;
-        $user->nama = $request->nama;
-        $user->level = $request->level;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->nim = $request->nim;
-        $user->telp = $request->telp;
-        $user->ktm = $fileName;
-        // $pengguna->created_at = Carbon::now();
-        $user->save();
+        $pengguna->ktm = $fileName;
+        $pengguna->token=str_random(10);
 
-        $this->guard()->login($user);
 
-        return $this->registered($request, $user)
-            ?: redirect($this->redirectPath());
+        $pengguna->save();
+        Mail::to($pengguna->email)->send(new userRegistered($pengguna));
+        return redirect('/login');
     }
 
+    protected function verify_register($token, $id)
+    {
+      $pengguna = User::find($id);
+      //menguji token verifikasi
+      if ($pengguna->token != $token){
+        return redirect('login')->with('warning', 'verifikasi email tidak cocok');
+      }
+      //status user jadi 1
+      $pengguna->status =1;
+      $pengguna->save();
+      //login
+      $this->guard()->login($pengguna);
+      return redirect ('/home');
+      //redirect
+    }
 }

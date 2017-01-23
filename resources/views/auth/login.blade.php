@@ -5,6 +5,13 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
+              <!-- cek verifikasi email token -->
+              @if(session('warning'))
+              <div class="card-panel red lighten-4">
+                {{session('warning')}}
+              </div>
+              @endif
+
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
