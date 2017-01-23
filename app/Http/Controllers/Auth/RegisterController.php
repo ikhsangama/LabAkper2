@@ -93,7 +93,7 @@ class RegisterController extends Controller
 
         $pengguna->save();
         Mail::to($pengguna->email)->send(new userRegistered($pengguna));
-        return redirect('/login');
+        return redirect('/login')->with('warning', 'silahkan lakukan verifikasi email untuk login');;
     }
 
     protected function verify_register($token, $id)
