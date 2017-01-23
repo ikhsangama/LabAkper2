@@ -4,8 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Validator;
+//coba
+use Illuminate\Http\Request;
+use App\Http\Requests;
+//
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+
+
 
 class RegisterController extends Controller
 {
@@ -51,24 +57,39 @@ class RegisterController extends Controller
             'nama' => 'required|alpha|max:255',
             'email' => 'required|email|max:255|unique:pengguna',
             'password' => 'required|min:3|confirmed',
+            'ktm' => 'required|mimes:jpeg,jpg,png|max:4000',
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
+/**
+     * Handle a registration request for the application.
      *
-     * @param  array  $data
-     * @return User
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
-    protected function create(array $data)
+    public function register(Request $request)
     {
-        return User::create([
-            'nama' => $data['nama'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'level' => $data['level'],
-            'nim' => $data['nim'],
-            'telp' => $data['telp'],
-        ]);
+        $this->validator($request->all())->validate();
+
+        $file       = $request->file('ktm');
+        $fileName   = $request->nim . "-" . time() .".png";
+        $request->file('ktm')->storeAs("public/ktm", $fileName);
+        //endgambar
+        $user = new User;
+        $user->nama = $request->nama;
+        $user->level = $request->level;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->nim = $request->nim;
+        $user->telp = $request->telp;
+        $user->ktm = $fileName;
+        // $pengguna->created_at = Carbon::now();
+        $user->save();
+
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
     }
+
 }

@@ -98,7 +98,7 @@
               <input type="file" id="inputgambar" name="ktm" class="validate"/>
             </div>
             <div class="file-path-wrapper">
-              <input class="file-path validate" type="text">
+              <input class="file-path validate" type="text" placeholder="masukkan foto KTM">
             </div>
           </div>
       </div>
