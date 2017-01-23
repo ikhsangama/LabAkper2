@@ -11,7 +11,7 @@
 
     @show
 </head>
-<body>
+<!-- <body class="blue lighten-5"> -->
 @section('header')
     @include('layouts.header')
 @show
@@ -19,8 +19,8 @@
   <div class="container">
   	@yield('content')
   </div>
-  
-</body>
+
+<!-- </body> -->
 @section('footer')
   @include('layouts.footer')
 @show
