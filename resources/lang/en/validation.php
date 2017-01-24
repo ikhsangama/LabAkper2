@@ -78,7 +78,7 @@ return [
         'string'  => 'The :attribute must be :size characters.',
         'array'   => 'The :attribute must contain :size items.',
     ],
-    'string'               => 'The :attribute must be a string.',
+    'string'               => ':attribute harus berupa karakter normal.',
     'timezone'             => 'The :attribute must be a valid zone.',
     'unique'               => ':attribute sudah pernah digunakan.',
     'uploaded'             => 'The :attribute failed to upload.',

@@ -22,7 +22,7 @@
             <div class="input-field col s6 m6 l6 offset-l3 offset-m3 offset-s3">
               <i class="material-icons prefix">account_circle</i>
               <input name="login" id="icon_prefix" type="text" class="validate" autofocus maxlength="30" required>
-              <label for="icon_prefix">Email</label>
+              <label for="icon_prefix">Email atau NIM/NIP</label>
   <!-- validation             -->
               <!-- @if ($errors->has('email'))
               <div class="container red-text text accent-3">
@@ -55,17 +55,19 @@
             </div>
           </div>
   <hr>
-
-          <div class="form-group">
-            <a href="{{ url('/password/reset') }}">
-                Lupa password anda?
-            </a>
-              <div class="col s8 m8 l8 offset-l8 m8 s8">
+          <div class="row">
+            <div class="form-group col offset-l3 offset-m3 offset-s3">
+              <a href="{{ url('/password/reset') }}">
+                  Lupa password anda?
+              </a>
+              <div class="row col s8 m8 l8 offset-l8 offset-m8 offset-s8">
                 {{ csrf_field() }}
                   <input type="submit" class="btn" value="Login">
-
               </div>
+            </div>
+
           </div>
+
 
         </form>
       </div>
