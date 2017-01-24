@@ -21,14 +21,14 @@
           <div class="row">
             <div class="input-field col s6 m6 l6 offset-l3 offset-m3 offset-s3">
               <i class="material-icons prefix">account_circle</i>
-              <input name="email" id="icon_prefix" type="email" class="validate" autofocus maxlength="30" required>
+              <input name="login" id="icon_prefix" type="text" class="validate" autofocus maxlength="30" required>
               <label for="icon_prefix">Email</label>
   <!-- validation             -->
-              @if ($errors->has('email'))
+              <!-- @if ($errors->has('email'))
               <div class="container red-text text accent-3">
                 {{ $errors->first('email') }}
               </div>
-              @endif
+              @endif -->
   <!-- endvalidation             -->
             </div>
           </div>

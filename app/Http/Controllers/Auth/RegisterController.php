@@ -62,6 +62,7 @@ class RegisterController extends Controller
             'email' => 'required|email|max:255|unique:pengguna',
             'password' => 'required|min:3|confirmed',
             'ktm' => 'required|mimes:jpeg,jpg,png|max:4000',
+            'nim' => 'numeric'
         ]);
     }
 

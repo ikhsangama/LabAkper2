@@ -49,8 +49,7 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-        $this->validateLogin($request);
-
+      $this->validateLogin($request);
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
         // the IP address of the client making these requests into this application.
@@ -76,4 +75,51 @@ class LoginController extends Controller
 
         return $this->sendFailedLoginResponse($request);
     }
+
+    /**
+     * Get the login username to be used by the controller.
+     *
+     * @return string
+     */
+    public function username()
+    {
+        return 'login';
+    }
+
+
+
+    /**
+     * Validate the user login request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     */
+    protected function validateLogin(Request $request)
+    {
+        // get our login input
+        $login = $request->input('login');
+        // check login field
+        $login_type = filter_var( $login, FILTER_VALIDATE_EMAIL ) ? 'email' : 'nim';
+        // merge our login field into the request with either email or username as key
+        $request->merge([ $login_type => $login ]);
+        $this->validate($request, [
+          $login_type => 'required', 'password' => 'required',
+      ]);
+    }
+
+    /**
+     * Get the needed authorization credentials from the request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    protected function credentials(Request $request)
+    {
+      // get our login input
+      $login = $request->input('login');
+      // check login field
+      $login_type = filter_var( $login, FILTER_VALIDATE_EMAIL ) ? 'email' : 'nim';
+        return $request->only($login_type, 'password');
+    }
+
 }
