@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class adminMiddleware
+class RedirectIfAdmin
 {
     /**
      * Handle an incoming request.
@@ -17,11 +17,10 @@ class adminMiddleware
     {
       $user = $request->user();
 
-      if($user){
-        if($user->isAdmin()){
-          return $next($request);
-        }
-        return abort (404);
-        }
+      if ($user->role=='1') {
+        $guard = 'admin';
+        return $next($request);
       }
+       return redirect('/');
+    }
 }
