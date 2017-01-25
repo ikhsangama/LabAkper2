@@ -16,8 +16,7 @@
   	</span>
 	</div>
 </nav>
-
-      @else
+@elseif(Auth::user())
 <nav class="blue accent-3" role="navigation">
   <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">{{ config('app.name', 'Laravel') }}</a>
 		<span class="section scrollspy" id="backtotop">
@@ -48,9 +47,11 @@
         </li>
       </ul>
       <!-- tambahan navigasi -->
+      @if(Auth::user()->isAdmin(true))
           <li>
             <li><a href="{{ url('/dashboard') }}"><b>Dashboard</b></a></li>
           </li>
+      @endif
           <li>
             <li><a class="dropdown-button" href="#!" data-activates="dropdown3"><b>Dokumen</b></a></li>
           </li>
@@ -66,7 +67,6 @@
       <!-- </div> -->
     </nav>
   </ul>
-
 @endif
 
 	<div class="fixed-action-btn">
