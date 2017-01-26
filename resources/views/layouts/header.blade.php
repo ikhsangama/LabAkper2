@@ -36,27 +36,27 @@
       </ul>
       <!-- dropdown dokumen-->
     <ul class="right hide-on-med-and-down">
-      <ul id="dropdown2" class="dropdown-content">
+      <ul id="dropdown3" class="dropdown-content">
         <li>
           <a href="{{ url('/instruksikerja') }}">
               IK
           </a>
         </li>
         <li>
-          <a href="{{ url('/instruksikerja') }}">
+          <a href="{{ url('/sop') }}">
               SOP
           </a>
         </li>
       </ul>
       <ul class="right hide-on-med-and-down">
-        <ul id="dropdown3" class="dropdown-content">
+        <ul id="dropdown2" class="dropdown-content">
           <li>
-            <a href="{{ url('/instruksikerja') }}">
+            <a href="{{ url('/daftar') }}">
                 Daftar
             </a>
           </li>
           <li>
-            <a href="{{ url('/instruksikerja') }}">
+            <a href="{{ url('/peminjaman') }}">
                 Peminjaman
             </a>
           </li>

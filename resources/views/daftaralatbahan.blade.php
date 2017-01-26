@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"><h2>Home Pengguna</h2></div>
+                <div class="panel-heading"><h2>Standar Operasional Prosedur</h2></div>
 
                 <div class="panel-body">
                     You are logged in!
@@ -16,7 +16,7 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="{{asset('js/materialize.min.js')}}"></script>
+<script src="{{asset('js/materialize.js')}}"></script>
 <script>
 
 	$(document).ready(function(){
@@ -31,7 +31,9 @@
     // });
     // $('.carousel').carousel('next', 5);
     // $('.scrollspy').scrollSpy();
-    $(".dropdown-button").dropdown();
+    $(".dropdown-button").dropdown({
+
+    });
   }); // end of document ready // end of jQuery name space
 </script>
 @endsection
