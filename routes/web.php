@@ -20,7 +20,7 @@ Route::get('/verify/{token}/{id}', 'Auth\RegisterController@verify_register');
 //admin
 Route::group(['middleware' => 'web'], function(){
   Route::get('/dashboard', 'AdminController@dashboard');
-  Route::get('/dashboard/InstruksiKerja', 'InstruksiKerjaController@create')
+  Route::get('/dashboard/InstruksiKerja', 'InstruksiKerjaController@create');
 });
 
 Auth::routes();
