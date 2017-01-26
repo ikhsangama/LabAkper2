@@ -19,10 +19,11 @@ class RedirectIfAdmin
     {
       $user = $request->user();
       // dd($request);
-      if ($user->role=='1') {
-        $guard = 'admin';
-        return $next($request);
+      if ($user) {
+         if ($user->isAdmin()) {
+          return $next($request);
+         }
       }
-       return redirect ('/');
+      return redirect ('/');
     }
 }

@@ -3,7 +3,7 @@
 <head>
   <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/galeri/favicon.ico')}}" />
 	<title>{{ config('app.name', 'Laravel') }}</title>
-	<link rel="stylesheet" href="{{asset('css/materialize.min.css')}}">
+	<link rel="stylesheet" href="{{asset('css/materialize.css')}}">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 

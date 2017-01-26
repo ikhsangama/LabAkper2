@@ -231,6 +231,6 @@
   </script>
   <!-- akhirscript -->
 
-  
+
 </body>
 @endsection
