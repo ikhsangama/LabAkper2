@@ -13,7 +13,7 @@
         <form action="{{ url('/register') }}" class="col s12" method="POST" enctype="multipart/form-data">
 
           <div class="row">
-            <div class="input-field col s6">
+            <div class="input-field col s6 m6 l6">
               <i class="material-icons prefix">account_circle</i>
               <input name="nama" placeholder="Gunakan nama lengkap" id="icon_prefix" type="text" class="validate" autofocus maxlength="30" required>
               <label for="icon_prefix">Nama</label>
@@ -94,9 +94,9 @@
             </div>
 
           <div class="row">
-            <div class="file-field input-field col s6">
+            <div class="file-field input-field col s6 m6 l6">
               <div class="btn">
-                <span>File</span>
+                <span><i class="material-icons prefix">add_a_photo</i></span>
                 <input type="file" id="inputgambar" name="ktm" class="validate"/>
               </div>
               <div class="file-path-wrapper">

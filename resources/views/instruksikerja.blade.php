@@ -17,10 +17,13 @@
     <div class="collapsible-body collection">
         @foreach($ik_alat as $alat)
         <div class="collection-item"><strong>{{$alat->judul}}</strong>
-          <a href="/download" class="secondary-content"><i class="material-icons">file_download</i></a>
+          <a href="/download" class="secondary-content tooltipped" data-tooltip="Download"><i class="material-icons">file_download</i></a>
           @if(Auth::user()->isAdmin(true))
-          <a href="instruksikerja/{{$alat->id}}/edit" class="secondary-content"><i class="material-icons">edit</i></a>
-          @endif</div>
+          <a href="instruksikerja/{{$alat->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
+          @endif
+          <br><label>Dibuat: {{$alat->created_at}}</label>
+          <label>Diupdate: {{$alat->updated_at}}</label>
+        </div>
         @endforeach
     </div>
   </li>
@@ -31,10 +34,13 @@
     <div class="collapsible-body collection">
       @foreach($ik_anak as $anak)
       <div class="collection-item"><strong>{{$anak->judul}}</strong>
-        <a href="/download" class="secondary-content"><i class="material-icons">file_download</i></a>
+        <a href="/download" class="secondary-content tooltipped" data-tooltip="Download"><i class="material-icons">file_download</i></a>
         @if(Auth::user()->isAdmin(true))
-        <a href="/edit" class="secondary-content"><i class="material-icons">edit</i></a>
-        @endif</div>
+        <a href="instruksikerja/{{$alat->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
+        @endif
+        <br><label>Dibuat: {{$anak->created_at}}</label>
+        <label>Diupdate: {{$anak->updated_at}}</label>
+      </div>
       @endforeach
     </div>
   </li>
@@ -45,10 +51,13 @@
   <div class="collapsible-body collection">
     @foreach($ik_dasar as $dasar)
     <div class="collection-item"><strong>{{$dasar->judul}}</strong>
-      <a href="/download" class="secondary-content"><i class="material-icons">file_download</i></a>
+      <a href="/download" class="secondary-content tooltipped" data-tooltip="Download"><i class="material-icons">file_download</i></a>
       @if(Auth::user()->isAdmin(true))
-      <a href="/edit" class="secondary-content"><i class="material-icons">edit</i></a>
-      @endif</div>
+      <a href="instruksikerja/{{$alat->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
+      @endif
+      <br><label>Dibuat: {{$dasar->created_at}}</label>
+      <label>Diupdate: {{$dasar->updated_at}}</label>
+    </div>
     @endforeach
   </div>
 </li>
@@ -59,10 +68,13 @@
   <div class="collapsible-body collection">
     @foreach($ik_maternitas as $maternitas)
     <div class="collection-item"><strong>{{$maternitas->judul}}</strong>
-      <a href="/download" class="secondary-content"><i class="material-icons">file_download</i></a>
+      <a href="/download" class="secondary-content tooltipped" data-tooltip="Download"><i class="material-icons">file_download</i></a>
       @if(Auth::user()->isAdmin(true))
-      <a href="/edit" class="secondary-content"><i class="material-icons">edit</i></a>
-      @endif</div>
+      <a href="instruksikerja/{{$alat->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
+      @endif
+      <br><label>Dibuat: {{$maternitas->created_at}}</label>
+      <label>Diupdate: {{$maternitas->updated_at}}</label>
+    </div>
     @endforeach
   </div>
 </li>
@@ -71,9 +83,16 @@
     <h4>IK Medikal Bedah</h4>
   </div>
   <div class="collapsible-body collection">
-      @foreach($ik_bedah as $bedah)
-      <a href="#!" class="collection-item"><strong>{{$bedah->judul}}</strong><br>{{$bedah->deskripsi}}</a>
-      @endforeach
+    @foreach($ik_bedah as $bedah)
+    <div class="collection-item"><strong>{{$bedah->judul}}</strong>
+      <a href="/download" class="secondary-content tooltipped" data-tooltip="Download"><i class="material-icons">file_download</i></a>
+      @if(Auth::user()->isAdmin(true))
+      <a href="instruksikerja/{{$alat->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
+      @endif
+      <br><label>Dibuat: {{$bedah->created_at}}</label>
+      <label>Diupdate: {{$bedah->updated_at}}</label>
+    </div>
+    @endforeach
   </div>
 </li>
 </ul>

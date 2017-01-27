@@ -65,7 +65,7 @@ class InstruksiKerjaController extends Controller
     public function show($id)
     {
         $instruksikerja = InstruksiKerja::find($id);
-        return view('instruksikerja', ['instruksikerja' => $instruksikerja]);
+        return view('instruksikerja', ['instruksikerja' => $instruksikerja,]);
     }
 
     /**
@@ -74,15 +74,14 @@ class InstruksiKerjaController extends Controller
      * @param  \App\InstruksiKerja  $instruksiKerja
      * @return \Illuminate\Http\Response
      */
-    public function edit(InstruksiKerja $instruksiKerja)
+    public function edit($id)
     {
         $instruksikerja = InstruksiKerja::find($id);
 
         if(!$instruksikerja){
-          abort('404');
+          abort(404);
         }
-
-        return view('instruksikerja/{id}/edit_instruksikerja', ['instruksikerja' => $instruksikerja]);
+        return view('dash_admin/edit_instruksikerja', ['instruksikerja' => $instruksikerja]);
     }
 
     /**
@@ -92,9 +91,12 @@ class InstruksiKerjaController extends Controller
      * @param  \App\InstruksiKerja  $instruksiKerja
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, InstruksiKerja $instruksiKerja)
+    public function update(Request $request, $id)
     {
-        //
+      $instruksikerja = InstruksiKerja::find($id);
+      $instruksikerja->judul = $request->judul;
+      $instruksikerja->save();
+      return redirect ('/instruksikerja');
     }
 
     /**
