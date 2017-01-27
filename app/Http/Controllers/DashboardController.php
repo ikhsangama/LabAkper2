@@ -5,34 +5,28 @@ namespace App\Http\Controllers;
 use App\InstruksiKerja;
 use Illuminate\Http\Request;
 
-class InstruksiKerjaController extends Controller
+class DashboardController extends Controller
 {
     public function __construct(){
-          $this->middleware('auth');
-     }
+        $this->middleware('auth');
+        $this->middleware('admin');
+      }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {//detail instruksikerja
         $instruksikerjas = InstruksiKerja::all();
-        // dd($instruksikerjas->where('kategori_ik', 'IK Alat'));
-        $list_ik_alat = $instruksikerjas->where('kategori_ik', 'IK Alat');
-        $list_ik_anak = $instruksikerjas->where('kategori_ik', 'IK Kep. Anak');
-        $list_ik_dasar = $instruksikerjas->where('kategori_ik', 'IK Kep. Dasar');
-        $list_ik_maternitas = $instruksikerjas->where('kategori_ik', 'IK Kep. Maternitas');
-        $list_ik_bedah = $instruksikerjas->where('kategori_ik', 'IK Medikal Bedah');
-
-        return view('instruksikerja', [
-        'instruksikerjas'=>$instruksikerjas,
-        'ik_alat'=>$list_ik_alat,
-        'ik_anak'=>$list_ik_anak,
-        'ik_dasar'=>$list_ik_dasar,
-        'ik_maternitas'=>$list_ik_maternitas,
-        'ik_bedah'=>$list_ik_bedah,
-      ]);
+        $count_instruksikerja = $instruksikerjas->count();
+        $count_ik_alat = $instruksikerjas->where('kategori_ik', 'IK Alat')->count();
+        $count_ik_anak = $instruksikerjas->where('kategori_ik', 'IK Kep. Anak')->count();
+        $count_ik_dasar = $instruksikerjas->where('kategori_ik', 'IK Kep. Dasar')->count();
+        $count_ik_maternitas = $instruksikerjas->where('kategori_ik', 'IK Kep. Maternitas')->count();
+        $count_ik_bedah = $instruksikerjas->where('kategori_ik', 'IK Medikal Bedah')->count();
+        return view('dashboard', ['ik'=>$count_instruksikerja, 'ik_alat'=>$count_ik_alat, 'ik_anak'=>$count_ik_anak,
+      'ik_dasar'=>$count_ik_dasar, 'ik_maternitas'=>$count_ik_maternitas, 'ik_bedah'=>$count_ik_bedah]);
     }
 
     /**
@@ -62,10 +56,10 @@ class InstruksiKerjaController extends Controller
      * @param  \App\InstruksiKerja  $instruksiKerja
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(InstruksiKerja $instruksiKerja)
     {
-        $instruksikerja = InstruksiKerja::find($id);
-        return view('instruksikerja', ['instruksikerja' => $instruksikerja]);
+        //mengurus tabel spesifik
+        // $instruksikerja = DB
     }
 
     /**
@@ -76,13 +70,7 @@ class InstruksiKerjaController extends Controller
      */
     public function edit(InstruksiKerja $instruksiKerja)
     {
-        $instruksikerja = InstruksiKerja::find($id);
-
-        if(!$instruksikerja){
-          abort('404');
-        }
-
-        return view('instruksikerja/{id}/edit_instruksikerja', ['instruksikerja' => $instruksikerja]);
+        //
     }
 
     /**

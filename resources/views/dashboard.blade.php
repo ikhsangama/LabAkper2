@@ -6,19 +6,25 @@
   <div class="container">
       <div class="row">
           <div class="col-md-8 col-md-offset-2">
-              <div class="panel panel-default">
-                  <div class="panel-heading"><h2>Dashboard Admin</h2></div>
+                  <div>
+                    <h2>Dashboard Admin</h2>
+                  </div>
 
                   <div class="row">
                       <div class="col s6 m6 l6">
                         <div class="card red darken-1 s6 m6 l6">
                           <div class="card-content white-text">
-                            <span class="card-title">Instruksi Kerja</span>
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</p>
+                            <!-- <span class="card-title">Instruksi Kerja</span> -->
+                            <h4>{{$ik}} Instruksi Kerja</h4>
+                            <li class="divider"></li>
+                            <p>{{$ik_alat}} Instruksi Kerja Alat</p>
+                            <p>{{$ik_anak}} Instruksi Kep. Anak</p>
+                            <p>{{$ik_dasar}} Instruksi Kep. Dasar</p>
+                            <p>{{$ik_maternitas}} Instruksi Kep. Maternitas</p>
+                            <p>{{$ik_bedah}} Instruksi Kep. Bedah</p>
                           </div>
                           <div class="card-action">
-                            <a href="#">Atur</a>
+                            <a href="{{ url('/instruksikerja/create') }}">Tambah</a>
                           </div>
                         </div>
                       </div>
@@ -62,7 +68,6 @@
                         </div>
                       </div>
                   </div>
-              </div>
           </div>
       </div>
   </div>

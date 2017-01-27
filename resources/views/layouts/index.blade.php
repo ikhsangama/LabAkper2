@@ -10,7 +10,6 @@
 	@section('css')
 
     @show
-</head>
 <!-- <body class="blue lighten-5"> -->
 @section('header')
     @include('layouts.header')

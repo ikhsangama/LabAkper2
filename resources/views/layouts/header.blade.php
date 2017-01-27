@@ -1,3 +1,4 @@
+<head>
 @if (Auth::guest())
 <nav class="blue accent-3" role="navigation">
   <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">{{ config('app.name', 'Laravel') }}</a>
@@ -89,3 +90,4 @@
 	      <i class="large material-icons">publish</i>
 	    </a>
 	  </div>
+</head>

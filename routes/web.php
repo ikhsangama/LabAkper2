@@ -19,8 +19,9 @@ Route::get('/verify/{token}/{id}', 'Auth\RegisterController@verify_register');
 
 //admin
 Route::group(['middleware' => 'web'], function(){
-  Route::get('/dashboard', 'AdminController@dashboard');
-  Route::get('/dashboard/InstruksiKerja', 'InstruksiKerjaController@create');
+  Route::get('/dashboard', 'DashboardController@index');
+  Route::get('/dashboard/instruksikerja/create', 'InstruksiKerjaController@create');
+  Route::get('/dashboard/instruksikerja/{id}/edit', 'InstruksiKerjaController@edit');
 });
 
 Auth::routes();
@@ -28,4 +29,7 @@ Auth::routes();
 Route::get('/sop', 'SOPController@index');
 Route::get('/daftar', 'DaftarAlatBahanController@index');
 Route::get('/peminjaman', 'PeminjamanController@index');
+
+//instruksikerja
 Route::get('/instruksikerja', 'InstruksiKerjaController@index');
+Route::get('/instruksikerja/{id}', 'InstruksiKerjaController@show');
