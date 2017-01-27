@@ -95,6 +95,10 @@ class InstruksiKerjaController extends Controller
      */
     public function update(Request $request, $id)
     {
+      $this->validate($request, [
+        'judul' => 'required',
+        'kategori_ik'   =>'required',
+      ]);
       $instruksikerja = InstruksiKerja::find($id);
       // gambar
 

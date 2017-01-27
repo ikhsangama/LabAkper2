@@ -52,7 +52,7 @@
           <input name="file_ik" type="file" id="inputgambar" class="validate" value="{{ old('file_ik') }}"/>
       </div>
       <div class="file-path-wrapper">
-          <input class="file-path validate" type="text" placeholder="{{ old('file_ik') }}">
+          <input class="file-path validate" type="text" placeholder="masukkan file PDF">
       </div>
       </div>
   </div>
@@ -71,6 +71,7 @@
           </div>
       </div>
     </div>
+</div>
 </div>
 </div>
 <!-- akhircoba -->
