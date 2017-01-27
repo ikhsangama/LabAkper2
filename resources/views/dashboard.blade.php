@@ -24,7 +24,11 @@
                             <p>{{$ik_bedah}} Instruksi Kep. Bedah</p>
                           </div>
                           <div class="card-action">
-                            <a href="{{ url('/instruksikerja/create') }}">Tambah</a>
+                            <div class="row">
+                              <div class="col s6 m6 l6">
+                                <a href="{{ url('/instruksikerja/create') }}">Atur</a>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -87,7 +91,7 @@
       //   dist:0,
       // });
       // $('.carousel').carousel('next', 5);
-      // $('.scrollspy').scrollSpy();
+      $('.scrollspy').scrollSpy();
       $(".dropdown-button").dropdown();
     }); // end of document ready // end of jQuery name space
   </script>
