@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\InstruksiKerja;
 use Illuminate\Http\Request;
+//tambah
+use App\Http\Requests;
 
 class InstruksiKerjaController extends Controller
 {
@@ -94,9 +96,20 @@ class InstruksiKerjaController extends Controller
     public function update(Request $request, $id)
     {
       $instruksikerja = InstruksiKerja::find($id);
+      // gambar
+
+      $file       = $request->file('file_ik');
+
+      if(! empty($file)){
+        $fileName   = $request->judul . "-" . time() .".pdf";
+        $request->file('file_ik')->storeAs("public/instruksikerja", $fileName);
+        $instruksikerja->file_ik = $fileName;
+      }
       $instruksikerja->judul = $request->judul;
+      $instruksikerja->kategori_ik = $request->kategori_ik;
       $instruksikerja->save();
-      return redirect ('/instruksikerja');
+      return redirect ('/instruksikerja')->with('success', 'Data lama terupdate,
+      dengan nama: '. $request->judul .' pada kategori: '. $request->kategori_ik);
     }
 
     /**

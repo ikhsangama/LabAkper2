@@ -8,33 +8,57 @@
 <div class="card-panel s12 m12 l12">
   <h3 class="center blue-text text accent-5">{{$instruksikerja->judul}}</h3>
 <hr>
-<div class="row">
-  <form class="col s12 m12 l12" action="/instruksikerja/{{$instruksikerja->id}}" method="POST">
-    <div class="row">
-      <div class="input-field col s12 m12 l12">
-        <i class="material-icons prefix">title</i>
-        <input name="judul" placeholder="Edit Judul" id="icon_prefix" type="text" class="validate" autofocus maxlength="30"
-        value="{{$instruksikerja->judul}}" required>
-        <label for="icon_prefix">Judul</label>
-<!-- validation             -->
-        @if ($errors->has('judul'))
-        <div class="container red-text text accent-3">
-          {{ $errors->first('judul') }}
-        </div>
-        @endif
-<!-- endvalidation             -->
-      </div>
+  <div class="row">
+    <form class="col s12 m12 l12" action="/instruksikerja/{{$instruksikerja->id}}" method="POST" enctype="multipart/form-data">
       <div class="row">
-        <div class="file-field input-field col s6 m6 l6">
-          <div class="btn">
-            <span><i class="material-icons postfix">attach_file</i></span>
-            <input type="file" id="inputgambar" name="File_IK" class="validate"/>
+        <div class="input-field col s12 m12 l12">
+          <i class="material-icons prefix">title</i>
+          <input name="judul" placeholder="Edit Judul" id="icon_prefix" type="text" class="validate" autofocus maxlength="30"
+          value="{{$instruksikerja->judul}}" required>
+          <label for="icon_prefix">Judul</label>
+  <!-- validation             -->
+          @if ($errors->has('judul'))
+          <div class="container red-text text accent-3">
+            {{ $errors->first('judul') }}
           </div>
-          <div class="file-path-wrapper">
-            <input class="file-path validate" type="text" placeholder="masukkan file PDF IK">
-          </div>
-        </div>
+          @endif
+  <!-- endvalidation             -->
+  <div class="row">
+    <div class="input-field col s4 m4 l4">
+      <i id="ik_kategori" class="material-icons prefix" required>list</i>
+      <select value="{{$instruksikerja->kategori_ik}}" name="kategori_ik">
+        <option value="{{$instruksikerja->kategori_ik}}" disabled selected>Pilih</option>
+        <option value="IK Alat">IK Alat</option>
+        <option value="IK Kep. Anak">IK Kep. Anak</option>
+        <option value="IK Kep. Dasar">IK Kep. Dasar</option>
+        <option value="IK Kep. Maternitas">IK Kep. Maternitas</option>
+        <option value="IK Medikal Bedah">IK Medikal Bedah</option>
+      </select>
+      <label for="ik_kategori">Kategori</label>
+
+      <!-- validation             -->
+      @if ($errors->has('kategori_ik'))
+      <div class="container red-text text accent-3">
+        {{ $errors->first('kategori_ik') }}
+      </div>
+      @endif
+      <!-- endvalidation             -->
     </div>
+  </div>
+  <div class="row">
+    <div class="file-field input-field col s6 m6 l6">
+      <div class="btn">
+          <span><i class="material-icons postfix">attach_file</i></span>
+          <input name="file_ik" type="file" id="inputgambar" class="validate" value="{{ old('file_ik') }}"/>
+      </div>
+      <div class="file-path-wrapper">
+          <input class="file-path validate" type="text" placeholder="{{ old('file_ik') }}">
+      </div>
+      </div>
+  </div>
+</div>
+<!-- divakhirform -->
+
 
     <hr>
     <!-- agar ke route PUT -->
@@ -67,9 +91,14 @@
       //   dist:0,
       // });
       // $('.carousel').carousel('next', 5);
-      $('.scrollspy').scrollSpy();
+      $('select').material_select({
+        //untuk dropdown form
+      });
+      $('.scrollspy').scrollSpy({
+        //untuk tombol keatas
+      });
       $(".dropdown-button").dropdown({
-
+        //dropdown nav
       });
     }); // end of document ready // end of jQuery name space
   </script>
