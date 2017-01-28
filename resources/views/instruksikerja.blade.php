@@ -12,6 +12,10 @@
 <div class="card-panel green lighten-4">
 {{session('success')}}
 </div>
+@elseif(session('alert'))
+<div class="card-panel red lighten-4">
+{{session('alert')}}
+</div>
 @endif
 <!-- coba -->
 <ul class="card-panel collapsible light-blue darken-1" data-collapsible="accordion">
@@ -25,7 +29,17 @@
           <a href="/download" class="secondary-content tooltipped" data-tooltip="Download"><i class="material-icons">file_download</i></a>
           @if(Auth::user()->isAdmin(true))
           <a href="instruksikerja/{{$alat->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
-          <a href="instruksikerja/{{$alat->id}}/edit" class="secondary-content tooltipped" data-tooltip="Hapus"><i class="material-icons">delete</i></a>
+          <a href="#delete1" class="secondary-content tooltipped" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+          <div id="delete1" class="modal red lighten-5">
+
+            <div class="modal-content">
+              <b>PERINGATAN</b><br>
+              <p>Instruksi kerja <b>{{$alat->judul}}</b> akan dihapus?</p><br><hr>
+              <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
+              <a href="instruksikerja/{{$alat->id}}/delete" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
+            </div>
+          </div>
+
           @endif
           <br><label>Dibuat: {{$alat->created_at}}</label>
           <label>Diupdate: {{$alat->updated_at}}</label>
@@ -131,6 +145,7 @@
       $(".dropdown-button").dropdown({
 
       });
+      $('.modal').modal();
     }); // end of document ready // end of jQuery name space
   </script>
 </body>

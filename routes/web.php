@@ -22,6 +22,8 @@ Route::group(['middleware' => 'web'], function(){
   Route::get('/dashboard', 'DashboardController@index');
   Route::get('/instruksikerja/create', 'InstruksiKerjaController@create');
   Route::post('/instruksikerja', 'InstruksiKerjaController@store');
+  // Route::delete('/instruksikerja/{id}', 'InstruksiKerjaController@destroy');
+  Route::get('/instruksikerja/{id}/delete', 'InstruksiKerjaController@destroy');
   Route::get('/instruksikerja/{id}/edit', 'InstruksiKerjaController@edit');
   Route::PUT('/instruksikerja/{id}', 'InstruksiKerjaController@update');
 });

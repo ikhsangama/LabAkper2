@@ -68,7 +68,7 @@ class InstruksiKerjaController extends Controller
       $request->file('file_ik')->storeAs("public/instruksikerja", $fileName);
       $instruksikerja->file_ik = $fileName;
       $instruksikerja->save();
-      return redirect ('/instruksikerja')->with('success', 'Data baru terupdate,
+      return redirect ('/instruksikerja')->with('success', 'Data baru ditambahkan,
       dengan nama: '. $request->judul .' pada kategori: '. $request->kategori_ik);
     }
 
@@ -137,8 +137,11 @@ class InstruksiKerjaController extends Controller
      * @param  \App\InstruksiKerja  $instruksiKerja
      * @return \Illuminate\Http\Response
      */
-    public function destroy(InstruksiKerja $instruksiKerja)
+    public function destroy($id)
     {
-        //
+        //hapus berdasarkan ID
+        $instruksikerja = InstruksiKerja::find($id);
+        $instruksikerja->delete();
+        return redirect ('/instruksikerja')->with('alert', 'Data '. $instruksikerja->judul .' pada kategori: '. $instruksikerja->kategori_ik . ' telah dihapus');
     }
 }
