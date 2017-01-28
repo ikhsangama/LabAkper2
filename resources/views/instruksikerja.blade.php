@@ -20,13 +20,13 @@
 <!-- coba -->
 <ul class="card-panel collapsible light-blue darken-1" data-collapsible="accordion">
   <li class="white">
-    <div class="collapsible-header waves-effect active light-blue darken-1 white-text"><i class="material-icons">library_books</i>
+    <div class="collapsible-header waves-effect light-blue darken-1 white-text"><i class="material-icons">library_books</i>
       <h4>Instruksi Kerja Alat</h4>
     </div>
     <div class="collapsible-body collection">
         @foreach($ik_alat as $alat)
         <div class="collection-item"><strong>{{$alat->judul}}</strong>
-          <a href="/download" class="secondary-content tooltipped" data-tooltip="Download"><i class="material-icons">file_download</i></a>
+          <a href="instruksikerja/{{$alat->id}}" class="secondary-content tooltipped" data-tooltip="Detail"><i class="material-icons">zoom_in</i></a>
 
           @if(Auth::user()->isAdmin(true))
           <a href="instruksikerja/{{$alat->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
@@ -54,7 +54,7 @@
     <div class="collapsible-body collection">
       @foreach($ik_anak as $anak)
       <div class="collection-item"><strong>{{$anak->judul}}</strong>
-        <a href="/download" class="secondary-content tooltipped" data-tooltip="Download"><i class="material-icons">file_download</i></a>
+        <a href="instruksikerja/{{$anak->id}}" class="secondary-content tooltipped" data-tooltip="Detail"><i class="material-icons">zoom_in</i></a>
 
         @if(Auth::user()->isAdmin(true))
         <a href="instruksikerja/{{$anak->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
@@ -82,7 +82,7 @@
   <div class="collapsible-body collection">
     @foreach($ik_dasar as $dasar)
     <div class="collection-item"><strong>{{$dasar->judul}}</strong>
-      <a href="/download" class="secondary-content tooltipped" data-tooltip="Download"><i class="material-icons">file_download</i></a>
+      <a href="instruksikerja/{{$dasar->id}}" class="secondary-content tooltipped" data-tooltip="Detail"><i class="material-icons">zoom_in</i></a>
 
       @if(Auth::user()->isAdmin(true))
       <a href="instruksikerja/{{$dasar->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
@@ -110,7 +110,7 @@
   <div class="collapsible-body collection">
     @foreach($ik_maternitas as $maternitas)
     <div class="collection-item"><strong>{{$maternitas->judul}}</strong>
-      <a href="/download" class="secondary-content tooltipped" data-tooltip="Download"><i class="material-icons">file_download</i></a>
+      <a href="instruksikerja/{{$alat->id}}" class="secondary-content tooltipped" data-tooltip="Detail"><i class="material-icons">zoom_in</i></a>
 
       @if(Auth::user()->isAdmin(true))
       <a href="instruksikerja/{{$maternitas->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
@@ -138,7 +138,7 @@
   <div class="collapsible-body collection">
     @foreach($ik_bedah as $bedah)
     <div class="collection-item"><strong>{{$bedah->judul}}</strong>
-      <a href="/download" class="secondary-content tooltipped" data-tooltip="Download"><i class="material-icons">file_download</i></a>
+      <a href="instruksikerja/{{$bedah->id}}" class="secondary-content tooltipped" data-tooltip="Detail"><i class="material-icons">zoom_in</i></a>
 
       @if(Auth::user()->isAdmin(true))
       <a href="instruksikerja/{{$bedah->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>

@@ -14,7 +14,7 @@
       <div class="row">
         <div class="input-field col s12 m12 l12">
           <i class="material-icons prefix">title</i>
-          <input name="judul" placeholder="Edit Judul" id="icon_prefix" type="text" class="validate" autofocus maxlength="30"
+          <input name="judul" placeholder="Edit Judul" id="icon_prefix" type="text" class="validate" autofocus maxlength="50"
           value="{{$instruksikerja->judul}}" required>
           <label for="icon_prefix">Judul</label>
   <!-- validation             -->
@@ -47,14 +47,21 @@
     </div>
   </div>
   <div class="row">
-    <div class="file-field input-field col s6 m6 l6">
+    <div class="file-field input-field col s12 m12 l12">
       <div class="btn">
           <span><i class="material-icons postfix">attach_file</i></span>
           <input name="file_ik" type="file" id="inputgambar" class="validate" value="{{ old('file_ik') }}"/>
       </div>
       <div class="file-path-wrapper">
-          <input class="file-path validate" type="text" placeholder="masukkan file PDF">
+          <input class="file-path validate" type="text" placeholder="{{$instruksikerja->file_ik}}">
       </div>
+      <!-- validation             -->
+      @if ($errors->has('file_ik'))
+      <div class="container red-text text accent-3">
+        {{ $errors->first('file_ik') }}
+      </div>
+      @endif
+      <!-- endvalidation             -->
       </div>
   </div>
 </div>

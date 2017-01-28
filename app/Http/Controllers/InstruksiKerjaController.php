@@ -21,7 +21,7 @@ class InstruksiKerjaController extends Controller
     {
         $instruksikerjas = InstruksiKerja::all();
         // dd($instruksikerjas->where('kategori_ik', 'IK Alat'));
-        $list_ik_alat = $instruksikerjas->where('kategori_ik', 'IK Alat');
+        $list_ik_alat = $instruksikerjas->where('kategori_ik', 'IK Alat')->sortBy('judul');
         $list_ik_anak = $instruksikerjas->where('kategori_ik', 'IK Kep. Anak');
         $list_ik_dasar = $instruksikerjas->where('kategori_ik', 'IK Kep. Dasar');
         $list_ik_maternitas = $instruksikerjas->where('kategori_ik', 'IK Kep. Maternitas');
@@ -58,7 +58,7 @@ class InstruksiKerjaController extends Controller
       $this->validate($request, [
         'judul' => 'required|unique:instruksi_kerja',
         'kategori_ik'   =>'required',
-        'file_ik' => 'required|mimes:pdf'
+        // 'file_ik' => 'required|mimes:pdf'
       ]);
       $instruksikerja = new InstruksiKerja;
       $instruksikerja->judul = $request->judul;
@@ -80,8 +80,10 @@ class InstruksiKerjaController extends Controller
      */
     public function show($id)
     {
-        $instruksikerja = InstruksiKerja::find($id);
-        return view('instruksikerja', ['instruksikerja' => $instruksikerja,]);
+      $instruksikerja = InstruksiKerja::find($id);
+      $fileName = $instruksikerja->file_ik;
+      // dd($instruksikerja);
+      return view('single_ik', ['instruksikerja' => $instruksikerja]);
     }
 
     /**
@@ -143,5 +145,13 @@ class InstruksiKerjaController extends Controller
         $instruksikerja = InstruksiKerja::find($id);
         $instruksikerja->delete();
         return redirect ('/instruksikerja')->with('alert', 'Data '. $instruksikerja->judul .' pada kategori: '. $instruksikerja->kategori_ik . ' telah dihapus');
+    }
+    //DOWNLOAD
+    public function download($id)
+    {
+      $instruksikerja = InstruksiKerja::find($id);
+      $fileName = $instruksikerja->file_ik;
+      // dd($instruksikerja);
+      return view('single_ik', ['instruksikerja' => $instruksikerja]);
     }
 }

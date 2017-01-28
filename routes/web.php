@@ -33,7 +33,7 @@ Auth::routes();
 Route::get('/sop', 'SOPController@index');
 Route::get('/daftar', 'DaftarAlatBahanController@index');
 Route::get('/peminjaman', 'PeminjamanController@index');
-
+Route::get('/instruksikerja/{id}', 'InstruksiKerjaController@show');
 //instruksikerja
 Route::get('/instruksikerja', 'InstruksiKerjaController@index');
 // Route::get('/instruksikerja/{id}', 'InstruksiKerjaController@show');

@@ -3,23 +3,23 @@
 @section('content')
 <body class="blue lighten-5">
   <div class="container">
-      <div class="row">
-          <div class="col-md-8 col-md-offset-2">
-              <div class="panel panel-default">
-                  <div class="panel-heading"><h2>{{$instruksikerja->judul}}</h2></div>
+<h3>Instruksi Kerja</h3>
+<!-- coba -->
+<div class="card-panel s12 m12 l12">
+  <h5 class="center"><b>{{$instruksikerja->judul}}</b></h5>
+  <p>Kategori :{{$instruksikerja->kategori_ik}}<br>
+  Dibuat :{{$instruksikerja->created_at}}<br>
+  Diupdate :{{$instruksikerja->updated_at}}</p>
 <hr>
 <!-- coba -->
-@if(Auth::user()->isAdmin(true))
-<h1>rahasia</h1>
-<hr>
-@endif
-<iframe src="http://docs.google.com/gview?url={{ asset('instruksikerja/tatatertib.pdf') }}&embedded=true"
-style="width:600px; height:500px;" frameborder="0"></iframe>
+        <div class="center">
+        <iframe src="{{ asset('storage/instruksikerja/' .$instruksikerja->file_ik) }}"
+        style="width:600px; height:700px;" frameborder="0"></iframe>
+        </div>
 <!-- akhircoba -->
-              </div>
-          </div>
-      </div>
+    </div>
   </div>
+
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="{{asset('js/materialize.js')}}"></script>
