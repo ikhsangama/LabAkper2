@@ -92,7 +92,6 @@ class RegisterController extends Controller
         $pengguna->ktm = $fileName;
         $pengguna->token=str_random(10);
 
-
         $pengguna->save();
         Mail::to($pengguna->email)->send(new userRegistered($pengguna));
         return redirect('/login')->with('warning', 'Silahkan lakukan verifikasi email untuk login');;

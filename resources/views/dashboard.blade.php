@@ -1,4 +1,4 @@
-@extends('layouts.index')
+@extends('layouts.app')
 
 @section('content')
 <body class="blue lighten-5">
@@ -17,11 +17,11 @@
                             <!-- <span class="card-title">Instruksi Kerja</span> -->
                             <h4>{{$ik}} Instruksi Kerja</h4>
                             <li class="divider"></li>
-                            <p>{{$ik_alat}} Instruksi Kerja Alat</p>
-                            <p>{{$ik_anak}} Instruksi Kep. Anak</p>
-                            <p>{{$ik_dasar}} Instruksi Kep. Dasar</p>
-                            <p>{{$ik_maternitas}} Instruksi Kep. Maternitas</p>
-                            <p>{{$ik_bedah}} Instruksi Kep. Bedah</p>
+                            <p>{{$ik_alat}} Instruksi Kerja Alat
+                            <br>{{$ik_anak}} Instruksi Kep. Anak
+                            <br>{{$ik_dasar}} Instruksi Kep. Dasar
+                            <br>{{$ik_maternitas}} Instruksi Kep. Maternitas
+                            <br>{{$ik_bedah}} Instruksi Kep. Bedah</p>
                           </div>
                           <div class="card-action">
                             <div class="row">
@@ -74,6 +74,36 @@
                           </div>
                         </div>
                       </div>
+                  </div>
+
+                  <div class="row">
+                      <div class="col s6 m6 l6">
+                        <div class="card teal darken-1 s6 m6 l6">
+                          <div class="card-content white-text">
+                            <h4>{{$pengguna}} Pengguna</h4>
+                            <li class="divider"></li>
+                            <p>{{$dosen}} Dosen
+                            <br>{{$mhs_d3}} Mahasiswa D III
+                            <br>{{$mhs_d4}} Mahasiswa D IV
+                            <br>{{$blm_ver}} Belum terverifikasi </p>
+                          </div>
+                          <div class="card-action">
+                            <a href="#">Atur</a>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="col s6 m6 l6">
+                        <div class="card light-blue darken-1 s6 m6 l6">
+                          <div class="card-content white-text">
+                            <span class="card-title">Peminjaman Alat & Bahan</span>
+                            <p>I am a very simple card. I am good at containing small bits of information.
+                            I am convenient because I require little markup to use effectively.</p>
+                          </div>
+                          <div class="card-action">
+                            <a href="#">Atur</a>
+                          </div>
+                        </div>
+                      </div> -->
                   </div>
           </div>
       </div>
