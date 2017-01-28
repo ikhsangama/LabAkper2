@@ -21,6 +21,7 @@ Route::get('/verify/{token}/{id}', 'Auth\RegisterController@verify_register');
 Route::group(['middleware' => 'web'], function(){
   Route::get('/dashboard', 'DashboardController@index');
   Route::get('/instruksikerja/create', 'InstruksiKerjaController@create');
+  Route::post('/instruksikerja', 'InstruksiKerjaController@store');
   Route::get('/instruksikerja/{id}/edit', 'InstruksiKerjaController@edit');
   Route::PUT('/instruksikerja/{id}', 'InstruksiKerjaController@update');
 });

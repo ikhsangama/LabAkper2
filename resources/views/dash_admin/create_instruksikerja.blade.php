@@ -6,16 +6,15 @@
 <h3>Instruksi Kerja</h3>
 <!-- coba -->
 <div class="card-panel s12 m12 l12">
-  <h3 class="center blue-text text accent-5">Form Edit: </h3>
-  <h4 class="center blue-text text accent-5">{{$instruksikerja->judul}}</h4>
+  <h3 class="center blue-text text accent-5">Form Tambah:</h3>
 <hr>
   <div class="row">
-    <form class="col s12 m12 l12" action="/instruksikerja/{{$instruksikerja->id}}" method="POST" enctype="multipart/form-data">
+    <form class="col s12 m12 l12" action="/instruksikerja" method="POST" enctype="multipart/form-data">
       <div class="row">
         <div class="input-field col s12 m12 l12">
           <i class="material-icons prefix">title</i>
           <input name="judul" placeholder="Edit Judul" id="icon_prefix" type="text" class="validate" autofocus maxlength="30"
-          value="{{$instruksikerja->judul}}" required>
+          value="" required>
           <label for="icon_prefix">Judul</label>
   <!-- validation             -->
           @if ($errors->has('judul'))
@@ -27,8 +26,8 @@
   <div class="row">
     <div class="input-field col s4 m4 l4">
       <i id="ik_kategori" class="material-icons prefix">list</i>
-      <select value="{{$instruksikerja->kategori_ik}}" name="kategori_ik"  required>
-        <option value="{{$instruksikerja->kategori_ik}}" disabled selected>Pilih</option>
+      <select value="" name="kategori_ik"  required>
+        <option value="" disabled selected>Pilih</option>
         <option value="IK Alat">IK Alat</option>
         <option value="IK Kep. Anak">IK Kep. Anak</option>
         <option value="IK Kep. Dasar">IK Kep. Dasar</option>
@@ -50,7 +49,7 @@
     <div class="file-field input-field col s6 m6 l6">
       <div class="btn">
           <span><i class="material-icons postfix">attach_file</i></span>
-          <input name="file_ik" type="file" id="inputgambar" class="validate" value="{{ old('file_ik') }}"/>
+          <input name="file_ik" type="file" id="inputgambar" class="validate" value=""/>
       </div>
       <div class="file-path-wrapper">
           <input class="file-path validate" type="text" placeholder="masukkan file PDF">
@@ -62,13 +61,12 @@
 
 
     <hr>
-    <!-- agar ke route PUT -->
-    <input type="hidden" name="_method" value="PUT">
+
     <div class="row">
       <div class="form-group">
           <div class="col l4 m4 s4 offset-l8 offset-m8 offset-s8">
             {{ csrf_field() }}
-              <input type="submit" class="btn" value="Edit">
+              <input type="submit" class="btn" value="Create">
           </div>
       </div>
     </div>

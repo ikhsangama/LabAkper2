@@ -44,7 +44,7 @@ class InstruksiKerjaController extends Controller
      */
     public function create()
     {
-        //
+        return view ('dash_admin/create_instruksikerja');
     }
 
     /**
@@ -55,7 +55,21 @@ class InstruksiKerjaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request, [
+        'judul' => 'required|unique:instruksi_kerja',
+        'kategori_ik'   =>'required',
+        'file_ik' => 'required|mimes:pdf'
+      ]);
+      $instruksikerja = new InstruksiKerja;
+      $instruksikerja->judul = $request->judul;
+      $instruksikerja->kategori_ik = $request->kategori_ik;
+      //upload file
+      $fileName   = $request->judul . "-" . time() .".pdf";
+      $request->file('file_ik')->storeAs("public/instruksikerja", $fileName);
+      $instruksikerja->file_ik = $fileName;
+      $instruksikerja->save();
+      return redirect ('/instruksikerja')->with('success', 'Data baru terupdate,
+      dengan nama: '. $request->judul .' pada kategori: '. $request->kategori_ik);
     }
 
     /**
@@ -98,6 +112,7 @@ class InstruksiKerjaController extends Controller
       $this->validate($request, [
         'judul' => 'required',
         'kategori_ik'   =>'required',
+        'file_ik' => 'mimes:pdf'
       ]);
       $instruksikerja = InstruksiKerja::find($id);
       // gambar

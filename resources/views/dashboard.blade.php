@@ -26,7 +26,7 @@
                           <div class="card-action">
                             <div class="row">
                               <div class="col s6 m6 l6">
-                                <a href="{{ url('/instruksikerja/create') }}">Atur</a>
+                                <a href="{{ url('/instruksikerja/create') }}">Tambah</a>
                               </div>
                             </div>
                           </div>

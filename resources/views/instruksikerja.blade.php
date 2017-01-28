@@ -7,7 +7,7 @@
           <div class="col-md-8 col-md-offset-2">
               <div class="panel panel-default">
                   <div class="panel-heading"><h2>Daftar Instruksi Kerja</h2></div>
-<hr>
+<!-- <hr> -->
 @if(session('success'))
 <div class="card-panel green lighten-4">
 {{session('success')}}
@@ -25,6 +25,7 @@
           <a href="/download" class="secondary-content tooltipped" data-tooltip="Download"><i class="material-icons">file_download</i></a>
           @if(Auth::user()->isAdmin(true))
           <a href="instruksikerja/{{$alat->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
+          <a href="instruksikerja/{{$alat->id}}/edit" class="secondary-content tooltipped" data-tooltip="Hapus"><i class="material-icons">delete</i></a>
           @endif
           <br><label>Dibuat: {{$alat->created_at}}</label>
           <label>Diupdate: {{$alat->updated_at}}</label>
@@ -42,6 +43,7 @@
         <a href="/download" class="secondary-content tooltipped" data-tooltip="Download"><i class="material-icons">file_download</i></a>
         @if(Auth::user()->isAdmin(true))
         <a href="instruksikerja/{{$anak->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
+        <a href="instruksikerja/{{$alat->id}}/edit" class="secondary-content tooltipped" data-tooltip="Hapus"><i class="material-icons">delete</i></a>
         @endif
         <br><label>Dibuat: {{$anak->created_at}}</label>
         <label>Diupdate: {{$anak->updated_at}}</label>
@@ -59,6 +61,7 @@
       <a href="/download" class="secondary-content tooltipped" data-tooltip="Download"><i class="material-icons">file_download</i></a>
       @if(Auth::user()->isAdmin(true))
       <a href="instruksikerja/{{$dasar->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
+      <a href="instruksikerja/{{$dasar->id}}/edit" class="secondary-content tooltipped" data-tooltip="Hapus"><i class="material-icons">delete</i></a>
       @endif
       <br><label>Dibuat: {{$dasar->created_at}}</label>
       <label>Diupdate: {{$dasar->updated_at}}</label>
@@ -76,6 +79,7 @@
       <a href="/download" class="secondary-content tooltipped" data-tooltip="Download"><i class="material-icons">file_download</i></a>
       @if(Auth::user()->isAdmin(true))
       <a href="instruksikerja/{{$maternitas->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
+      <a href="instruksikerja/{{$maternitas->id}}/edit" class="secondary-content tooltipped" data-tooltip="Hapus"><i class="material-icons">delete</i></a>
       @endif
       <br><label>Dibuat: {{$maternitas->created_at}}</label>
       <label>Diupdate: {{$maternitas->updated_at}}</label>
@@ -92,7 +96,8 @@
     <div class="collection-item"><strong>{{$bedah->judul}}</strong>
       <a href="/download" class="secondary-content tooltipped" data-tooltip="Download"><i class="material-icons">file_download</i></a>
       @if(Auth::user()->isAdmin(true))
-      <a href="instruksikerja/{{$alat->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
+      <a href="instruksikerja/{{$bedah->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
+      <a href="instruksikerja/{{$bedah->id}}/edit" class="secondary-content tooltipped" data-tooltip="Hapus"><i class="material-icons">delete</i></a>
       @endif
       <br><label>Dibuat: {{$bedah->created_at}}</label>
       <label>Diupdate: {{$bedah->updated_at}}</label>
