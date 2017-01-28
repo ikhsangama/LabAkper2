@@ -18,7 +18,7 @@ Route::get('/', function () {
 Route::get('/verify/{token}/{id}', 'Auth\RegisterController@verify_register');
 
 //admin
-Route::group(['middleware' => 'web'], function(){
+Route::group(['middleware' => 'admin'], function(){
   Route::get('/dashboard', 'DashboardController@index');
   Route::get('/instruksikerja/create', 'InstruksiKerjaController@create');
   Route::post('/instruksikerja', 'InstruksiKerjaController@store');
