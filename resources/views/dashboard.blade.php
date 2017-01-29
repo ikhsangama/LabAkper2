@@ -88,7 +88,7 @@
                             <br>{{$blm_ver}} Belum terverifikasi </p>
                           </div>
                           <div class="card-action">
-                            <a href="#">Atur</a>
+                            <a href="/pengguna">Atur</a>
                           </div>
                         </div>
                       </div>

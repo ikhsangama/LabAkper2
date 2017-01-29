@@ -30,13 +30,18 @@ class DashboardController extends Controller
       // 'ik_dasar'=>$count_ik_dasar, 'ik_maternitas'=>$count_ik_maternitas, 'ik_bedah'=>$count_ik_bedah]);
 
       //detail pengguna
+        // dd(User::where('setuju', '<>', 1)->orwhere('status', '<>', 1)->count());
         $penggunas = User::all();
         $count_pengguna = $penggunas->count();
-        $count_dosen = $penggunas->where('level', '2')->count();
-        $count_mhs_d3 = $penggunas->where('level', 'D III')->where('status', 1)->where('setuju', 1)->count();
-        $count_mhs_d4 = $penggunas->where('level', 'D IV')->count();
-        $count_blm_ver = $penggunas->where('status', '<>', 1)
-                                   ->where('setuju', '<>', 1)->count();
+        $count_dosen = User::where('level', '2')->count();
+        $count_mhs_d3 = User::where([
+          ['level', 'D III'],['status', 1],['setuju', 1],
+          ])->count();
+        $count_mhs_d4 = User::where([
+          ['level', 'D IV'],['status', 1],['setuju', 1],
+          ])->count();
+        $count_blm_ver = User::where('setuju', '<>', 1)
+          ->orwhere('status', '<>', 1)->count();
         //eksekusi
         return view('dashboard', [
           //instruksikerja

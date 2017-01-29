@@ -5,8 +5,10 @@
   <div class="container">
       <div class="row">
           <div class="col-md-8 col-md-offset-2">
-              <div class="panel panel-default">
-                  <div class="panel-heading"><h2>Daftar Instruksi Kerja</h2></div>
+              <div class="">
+                  <div class=""><h2>Daftar Instruksi Kerja</h2>
+                    <a href="{{ url('/instruksikerja/create') }}" class="btn waves-effect waves-light">Tambah</a>
+                    </div>
 <!-- <hr> -->
 @if(session('success'))
 <div class="card-panel green lighten-4">
