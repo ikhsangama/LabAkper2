@@ -27,7 +27,7 @@ class PenggunaController extends Controller
         // $list_blm_ver = $penggunas->except(['setuju',1],['status',1])->sortBy('nama');
         // $list_blm_ver = $penggunas->where('status','<>',1)->orWhere('setuju','<>',1)->sortBy('nama');
         $count_blm_ver = User::where('setuju', '<>', 1)
-          ->orwhere('status', '<>', 1)->orderBy('nama')->get();
+          ->orwhere('status', '<>', 1)->orderBy('nama')->get();//get untuk menjadikannya collection
 // dd($list_blm_ver, $count_blm_ver,$list_dosen);
         // dd($blm_ver->orderBy('nama'));
         // $list_blm_ver = User::where('setuju', '<>', 1)
@@ -85,10 +85,21 @@ class PenggunaController extends Controller
     public function show($id)
     {
       $pengguna = User::find($id);
-      // dd("sini");
-      $fileName = $instruksikerja->file_ik;
-      // dd($instruksikerja);
-      return view('single_ik', ['instruksikerja' => $instruksikerja]);
+
+      if ($pengguna->level==2){
+        $level='Dosen';
+        // dd($level);
+        }
+      elseif ($pengguna->level=='D III') {
+        $level='Mahasiswa D III';
+      }
+      elseif ($pengguna->level=='D IV') {
+        $level='Mahasiswa D IV';
+      }
+      else{
+        dd("Salah");
+      }
+      return view('dash_admin/single_pengguna', ['pengguna' => $pengguna,'level'=>$level]);
     }
 
     /**

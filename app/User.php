@@ -34,13 +34,5 @@ class User extends Authenticatable
         return true; //jika admin
           return false;
       }
-    }
 
-    // public function isVerif()
-    // {
-    //   if ($this->status == '1' && $this->setuju == '1') {
-    //     return true; //jika verif
-    //       return false;
-    //   }
-    // }
 }

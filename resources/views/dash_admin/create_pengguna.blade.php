@@ -10,7 +10,7 @@
       <h3 class="center blue-text text accent-5">Tambah Pengguna</h3>
       <hr>
       <div class="row">
-        <form action="{{ url('/register') }}" class="col s12" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('/pengguna') }}" class="col s12" method="POST" enctype="multipart/form-data">
 
           <div class="row">
             <div class="input-field col s6 m6 l6">

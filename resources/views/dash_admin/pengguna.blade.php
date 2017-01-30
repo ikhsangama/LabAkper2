@@ -59,7 +59,9 @@
                   </td>
                   <td><label for="">{{$dosen->created_at}}</label></td>
                   <td><label for="">{{$dosen->updated_at}}</label></td>
-                  <td><a href="pengguna/{{$dosen->id}}') }}">Detail</a></td>
+                  <td><a href="pengguna/{{$dosen->id}}/delete') }}" class="tooltipped" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+                  <a href="pengguna/{{$dosen->id}}/edit') }}" class="tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a></td>
+                  <td></td>
                 </tr>@endforeach
               </tbody>
             </table>
