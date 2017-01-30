@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 //tambah
 use App\Http\Requests;
 
-class InstruksiKerjaController extends Controller
+class PenggunaController extends Controller
 {
     public function __construct(){
           $this->middleware('auth');
@@ -19,21 +19,25 @@ class InstruksiKerjaController extends Controller
      */
     public function index()
     {
-        $instruksikerjas = InstruksiKerja::all();
-        // dd($instruksikerjas->where('kategori_ik', 'IK Alat'));
-        $list_ik_alat = $instruksikerjas->where('kategori_ik', 'IK Alat')->sortBy('judul');
-        $list_ik_anak = $instruksikerjas->where('kategori_ik', 'IK Kep. Anak');
-        $list_ik_dasar = $instruksikerjas->where('kategori_ik', 'IK Kep. Dasar');
-        $list_ik_maternitas = $instruksikerjas->where('kategori_ik', 'IK Kep. Maternitas');
-        $list_ik_bedah = $instruksikerjas->where('kategori_ik', 'IK Medikal Bedah');
+        $penggunas = User::all();
+        // dd($penggunas);
+        $list_dosen = $penggunas->where('level', 2)->where('status',1)->where('setuju',1)->sortBy('nama');
+        $list_mhs_d3 = $penggunas->where('level', 'D III')->where('status',1)->where('setuju',1)->sortBy('nama');
+        $list_mhs_d4 = $penggunas->where('level', 'D IV')->where('status',1)->where('setuju',1)->sortBy('nama');
+        // $list_blm_ver = $penggunas->except(['setuju',1],['status',1])->sortBy('nama');
+        // $list_blm_ver = $penggunas->where('status','<>',1)->orWhere('setuju','<>',1)->sortBy('nama');
+        $count_blm_ver = User::where('setuju', '<>', 1)
+          ->orwhere('status', '<>', 1)->orderBy('nama')->get();
+// dd($list_blm_ver, $count_blm_ver,$list_dosen);
+        // dd($blm_ver->orderBy('nama'));
+        // $list_blm_ver = User::where('setuju', '<>', 1)
+        //   ->orwhere('status', '<>', 1)->sortBy('nama');
 
-        return view('instruksikerja', [
-        'instruksikerjas'=>$instruksikerjas,
-        'ik_alat'=>$list_ik_alat,
-        'ik_anak'=>$list_ik_anak,
-        'ik_dasar'=>$list_ik_dasar,
-        'ik_maternitas'=>$list_ik_maternitas,
-        'ik_bedah'=>$list_ik_bedah,
+        return view('dash_admin/pengguna', [
+        'dosens'=>$list_dosen,
+        'mhs_d3s'=>$list_mhs_d3,
+        'mhs_d4s'=>$list_mhs_d4,
+        'blm_verifs'=>$count_blm_ver,
       ]);
     }
 
@@ -44,7 +48,7 @@ class InstruksiKerjaController extends Controller
      */
     public function create()
     {
-        return view ('dash_admin/create_instruksikerja');
+        return view ('dash_admin/create_pengguna');
     }
 
     /**
@@ -80,7 +84,8 @@ class InstruksiKerjaController extends Controller
      */
     public function show($id)
     {
-      $instruksikerja = InstruksiKerja::find($id);
+      $pengguna = User::find($id);
+      // dd("sini");
       $fileName = $instruksikerja->file_ik;
       // dd($instruksikerja);
       return view('single_ik', ['instruksikerja' => $instruksikerja]);

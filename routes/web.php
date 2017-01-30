@@ -28,6 +28,8 @@ Route::group(['middleware' => 'admin'], function(){
   Route::PUT('/instruksikerja/{id}', 'InstruksiKerjaController@update');
   //pengguna
   Route::get('/pengguna', 'PenggunaController@index');
+  Route::get('/pengguna/create', 'PenggunaController@create');
+  Route::get('/pengguna/{id}', 'PenggunaController@show');
 });
 
 Auth::routes();
