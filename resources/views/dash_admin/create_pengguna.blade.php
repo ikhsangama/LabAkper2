@@ -126,7 +126,7 @@
                 <br>Dengan mengharuskan konfirmasi email memastikan pengguna untuk dapat reset password sendiri</p>
                 <label>
                   Tidak
-                  <input type="checkbox">
+                  <input type="checkbox" name="setuju">
                   <span class="lever"></span>
                   Ya
                 </label>

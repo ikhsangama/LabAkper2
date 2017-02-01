@@ -109,7 +109,7 @@ class RegisterController extends Controller
       $pengguna->save();
       //login
       $this->guard()->login($pengguna);
-      return redirect ('/home');
+      return redirect ('/');
       //redirect
     }
 }

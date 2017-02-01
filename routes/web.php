@@ -29,7 +29,9 @@ Route::group(['middleware' => 'admin'], function(){
   //pengguna
   Route::get('/pengguna', 'PenggunaController@index');
   Route::get('/pengguna/create', 'PenggunaController@create');
+  Route::get('/pengguna/{id}/delete', 'PenggunaController@destroy');
   Route::get('/pengguna/{id}', 'PenggunaController@show');
+  Route::post('/pengguna', 'PenggunaController@store');
 });
 
 Auth::routes();

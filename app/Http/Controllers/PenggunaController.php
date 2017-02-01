@@ -6,6 +6,12 @@ use App\User;
 use Illuminate\Http\Request;
 //tambah
 use App\Http\Requests;
+use Storage;//delete storage
+use File;
+//Mail
+use App\Mail\userRegistered;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Auth\Events\Registered; //event, RegistersUsers
 
 class PenggunaController extends Controller
 {
@@ -24,20 +30,15 @@ class PenggunaController extends Controller
         $list_dosen = $penggunas->where('level', 2)->where('status',1)->where('setuju',1)->sortBy('nama');
         $list_mhs_d3 = $penggunas->where('level', 'D III')->where('status',1)->where('setuju',1)->sortBy('nama');
         $list_mhs_d4 = $penggunas->where('level', 'D IV')->where('status',1)->where('setuju',1)->sortBy('nama');
-        // $list_blm_ver = $penggunas->except(['setuju',1],['status',1])->sortBy('nama');
-        // $list_blm_ver = $penggunas->where('status','<>',1)->orWhere('setuju','<>',1)->sortBy('nama');
-        $count_blm_ver = User::where('setuju', '<>', 1)
-          ->orwhere('status', '<>', 1)->orderBy('nama')->get();//get untuk menjadikannya collection
-// dd($list_blm_ver, $count_blm_ver,$list_dosen);
-        // dd($blm_ver->orderBy('nama'));
-        // $list_blm_ver = User::where('setuju', '<>', 1)
-        //   ->orwhere('status', '<>', 1)->sortBy('nama');
-
+        $list_blm_ver = User::where('setuju', '<>', 1)
+          ->orwhere('status', '<>', 1)->orderBy('nama')->get();
+          // dd($list_dosen);
+        // dd(!$list_dosen->isEmpty());
         return view('dash_admin/pengguna', [
         'dosens'=>$list_dosen,
         'mhs_d3s'=>$list_mhs_d3,
         'mhs_d4s'=>$list_mhs_d4,
-        'blm_verifs'=>$count_blm_ver,
+        'blm_verifs'=>$list_blm_ver,
       ]);
     }
 
@@ -59,21 +60,41 @@ class PenggunaController extends Controller
      */
     public function store(Request $request)
     {
+
       $this->validate($request, [
-        'judul' => 'required|unique:instruksi_kerja',
-        'kategori_ik'   =>'required',
-        // 'file_ik' => 'required|mimes:pdf'
+        'nama' => 'required',
+        'email' => 'required|email|max:35|unique:pengguna',
+        'password' => 'required|min:3|confirmed',
+        'ktm' => 'mimes:jpeg,jpg,png|max:4000',
+        'nim' => 'required|unique:pengguna|numeric',
       ]);
-      $instruksikerja = new InstruksiKerja;
-      $instruksikerja->judul = $request->judul;
-      $instruksikerja->kategori_ik = $request->kategori_ik;
-      //upload file
-      $fileName   = $request->judul . "-" . time() .".pdf";
-      $request->file('file_ik')->storeAs("public/instruksikerja", $fileName);
-      $instruksikerja->file_ik = $fileName;
-      $instruksikerja->save();
-      return redirect ('/instruksikerja')->with('success', 'Data baru ditambahkan,
-      dengan nama: '. $request->judul .' pada kategori: '. $request->kategori_ik);
+      $pengguna = new User;
+      $pengguna->nama = $request->nama;
+      $pengguna->level = $request->level;
+      $pengguna->email = $request->email;
+      $pengguna->password = bcrypt($request->password);
+      $pengguna->nim = $request->nim;
+      $pengguna->telp = $request->telp;
+      //gambar
+      $file       = $request->file('ktm');
+      $fileName   = $request->nim . "-" . time() .".png";
+      $request->file('ktm')->storeAs("public/ktm", $fileName);
+      //endgambar
+      $pengguna->ktm = $fileName;
+      $pengguna->setuju = 1;
+      $pengguna->token=str_random(10);
+
+      //cek status
+      if($request->status<>'on'){
+        $status=0;
+      }else $status=1;
+      $pengguna->status = $status;
+      $pengguna->save();
+      if($status<>1){
+        Mail::to($pengguna->email)->send(new userRegistered($pengguna));;
+      }
+      return redirect ('/pengguna')->with('success', 'Data baru ditambahkan,
+      nama: '. $request->nama .' dengan NIM/NIP: '. $request->nim);
     }
 
     /**
@@ -158,10 +179,12 @@ class PenggunaController extends Controller
     public function destroy($id)
     {
         //hapus berdasarkan ID
-        $instruksikerja = InstruksiKerja::find($id);
-        $instruksikerja->delete();
-        return redirect ('/instruksikerja')->with('alert', 'Data '. $instruksikerja->judul .' pada kategori: '. $instruksikerja->kategori_ik . ' telah dihapus');
+        File::delete(public_path('storage/ktm/' .$pengguna->ktm));
+        User::destroy($id);
+        // return redirect ('/instruksikerja')->with('alert', 'Data '. $instruksikerja->judul .' pada kategori: '. $instruksikerja->kategori_ik . ' telah dihapus');
+        // "{{ asset('storage/ktm/' .$pengguna->ktm) }}"
     }
+
     //DOWNLOAD
     public function download($id)
     {
