@@ -68,6 +68,7 @@ class PenggunaController extends Controller
         'ktm' => 'mimes:jpeg,jpg,png|max:4000',
         'nim' => 'required|unique:pengguna|numeric',
       ]);
+
       $pengguna = new User;
       $pengguna->nama = $request->nama;
       $pengguna->level = $request->level;
@@ -88,10 +89,11 @@ class PenggunaController extends Controller
       if($request->status<>'on'){
         $status=0;
       }else $status=1;
+
       $pengguna->status = $status;
       $pengguna->save();
       if($status<>1){
-        Mail::to($pengguna->email)->send(new userRegistered($pengguna));;
+        Mail::to($pengguna->email)->send(new userRegistered($pengguna));
       }
       return redirect ('/pengguna')->with('success', 'Data baru ditambahkan,
       nama: '. $request->nama .' dengan NIM/NIP: '. $request->nim);
@@ -179,8 +181,10 @@ class PenggunaController extends Controller
     public function destroy($id)
     {
         //hapus berdasarkan ID
+        $pengguna = User::find($id);
         File::delete(public_path('storage/ktm/' .$pengguna->ktm));
-        User::destroy($id);
+        $pengguna->delete();
+        return redirect ('/pengguna')->with('alert', 'Data '. $pengguna->nama .' telah dihapus');
         // return redirect ('/instruksikerja')->with('alert', 'Data '. $instruksikerja->judul .' pada kategori: '. $instruksikerja->kategori_ik . ' telah dihapus');
         // "{{ asset('storage/ktm/' .$pengguna->ktm) }}"
     }

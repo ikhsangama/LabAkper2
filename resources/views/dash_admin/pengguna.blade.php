@@ -66,7 +66,15 @@
             <td><label>{{$dosen->created_at}}</label></td>
             <td><label>{{$dosen->updated_at}}</label></td>
             <td>
-              <a href="pengguna/{{$dosen->id}}/delete" class="tooltipped" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+              <a href="#{{$dosen->id}}" class="tooltipped" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+              <div id="{{$dosen->id}}" class="modal red lighten-5">
+                <div class="modal-content">
+                  <b>PERINGATAN</b><br>
+                  <p>Pengguna <b>{{$dosen->nama}}</b> akan dihapus?</p><br><hr>
+                  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
+                  <a href="pengguna/{{$dosen->id}}/delete" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
+                </div>
+              </div>
               <a href="pengguna/{{$dosen->id}}/edit" class="tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
               <a href="pengguna/{{$dosen->id}}/lock" class="tooltipped" data-tooltip="Kunci"><i class="material-icons">lock_outline</i></a>
             </td>
