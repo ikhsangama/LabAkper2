@@ -39,6 +39,7 @@
     </div>
     <div class="card-content grey lighten-4">
 
+      <div id="test1">
       <table>
         <thead>
           <tr>
@@ -89,8 +90,116 @@
           </tr>@endforeach
         </tbody>
       </table>
+    </div>
+
+  <div id="test2"> test2
+    <table>
+      <thead>
+        <tr>
+            <th>Nama</th>
+            <th>NIP</th>
+            <th>Email</th>
+            <th>Telp</th>
+            <th>Foto ID</th>
+            <th>Dibuat</th>
+            <th>Diupdate</th>
+            <th>Atur</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>@foreach ($mhs_d3s as $mhs_d3)
+          <td>{{$mhs_d3->nama}}</td>
+          <td>{{$mhs_d3->nim}}</td>
+          <td>{{$mhs_d3->email}}</td>
+          <td>{{$mhs_d3->telp}}</td>
+          <td>
+            <img src="{{ asset('storage/ktm/' .$mhs_d3->ktm) }}" width="60"alt=""
+            class="materialboxed" data-caption="{{$mhs_d3->ktm}}">
+          </td>
+          <td><label>{{$mhs_d3->created_at}}</label></td>
+          <td><label>{{$mhs_d3->updated_at}}</label></td>
+          <td>
+            <a href="#del{{$mhs_d3->id}}" class="tooltipped" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+            <div id="del{{$mhs_d3->id}}" class="modal red lighten-5">
+              <div class="modal-content">
+                <b>PERINGATAN</b><br>
+                <p>Pengguna <b>{{$dosen->nama}}</b> akan dihapus?</p><br><hr>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
+                <a href="pengguna/{{$mhs_d3->id}}/delete" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
+              </div>
+            </div>
+            <a href="pengguna/{{$mhs_d3->id}}/edit" class="tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
+            <a href="#lock{{$mhs_d3->id}}" class="tooltipped" data-tooltip="Kunci"><i class="material-icons">lock_outline</i></a>
+            <div id="lock{{$mhs_d3->id}}" class="modal red lighten-5">
+              <div class="modal-content">
+                <b>PERINGATAN</b><br>
+                <p>Pengguna <b>{{$mhs_d3->nama}}</b> akan dikunci?</p><br><hr>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
+                <a href="pengguna/{{$mhs_d3->id}}/lock" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
+              </div>
+            </div>
+          </td>
+        </tr>@endforeach
+      </tbody>
+    </table>
+  </div>
+
+  <div id="test3"> test3
+    <table>
+      <thead>
+        <tr>
+            <th>Nama</th>
+            <th>NIP</th>
+            <th>Email</th>
+            <th>Telp</th>
+            <th>Foto ID</th>
+            <th>Dibuat</th>
+            <th>Diupdate</th>
+            <th>Atur</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>@foreach ($mhs_d4s as $mhs_d4)
+          <td>{{$mhs_d4->nama}}</td>
+          <td>{{$mhs_d4->nim}}</td>
+          <td>{{$mhs_d4->email}}</td>
+          <td>{{$mhs_d4->telp}}</td>
+          <td>
+            <img src="{{ asset('storage/ktm/' .$mhs_d4->ktm) }}" width="60"alt=""
+            class="materialboxed" data-caption="{{$mhs_d4->ktm}}">
+          </td>
+          <td><label>{{$mhs_d4->created_at}}</label></td>
+          <td><label>{{$mhs_d4->updated_at}}</label></td>
+          <td>
+            <a href="#del{{$mhs_d4->id}}" class="tooltipped" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+            <div id="del{{$mhs_d4->id}}" class="modal red lighten-5">
+              <div class="modal-content">
+                <b>PERINGATAN</b><br>
+                <p>Pengguna <b>{{$dosen->nama}}</b> akan dihapus?</p><br><hr>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
+                <a href="pengguna/{{$mhs_d4->id}}/delete" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
+              </div>
+            </div>
+            <a href="pengguna/{{$mhs_d4->id}}/edit" class="tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
+            <a href="#lock{{$mhs_d4->id}}" class="tooltipped" data-tooltip="Kunci"><i class="material-icons">lock_outline</i></a>
+            <div id="lock{{$mhs_d4->id}}" class="modal red lighten-5">
+              <div class="modal-content">
+                <b>PERINGATAN</b><br>
+                <p>Pengguna <b>{{$mhs_d4->nama}}</b> akan dikunci?</p><br><hr>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
+                <a href="pengguna/{{$mhs_d4->id}}/lock" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
+              </div>
+            </div>
+          </td>
+        </tr>@endforeach
+      </tbody>
+    </table>
+  </div>
 
     </div>
+
   </div>
 <!-- akhircoba -->
       </div>
