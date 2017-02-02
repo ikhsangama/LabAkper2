@@ -66,8 +66,8 @@
             <td><label>{{$dosen->created_at}}</label></td>
             <td><label>{{$dosen->updated_at}}</label></td>
             <td>
-              <a href="#{{$dosen->id}}" class="tooltipped" data-tooltip="Delete"><i class="material-icons">delete</i></a>
-              <div id="{{$dosen->id}}" class="modal red lighten-5">
+              <a href="#del{{$dosen->id}}" class="tooltipped" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+              <div id="del{{$dosen->id}}" class="modal red lighten-5">
                 <div class="modal-content">
                   <b>PERINGATAN</b><br>
                   <p>Pengguna <b>{{$dosen->nama}}</b> akan dihapus?</p><br><hr>
@@ -76,7 +76,15 @@
                 </div>
               </div>
               <a href="pengguna/{{$dosen->id}}/edit" class="tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
-              <a href="pengguna/{{$dosen->id}}/lock" class="tooltipped" data-tooltip="Kunci"><i class="material-icons">lock_outline</i></a>
+              <a href="#lock{{$dosen->id}}" class="tooltipped" data-tooltip="Kunci"><i class="material-icons">lock_outline</i></a>
+              <div id="lock{{$dosen->id}}" class="modal red lighten-5">
+                <div class="modal-content">
+                  <b>PERINGATAN</b><br>
+                  <p>Pengguna <b>{{$dosen->nama}}</b> akan dikunci?</p><br><hr>
+                  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
+                  <a href="pengguna/{{$dosen->id}}/lock" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
+                </div>
+              </div>
             </td>
           </tr>@endforeach
         </tbody>

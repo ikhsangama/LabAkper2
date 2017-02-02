@@ -133,12 +133,12 @@ class PenggunaController extends Controller
      */
     public function edit($id)
     {
-        $instruksikerja = InstruksiKerja::find($id);
+        $pengguna = User::find($id);
 
-        if(!$instruksikerja){
+        if(!$pengguna){
           abort(404);
         }
-        return view('dash_admin/edit_instruksikerja', ['instruksikerja' => $instruksikerja]);
+        return view('dash_admin/edit_pengguna', ['pengguna' => $pengguna]);
     }
 
     /**
@@ -151,25 +151,40 @@ class PenggunaController extends Controller
     public function update(Request $request, $id)
     {
       $this->validate($request, [
-        'judul' => 'required',
-        'kategori_ik'   =>'required',
-        'file_ik' => 'mimes:pdf'
+        'nama' => 'required',
+        'level' => 'required',
+        'email' => 'required|email|max:35',
+        'password' => 'required|min:3|confirmed',
+        'ktm' => 'mimes:jpeg,jpg,png|max:4000',
+        'nim' => 'required|numeric',
       ]);
-      $instruksikerja = InstruksiKerja::find($id);
+// dd($request);
+      $pengguna = User::find($id);
       // gambar
-
-      $file       = $request->file('file_ik');
-
-      if(! empty($file)){
-        $fileName   = $request->judul . "-" . time() .".pdf";
-        $request->file('file_ik')->storeAs("public/instruksikerja", $fileName);
-        $instruksikerja->file_ik = $fileName;
+      $file       = $request->file('ktm');
+      if(!empty($file)){
+        File::delete(public_path('storage/ktm/' .$pengguna->ktm));
+        $fileName   = $request->nim . "-" . time() .".png";
+        $request->file('ktm')->storeAs("public/ktm", $fileName);
+        $pengguna->ktm = $fileName;
       }
-      $instruksikerja->judul = $request->judul;
-      $instruksikerja->kategori_ik = $request->kategori_ik;
-      $instruksikerja->save();
-      return redirect ('/instruksikerja')->with('success', 'Data lama terupdate,
-      dengan nama: '. $request->judul .' pada kategori: '. $request->kategori_ik);
+      $pengguna->nama = $request->nama;
+      $pengguna->level = $request->level;
+      $pengguna->password = $pengguna->password;
+      $pengguna->setuju = 1;
+      $pengguna->token=str_random(10);
+
+      //cek status
+      if($request->status<>'on'){
+        $status=0;
+      }else $status=1;
+
+      $pengguna->status = $status;
+      $pengguna->save();
+      if($status<>1){
+        Mail::to($pengguna->email)->send(new userRegistered($pengguna));
+      }
+      return redirect ('/pengguna')->with('success', 'Pengguna dengan nama: '. $request->nama .' dan NIM/NIP: '. $request->nim .' telah diedit');
     }
 
     /**
@@ -185,6 +200,17 @@ class PenggunaController extends Controller
         File::delete(public_path('storage/ktm/' .$pengguna->ktm));
         $pengguna->delete();
         return redirect ('/pengguna')->with('alert', 'Data '. $pengguna->nama .' telah dihapus');
+        // return redirect ('/instruksikerja')->with('alert', 'Data '. $instruksikerja->judul .' pada kategori: '. $instruksikerja->kategori_ik . ' telah dihapus');
+        // "{{ asset('storage/ktm/' .$pengguna->ktm) }}"
+    }
+
+    public function lock($id)
+    {
+        //hapus berdasarkan ID
+        $pengguna = User::find($id);
+        $pengguna->setuju = 0;
+        $pengguna->save();
+        return redirect ('/pengguna')->with('alert', 'Pengguna '. $pengguna->nama .' telah dikunci');
         // return redirect ('/instruksikerja')->with('alert', 'Data '. $instruksikerja->judul .' pada kategori: '. $instruksikerja->kategori_ik . ' telah dihapus');
         // "{{ asset('storage/ktm/' .$pengguna->ktm) }}"
     }

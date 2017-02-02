@@ -30,7 +30,10 @@ Route::group(['middleware' => 'admin'], function(){
   Route::get('/pengguna', 'PenggunaController@index');
   Route::get('/pengguna/create', 'PenggunaController@create');
   Route::get('/pengguna/{id}/delete', 'PenggunaController@destroy');
+  Route::get('/pengguna/{id}/edit', 'PenggunaController@edit');
+  Route::get('/pengguna/{id}/lock', 'PenggunaController@lock');
   Route::get('/pengguna/{id}', 'PenggunaController@show');
+  Route::PUT('/pengguna/{id}', 'PenggunaController@update');
   Route::post('/pengguna', 'PenggunaController@store');
 });
 
