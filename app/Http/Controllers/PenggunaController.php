@@ -27,11 +27,11 @@ class PenggunaController extends Controller
     {
         $penggunas = User::all();
         // dd($penggunas);
-        $list_dosen = User::where('level', 2)->where('status',1)->where('setuju',1)->orderBy('nim')->paginate(2);
-        $list_mhs_d3 = User::where('level', 'D III')->where('status',1)->where('setuju',1)->orderBy('nim')->paginate(5);
-        $list_mhs_d4 = $penggunas->where('level', 'D IV')->where('status',1)->where('setuju',1)->sortBy('nama');
-        $list_blm_ver = $penggunas->where('status', '<>', 1)->sortBy('nama');
-        $list_terkunci = $penggunas->where('setuju', '<>', 1)->where('status',1)->sortBy('nama');
+        $list_dosen = User::where('level', 2)->where('status',1)->where('setuju',1)->orderBy('nim')->paginate(1);
+        $list_mhs_d3 = User::where('level', 'D III')->where('status',1)->where('setuju',1)->orderBy('nim')->paginate(1);
+        $list_mhs_d4 = User::where('level', 'D IV')->where('status',1)->where('setuju',1)->orderBy('nim')->paginate(1);
+        $list_blm_ver = User::where('status', 0)->orderBy('nim')->paginate(1);
+        $list_terkunci = User::where('setuju', 0)->where('status',1)->orderBy('nim')->paginate(1);
         // $list_blm_ver = User::where('setuju', '<>', 1)
         //   ->orwhere('status', '<>', 1)->orderBy('nama')->paginate(2);
         return view('dash_admin/pengguna', [

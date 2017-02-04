@@ -28,16 +28,16 @@
     </div>
     <div class="card-tabs">
       <ul class="tabs tabs-fixed-width">
-        <li class="tab"><a href="#test1">Dosen</a></li>
-        <li class="tab"><a href="#test2">Mahasiswa D III</a></li>
-        <li class="tab"><a href="#test3">Mahasiswa D IV</a></li>
-        <li class="tab"><a href="#test4">Belum Verifikasi</a></li>
-        <li class="tab"><a href="#test5">Terkunci</a></li>
+        <li class="tab"><a href="#dosen">Dosen</a></li>
+        <li class="tab"><a href="#d3">Mahasiswa D III</a></li>
+        <li class="tab"><a href="#d4">Mahasiswa D IV</a></li>
+        <li class="tab"><a href="#unverif">Belum Verifikasi</a></li>
+        <li class="tab"><a href="#lock">Terkunci</a></li>
       </ul>
     </div>
     <div class="card-content grey lighten-4">
 
-      <div id="test1">
+      <div id="dosen">dosen
       <table>
         <thead>
           <tr>
@@ -88,10 +88,14 @@
           </tr>@endforeach
         </tbody>
       </table>
-
+      <ul class="pagination">
+        <li>
+          {{ $dosens->fragment('dosen')->links() }}
+        </li>
+      </ul>
     </div>
 
-  <div id="test2"> test2
+  <div id="d3"> d3
     <table>
       <thead>
         <tr>
@@ -144,70 +148,75 @@
     </table>
     <ul class="pagination">
       <li>
-        {{ $mhs_d3s->fragment('test2')->links() }}
+        {{ $mhs_d3s->fragment('d3')->links() }}
       </li>
     </ul>
   </div>
 
-  <div id="test3"> test3
+  <div id="d4">d4
+  <table>
+    <thead>
+      <tr>
+          <th>Nama</th>
+          <th>NIM</th>
+          <th>Email</th>
+          <th>Telp</th>
+          <th>Foto ID</th>
+          <th>Dibuat</th>
+          <th>Diupdate</th>
+          <th>Atur</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>@foreach ($mhs_d4s as $d4)
+        <td>{{$d4->nama}}</td>
+        <td>{{$d4->nim}}</td>
+        <td>{{$d4->email}}</td>
+        <td>{{$d4->telp}}</td>
+        <td>
+          <img src="{{ asset('storage/ktm/' .$d4->ktm) }}" width="60"alt=""
+          class="materialboxed" data-caption="{{$d4->ktm}}">
+        </td>
+        <td><label>{{$d4->created_at}}</label></td>
+        <td><label>{{$d4->updated_at}}</label></td>
+        <td>
+          <a href="#del{{$d4->id}}" class="tooltipped" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+          <div id="del{{$d4->id}}" class="modal red lighten-5">
+            <div class="modal-content">
+              <b>PERINGATAN</b><br>
+              <p>Pengguna <b>{{$d4->nama}}</b> akan dihapus?</p><br><hr>
+              <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
+              <a href="pengguna/{{$d4->id}}/delete" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
+            </div>
+          </div>
+          <a href="pengguna/{{$d4->id}}/edit" class="tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
+          <a href="#lock{{$d4->id}}" class="tooltipped" data-tooltip="Kunci"><i class="material-icons">lock_outline</i></a>
+          <div id="lock{{$d4->id}}" class="modal red lighten-5">
+            <div class="modal-content">
+              <b>PERINGATAN</b><br>
+              <p>Pengguna <b>{{$d4->nama}}</b> akan dikunci?</p><br><hr>
+              <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
+              <a href="pengguna/{{$d4->id}}/lock" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
+            </div>
+          </div>
+        </td>
+      </tr>@endforeach
+    </tbody>
+  </table>
+  <ul class="pagination">
+    <li>
+      {{ $mhs_d4s->fragment('d4')->links() }}
+    </li>
+  </ul>
+</div>
+
+  <div id="unverif">unverif
     <table>
       <thead>
         <tr>
             <th>Nama</th>
-            <th>NIM</th>
-            <th>Email</th>
-            <th>Telp</th>
-            <th>Foto ID</th>
-            <th>Dibuat</th>
-            <th>Diupdate</th>
-            <th>Atur</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>@foreach ($mhs_d4s as $mhs_d4)
-          <td>{{$mhs_d4->nama}}</td>
-          <td>{{$mhs_d4->nim}}</td>
-          <td>{{$mhs_d4->email}}</td>
-          <td>{{$mhs_d4->telp}}</td>
-          <td>
-            <img src="{{ asset('storage/ktm/' .$mhs_d4->ktm) }}" width="60"alt=""
-            class="materialboxed" data-caption="{{$mhs_d4->ktm}}">
-          </td>
-          <td><label>{{$mhs_d4->created_at}}</label></td>
-          <td><label>{{$mhs_d4->updated_at}}</label></td>
-          <td>
-            <a href="#del{{$mhs_d4->id}}" class="tooltipped" data-tooltip="Delete"><i class="material-icons">delete</i></a>
-            <div id="del{{$mhs_d4->id}}" class="modal red lighten-5">
-              <div class="modal-content">
-                <b>PERINGATAN</b><br>
-                <p>Pengguna <b>{{$dosen->nama}}</b> akan dihapus?</p><br><hr>
-                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
-                <a href="pengguna/{{$mhs_d4->id}}/delete" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
-              </div>
-            </div>
-            <a href="pengguna/{{$mhs_d4->id}}/edit" class="tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
-            <a href="#lock{{$mhs_d4->id}}" class="tooltipped" data-tooltip="Kunci"><i class="material-icons">lock_outline</i></a>
-            <div id="lock{{$mhs_d4->id}}" class="modal red lighten-5">
-              <div class="modal-content">
-                <b>PERINGATAN</b><br>
-                <p>Pengguna <b>{{$mhs_d4->nama}}</b> akan dikunci?</p><br><hr>
-                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
-                <a href="pengguna/{{$mhs_d4->id}}/lock" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
-              </div>
-            </div>
-          </td>
-        </tr>@endforeach
-      </tbody>
-    </table>
-  </div>
-
-  <div id="test4">
-    <table>
-      <thead>
-        <tr>
-            <th>Nama</th>
-            <th>NIM</th>
+            <th>NIM/NIP</th>
             <th>Email</th>
             <th>Telp</th>
             <th>Foto ID</th>
@@ -253,13 +262,20 @@
         </tr>@endforeach
       </tbody>
     </table>
+    <ul class="pagination">
+      <li>
+        {{ $blm_verifs->fragment('unverif')->links() }}
+      </li>
+    </ul>
   </div>
+
+
+
 
     </div>
-
   </div>
 <!-- akhircoba -->
-      </div>
+</div>
 
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
