@@ -27,18 +27,19 @@ class PenggunaController extends Controller
     {
         $penggunas = User::all();
         // dd($penggunas);
-        $list_dosen = $penggunas->where('level', 2)->where('status',1)->where('setuju',1)->sortBy('nama');
+        $list_dosen = User::where('level', 2)->where('status',1)->where('setuju',1)->orderBy('nim')->paginate(2);
         $list_mhs_d3 = $penggunas->where('level', 'D III')->where('status',1)->where('setuju',1)->sortBy('nama');
         $list_mhs_d4 = $penggunas->where('level', 'D IV')->where('status',1)->where('setuju',1)->sortBy('nama');
-        $list_blm_ver = User::where('setuju', '<>', 1)
-          ->orwhere('status', '<>', 1)->orderBy('nama')->get();
-          // dd($list_dosen);
-        // dd(!$list_dosen->isEmpty());
+        $list_blm_ver = $penggunas->where('status', '<>', 1)->sortBy('nama');
+        $list_terkunci = $penggunas->where('setuju', '<>', 1)->where('status',1)->sortBy('nama');
+        // $list_blm_ver = User::where('setuju', '<>', 1)
+        //   ->orwhere('status', '<>', 1)->orderBy('nama')->paginate(2);
         return view('dash_admin/pengguna', [
         'dosens'=>$list_dosen,
         'mhs_d3s'=>$list_mhs_d3,
         'mhs_d4s'=>$list_mhs_d4,
         'blm_verifs'=>$list_blm_ver,
+        'terkuncis'=>$list_terkunci,
       ]);
     }
 
@@ -215,12 +216,4 @@ class PenggunaController extends Controller
         // "{{ asset('storage/ktm/' .$pengguna->ktm) }}"
     }
 
-    //DOWNLOAD
-    public function download($id)
-    {
-      $instruksikerja = InstruksiKerja::find($id);
-      $fileName = $instruksikerja->file_ik;
-      // dd($instruksikerja);
-      return view('single_ik', ['instruksikerja' => $instruksikerja]);
-    }
 }

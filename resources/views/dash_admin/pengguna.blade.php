@@ -19,9 +19,7 @@
 @endif
 <!-- coba -->
 <!-- stress -->
-@foreach ($dosens as $dosen)
-{{$dosen->nama}}
-@endforeach
+
 <!-- stress -->
 
 <div class="card">
@@ -30,7 +28,7 @@
     </div>
     <div class="card-tabs">
       <ul class="tabs tabs-fixed-width">
-        <li class="tab"><a href="#test1" class="active">Dosen</a></li>
+        <li class="tab"><a href="#test1">Dosen</a></li>
         <li class="tab"><a href="#test2">Mahasiswa D III</a></li>
         <li class="tab"><a href="#test3">Mahasiswa D IV</a></li>
         <li class="tab"><a href="#test4">Belum Verifikasi</a></li>
@@ -90,6 +88,7 @@
           </tr>@endforeach
         </tbody>
       </table>
+      {!! $dosens->render() !!}
     </div>
 
   <div id="test2"> test2
@@ -97,7 +96,7 @@
       <thead>
         <tr>
             <th>Nama</th>
-            <th>NIP</th>
+            <th>NIM</th>
             <th>Email</th>
             <th>Telp</th>
             <th>Foto ID</th>
@@ -150,7 +149,7 @@
       <thead>
         <tr>
             <th>Nama</th>
-            <th>NIP</th>
+            <th>NIM</th>
             <th>Email</th>
             <th>Telp</th>
             <th>Foto ID</th>
@@ -190,6 +189,59 @@
                 <p>Pengguna <b>{{$mhs_d4->nama}}</b> akan dikunci?</p><br><hr>
                 <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
                 <a href="pengguna/{{$mhs_d4->id}}/lock" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
+              </div>
+            </div>
+          </td>
+        </tr>@endforeach
+      </tbody>
+    </table>
+  </div>
+
+  <div id="test4">
+    <table>
+      <thead>
+        <tr>
+            <th>Nama</th>
+            <th>NIM</th>
+            <th>Email</th>
+            <th>Telp</th>
+            <th>Foto ID</th>
+            <th>Dibuat</th>
+            <th>Diupdate</th>
+            <th>Atur</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>@foreach ($blm_verifs as $blm_ver)
+          <td>{{$blm_ver->nama}}</td>
+          <td>{{$blm_ver->nim}}</td>
+          <td>{{$blm_ver->email}}</td>
+          <td>{{$blm_ver->telp}}</td>
+          <td>
+            <img src="{{ asset('storage/ktm/' .$blm_ver->ktm) }}" width="60"alt=""
+            class="materialboxed" data-caption="{{$blm_ver->ktm}}">
+          </td>
+          <td><label>{{$blm_ver->created_at}}</label></td>
+          <td><label>{{$blm_ver->updated_at}}</label></td>
+          <td>
+            <a href="#del{{$blm_ver->id}}" class="tooltipped" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+            <div id="del{{$blm_ver->id}}" class="modal red lighten-5">
+              <div class="modal-content">
+                <b>PERINGATAN</b><br>
+                <p>Pengguna <b>{{$blm_ver->nama}}</b> akan dihapus?</p><br><hr>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
+                <a href="pengguna/{{$blm_ver->id}}/delete" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
+              </div>
+            </div>
+            <a href="pengguna/{{$blm_ver->id}}/edit" class="tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
+            <a href="#lock{{$blm_ver->id}}" class="tooltipped" data-tooltip="Kunci"><i class="material-icons">lock_outline</i></a>
+            <div id="lock{{$blm_ver->id}}" class="modal red lighten-5">
+              <div class="modal-content">
+                <b>PERINGATAN</b><br>
+                <p>Pengguna <b>{{$blm_ver->nama}}</b> akan dikunci?</p><br><hr>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
+                <a href="pengguna/{{$blm_ver->id}}/lock" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
               </div>
             </div>
           </td>
