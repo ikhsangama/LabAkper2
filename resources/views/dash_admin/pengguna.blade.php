@@ -88,7 +88,7 @@
           </tr>@endforeach
         </tbody>
       </table>
-      {!! $dosens->render() !!}
+
     </div>
 
   <div id="test2"> test2
@@ -123,7 +123,7 @@
             <div id="del{{$mhs_d3->id}}" class="modal red lighten-5">
               <div class="modal-content">
                 <b>PERINGATAN</b><br>
-                <p>Pengguna <b>{{$dosen->nama}}</b> akan dihapus?</p><br><hr>
+                <p>Pengguna <b>{{$mhs_d3->nama}}</b> akan dihapus?</p><br><hr>
                 <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
                 <a href="pengguna/{{$mhs_d3->id}}/delete" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
               </div>
@@ -142,6 +142,11 @@
         </tr>@endforeach
       </tbody>
     </table>
+    <ul class="pagination">
+      <li>
+        {{ $mhs_d3s->fragment('test2')->links() }}
+      </li>
+    </ul>
   </div>
 
   <div id="test3"> test3
