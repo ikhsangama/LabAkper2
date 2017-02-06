@@ -89,7 +89,14 @@
                             <br>{{$terkunci}} Terkunci </p>
                           </div>
                           <div class="card-action">
-                            <a href="/pengguna">Atur</a>
+                            <div class="row">
+                              <div class="col s6 m6 l6">
+                                <a href="{{ url('/pengguna/create') }}">Tambah</a>
+                              </div>
+                              <div class="col s6 m6 l6">
+                                <a href="{{ url('/pengguna') }}">Atur</a>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>

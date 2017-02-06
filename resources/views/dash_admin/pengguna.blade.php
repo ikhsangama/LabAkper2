@@ -5,6 +5,7 @@
 
     <div class="row">
         <div class=""><h2>Daftar Pengguna</h2>
+          <a href="{{ url('/pengguna') }}" class="flat-btn waves-effect waves-light"><i class="material-icons">refresh</i></a>
           <a href="{{ url('/pengguna/create') }}" class="btn waves-effect waves-light">Tambah</a>
         </div>
 <!-- <hr> -->
@@ -23,16 +24,28 @@
 <!-- stress -->
 
 <div class="card">
-    <div class="card-content">
-      <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+    <div class="card-content grey lighten-4">
+      <nav>
+        <div class="nav-wrapper teal lighten-1">
+          <form action="{{ url('pengguna/query') }}" method="GET">
+            <div class="input-field">
+              <input id="search" type="search" class="validate" name="q" placeholder="Cari pengguna" required>
+              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+              <i class="material-icons">close</i>
+            </div>
+          </form>
+        </div>
+      </nav>
+      @yield('dash_admin.search')
     </div>
+
     <div class="card-tabs">
-      <ul class="tabs tabs-fixed-width">
-        <li class="tab"><a href="#dosen">Dosen</a></li>
-        <li class="tab"><a href="#d3">Mahasiswa D III</a></li>
-        <li class="tab"><a href="#d4">Mahasiswa D IV</a></li>
-        <li class="tab"><a href="#unverif">Belum Verifikasi</a></li>
-        <li class="tab"><a href="#lock">Terkunci</a></li>
+      <ul class="tabs tabs-fixed-width teal lighten-1">
+        <li class="tab"><a href="#dosen" class=" white-text">Dosen</a></li>
+        <li class="tab"><a href="#d3" class=" white-text">Mahasiswa D III</a></li>
+        <li class="tab"><a href="#d4" class=" white-text">Mahasiswa D IV</a></li>
+        <li class="tab"><a href="#unverif" class=" white-text">Belum Verifikasi</a></li>
+        <li class="tab"><a href="#lock" class=" white-text">Terkunci</a></li>
       </ul>
     </div>
     <div class="card-content grey lighten-4">
