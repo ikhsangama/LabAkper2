@@ -30,7 +30,7 @@
                 <i id="Status" class="material-icons prefix" required>school</i>
                 <select name="level">
                   <option value="" disabled selected>Pilih</option>
-                  <option value="2">Dosen</option>
+                  <option value="Dosen">Dosen</option>
                   <option value="D III">D III</option>
                   <option value="D IV">D IV</option>
                 </select>

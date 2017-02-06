@@ -85,7 +85,8 @@
                             <p>{{$dosen}} Dosen
                             <br>{{$mhs_d3}} Mahasiswa D III
                             <br>{{$mhs_d4}} Mahasiswa D IV
-                            <br>{{$blm_ver}} Belum terverifikasi </p>
+                            <br>{{$blm_ver}} Belum terverifikasi
+                            <br>{{$terkunci}} Terkunci </p>
                           </div>
                           <div class="card-action">
                             <a href="/pengguna">Atur</a>

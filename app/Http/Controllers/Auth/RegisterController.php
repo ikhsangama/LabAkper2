@@ -106,6 +106,7 @@ class RegisterController extends Controller
       }
       //status user jadi 1
       $pengguna->status =1;
+      $pengguna->setuju =1;
       $pengguna->save();
       //login
       $this->guard()->login($pengguna);

@@ -27,7 +27,7 @@ class PenggunaController extends Controller
     {
         $penggunas = User::all();
         // dd($penggunas);
-        $list_dosen = User::where('level', 2)->where('status',1)->where('setuju',1)->orderBy('nim')->paginate(1);
+        $list_dosen = User::where('level', 'Dosen')->where('status',1)->where('setuju',1)->orderBy('nim')->paginate(1);
         $list_mhs_d3 = User::where('level', 'D III')->where('status',1)->where('setuju',1)->orderBy('nim')->paginate(1);
         $list_mhs_d4 = User::where('level', 'D IV')->where('status',1)->where('setuju',1)->orderBy('nim')->paginate(1);
         $list_blm_ver = User::where('status', 0)->orderBy('nim')->paginate(1);
@@ -110,7 +110,7 @@ class PenggunaController extends Controller
     {
       $pengguna = User::find($id);
 
-      if ($pengguna->level==2){
+      if ($pengguna->level=='Dosen'){
         $level='Dosen';
         // dd($level);
         }
@@ -212,6 +212,27 @@ class PenggunaController extends Controller
         $pengguna->setuju = 0;
         $pengguna->save();
         return redirect ('/pengguna')->with('alert', 'Pengguna '. $pengguna->nama .' telah dikunci');
+        // return redirect ('/instruksikerja')->with('alert', 'Data '. $instruksikerja->judul .' pada kategori: '. $instruksikerja->kategori_ik . ' telah dihapus');
+        // "{{ asset('storage/ktm/' .$pengguna->ktm) }}"
+    }
+
+    public function unlock($id)
+    {
+        //hapus berdasarkan ID
+        $pengguna = User::find($id);
+        $pengguna->setuju = 1;
+        $pengguna->save();
+        return redirect ('/pengguna')->with('success', 'Pengguna '. $pengguna->nama .' diperbolehkan meminjam barang');
+    }
+
+    public function verify($id)
+    {
+        //hapus berdasarkan ID
+        $pengguna = User::find($id);
+        $pengguna->status = 1;
+        $pengguna->setuju = 1;
+        $pengguna->save();
+        return redirect ('/pengguna')->with('success', 'Pengguna '. $pengguna->nama .' telah diverifikasi langsung');
         // return redirect ('/instruksikerja')->with('alert', 'Data '. $instruksikerja->judul .' pada kategori: '. $instruksikerja->kategori_ik . ' telah dihapus');
         // "{{ asset('storage/ktm/' .$pengguna->ktm) }}"
     }
