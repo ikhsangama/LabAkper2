@@ -6,7 +6,7 @@
     <div class="row">
         <div class=""><h2>Daftar Pengguna</h2>
           <a href="{{ url('/pengguna') }}" class="flat-btn waves-effect waves-light"><i class="material-icons">refresh</i></a>
-          <a href="{{ url('/pengguna/create') }}" class="btn waves-effect waves-light">Tambah</a>
+          <a href="{{ url('/pengguna/create') }}" class="btn waves-effect waves-light light-blue darken-1">Tambah</a>
         </div>
 <!-- <hr> -->
 @if(session('success'))
@@ -26,7 +26,7 @@
 <div class="card">
     <div class="card-content grey lighten-4">
       <nav>
-        <div class="nav-wrapper teal lighten-1">
+        <div class="nav-wrapper light-blue darken-1">
           <form action="{{ url('pengguna/query') }}" method="GET">
             <div class="input-field">
               <input id="search" type="search" class="validate" name="q" placeholder="Cari pengguna" required>
@@ -40,7 +40,7 @@
     </div>
 
     <div class="card-tabs">
-      <ul class="tabs tabs-fixed-width teal lighten-1">
+      <ul class="tabs tabs-fixed-width light-blue darken-1">
         <li class="tab"><a href="#dosen" class=" white-text">Dosen</a></li>
         <li class="tab"><a href="#d3" class=" white-text">Mahasiswa D III</a></li>
         <li class="tab"><a href="#d4" class=" white-text">Mahasiswa D IV</a></li>
