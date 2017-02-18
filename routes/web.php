@@ -43,7 +43,7 @@ Route::group(['middleware' => 'admin'], function(){
 Auth::routes();
 
 Route::get('/sop', 'SOPController@index');
-Route::get('/daftar', 'DaftarAlatBahanController@index');
+Route::get('/daftar', 'KategoriController@index');
 Route::get('/peminjaman', 'PeminjamanController@index');
 Route::get('/instruksikerja/{id}', 'InstruksiKerjaController@show');
 //instruksikerja

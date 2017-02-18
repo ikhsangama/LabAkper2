@@ -40,7 +40,7 @@
       <ul id="dropdown3" class="dropdown-content">
         <li>
           <a href="{{ url('/instruksikerja') }}">
-              IK
+              Inst. Kerja
           </a>
         </li>
         <li>
@@ -69,15 +69,15 @@
           </li>
       @endif
           <li>
-            <li><a class="dropdown-button" href="#!" data-activates="dropdown3"><b>Dokumen</b></a></li>
+            <li><a class="dropdown-button" href="#!" data-activates="dropdown3" data-beloworigin="true" data-hover="true"><b>Dokumen</b></a></li>
           </li>
           <li>
-            <li><a class="dropdown-button" href="#!" data-activates="dropdown2"><b>Alat & Bahan</b></a></li>
+            <li><a class="dropdown-button" href="#!" data-activates="dropdown2" data-beloworigin="true" data-hover="true"><b>Alat & Bahan</b></a></li>
           </li>
           <!-- akhir tambahan navigasi -->
 
       <!-- Dropdown Trigger -->
-          <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><b>{{ Auth::user()->nama }}</b>
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown1" data-beloworigin="true" data-hover="true"><b>{{ Auth::user()->nama }}</b>
             <i class="material-icons right">arrow_drop_down</i></a></li>
 
       <!-- </div> -->

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\InstruksiKerja;
 use App\User;
+use App\Kategori;
+use App\AlatBahan;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -26,13 +28,9 @@ class DashboardController extends Controller
         $count_ik_dasar = $instruksikerjas->where('kategori_ik', 'IK Kep. Dasar')->count();
         $count_ik_maternitas = $instruksikerjas->where('kategori_ik', 'IK Kep. Maternitas')->count();
         $count_ik_bedah = $instruksikerjas->where('kategori_ik', 'IK Medikal Bedah')->count();
-      //   return view('dashboard', ['ik'=>$count_instruksikerja, 'ik_alat'=>$count_ik_alat, 'ik_anak'=>$count_ik_anak,
-      // 'ik_dasar'=>$count_ik_dasar, 'ik_maternitas'=>$count_ik_maternitas, 'ik_bedah'=>$count_ik_bedah]);
 
       //detail pengguna
-        // dd(User::where('setuju', '<>', 1)->orwhere('status', '<>', 1)->count());
-        $penggunas = User::all();
-        $count_pengguna = $penggunas->count()-1;
+        $count_pengguna = User::count()-1;
         $count_dosen = User::where('level', 'Dosen')->count();
         $count_mhs_d3 = User::where([
           ['level', 'D III'],['status', 1],['setuju', 1],
@@ -44,6 +42,12 @@ class DashboardController extends Controller
         $count_terkunci = User::where([
           ['status', 1],['setuju', 0],
           ])->count();
+
+        //detail alatbahan
+        $count_kategori = Kategori::count();
+        $count_alatbahan = Alatbahan::count();
+        // dd($count_pengguna,$count_kategori);
+
         //eksekusi
         return view('dashboard', [
           //instruksikerja
@@ -52,6 +56,8 @@ class DashboardController extends Controller
           //pengguna
           'pengguna'=>$count_pengguna,'dosen'=>$count_dosen, 'mhs_d3'=>$count_mhs_d3,
           'mhs_d4'=>$count_mhs_d4,'blm_ver'=>$count_blm_ver, 'terkunci'=>$count_terkunci,
+          //alatbahan
+          'kategori'=>$count_kategori, 'alatbahan'=>$count_alatbahan,
         ]);
     }
 

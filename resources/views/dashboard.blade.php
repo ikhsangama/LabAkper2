@@ -24,14 +24,7 @@
                             <br>{{$ik_bedah}} Instruksi Kep. Bedah</p>
                           </div>
                           <div class="card-action">
-                            <div class="row">
-                              <div class="col s6 m6 l6">
-                                <a href="{{ url('/instruksikerja/create') }}">Tambah</a>
-                              </div>
-                              <div class="col s6 m6 l6">
-                                <a href="{{ url('/instruksikerja') }}">Atur</a>
-                              </div>
-                            </div>
+                            <a href="{{ url('/instruksikerja') }}">Atur</a>
                           </div>
                         </div>
                       </div>
@@ -53,12 +46,13 @@
                       <div class="col s6 m6 l6">
                         <div class="card indigo darken-1 s6 m6 l6">
                           <div class="card-content white-text">
-                            <span class="card-title">Daftar Alat & Bahan</span>
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</p>
+                            <h4>Alat & Bahan</h4>
+                            <li class="divider"></li>
+                            <p>{{$kategori}} Kategori
+                            <br>{{$alatbahan}} Daftar Alat & Bahan</p>
                           </div>
                           <div class="card-action">
-                            <a href="#">Atur</a>
+                              <a href="{{ url('/daftar') }}">Atur</a>
                           </div>
                         </div>
                       </div>
@@ -89,14 +83,7 @@
                             <br>{{$terkunci}} Terkunci </p>
                           </div>
                           <div class="card-action">
-                            <div class="row">
-                              <div class="col s6 m6 l6">
-                                <a href="{{ url('/pengguna/create') }}">Tambah</a>
-                              </div>
-                              <div class="col s6 m6 l6">
-                                <a href="{{ url('/pengguna') }}">Atur</a>
-                              </div>
-                            </div>
+                              <a href="{{ url('/pengguna') }}">Atur</a>
                           </div>
                         </div>
                       </div>
@@ -133,7 +120,10 @@
       // });
       // $('.carousel').carousel('next', 5);
       $('.scrollspy').scrollSpy();
-      $(".dropdown-button").dropdown();
+      $(".dropdown-button").dropdown({
+        hover: true,
+        belowOrigin: true,
+      });
     }); // end of document ready // end of jQuery name space
   </script>
 </body>
