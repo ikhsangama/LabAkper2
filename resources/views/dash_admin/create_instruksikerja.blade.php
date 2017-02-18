@@ -13,7 +13,7 @@
       <div class="row">
         <div class="input-field col s12 m12 l12">
           <i class="material-icons prefix">title</i>
-          <input name="judul" placeholder="Edit Judul" id="icon_prefix" type="text" class="validate" autofocus maxlength="50"
+          <input name="judul" id="icon_prefix" type="text" class="validate" autofocus maxlength="50"
           value="" required>
           <label for="icon_prefix">Judul</label>
   <!-- validation             -->
@@ -71,9 +71,9 @@
 
     <div class="row">
       <div class="form-group">
-          <div class="col l4 m4 s4 offset-l8 offset-m8 offset-s8">
+          <div class="col l4 m4 s4 offset-l6 offset-m6 offset-s6">
             {{ csrf_field() }}
-              <input type="submit" class="btn" value="Create">
+              <input type="submit" class="btn" value="Tambah Instruksi Kerja">
           </div>
       </div>
     </div>

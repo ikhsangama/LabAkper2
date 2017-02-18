@@ -38,12 +38,16 @@ Route::group(['middleware' => 'admin'], function(){
   Route::get('/pengguna/{id}', 'PenggunaController@show');
   Route::PUT('/pengguna/{id}', 'PenggunaController@update');
   Route::post('/pengguna', 'PenggunaController@store');
+  //kategori
+  Route::get('/kategori/create', 'KategoriController@create');
+  Route::post('/daftarkategori', 'KategoriController@store');
+
 });
 
 Auth::routes();
 
 Route::get('/sop', 'SOPController@index');
-Route::get('/daftar', 'KategoriController@index');
+Route::get('/daftarkategori', 'KategoriController@index');
 Route::get('/peminjaman', 'PeminjamanController@index');
 Route::get('/instruksikerja/{id}', 'InstruksiKerjaController@show');
 //instruksikerja

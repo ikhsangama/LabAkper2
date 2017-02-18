@@ -52,7 +52,7 @@
       <ul class="right hide-on-med-and-down">
         <ul id="dropdown2" class="dropdown-content">
           <li>
-            <a href="{{ url('/daftar') }}">
+            <a href="{{ url('/daftarkategori') }}">
                 Daftar
             </a>
           </li>

@@ -29,7 +29,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        //
+        return view ('dash_admin/create_kategori');
     }
 
     /**
@@ -40,7 +40,15 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request, [
+        'kategori' => 'required',
+      ]);
+
+      $kategori = new Kategori;
+      $kategori->nama_kategori = $request->kategori;
+      $kategori->save();
+      return redirect ('/daftarkategori')->with('success', 'Kategori baru ditambahkan,
+      dengan nama: '. $request->kategori);
     }
 
     /**

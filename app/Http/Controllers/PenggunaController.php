@@ -134,12 +134,12 @@ class PenggunaController extends Controller
      */
     public function edit($id)
     {
-        $pengguna = User::find($id);
+      $pengguna = User::find($id);
 
-        if(!$pengguna){
-          abort(404);
-        }
-        return view('dash_admin/edit_pengguna', ['pengguna' => $pengguna]);
+      if(!$pengguna){
+        abort(404);
+      }
+      return view('dash_admin/edit_pengguna', ['pengguna' => $pengguna]);
     }
 
     /**

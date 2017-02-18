@@ -5,7 +5,7 @@
 
     <div class="row">
         <div class=""><h2>Daftar Kategori Alat & Bahan</h2>
-          <a href="{{ url('/daftar') }}" class="flat-btn waves-effect waves-light"><i class="material-icons">refresh</i></a>
+          <a href="{{ url('/daftarkategori') }}" class="flat-btn waves-effect waves-light"><i class="material-icons">refresh</i></a>
           @if(Auth::user()->isAdmin(true))
           <a href="{{ url('/kategori/create') }}" class="btn waves-effect waves-light light-blue darken-1">Tambah</a>
           @endif
@@ -38,7 +38,21 @@
           <td>{{$kategori->nama_kategori}}</td>
           <td><label>{{$kategori->created_at}}</label></td>
           <td><label>{{$kategori->updated_at}}</label></td>
-          <td>a</td>
+          <td>
+            @if(Auth::user()->isAdmin(true))
+            <a href="#del{{$kategori->id}}" class="tooltipped" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+            <div id="del{{$kategori->id}}" class="modal red lighten-5">
+              <div class="modal-content">
+                <b>PERINGATAN</b><br>
+                <p>Pengguna <b>{{$kategori->nama}}</b> akan dihapus?</p><br><hr>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
+                <a href="pengguna/{{$kategori->id}}/delete" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
+              </div>
+            </div>
+            <a href="daftarkategori/{{$kategori->id}}/edit" class="tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
+            @endif
+            <a href="#lock{{$kategori->id}}" class="tooltipped" data-tooltip="Detail"><i class="material-icons">zoom_in</i></a>
+          </td>
         </tr>@endforeach
       </tbody>
     </table>
