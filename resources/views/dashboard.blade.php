@@ -87,18 +87,6 @@
                           </div>
                         </div>
                       </div>
-                      <!-- <div class="col s6 m6 l6">
-                        <div class="card light-blue darken-1 s6 m6 l6">
-                          <div class="card-content white-text">
-                            <span class="card-title">Peminjaman Alat & Bahan</span>
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</p>
-                          </div>
-                          <div class="card-action">
-                            <a href="#">Atur</a>
-                          </div>
-                        </div>
-                      </div> -->
                   </div>
           </div>
       </div>

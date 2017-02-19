@@ -70,7 +70,12 @@ class KategoriController extends Controller
      */
     public function edit($id)
     {
-        //
+      $kategori = Kategori::find($id);
+// dd($kategori);
+      if(!$kategori){
+        abort(404);
+      }
+      return view('dash_admin/edit_kategori', ['kategori' => $kategori]);
     }
 
     /**
@@ -82,7 +87,15 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $this->validate($request, [
+        'kategori' => 'required',
+      ]);
+      // dd('sini');
+      $kategori = Kategori::find($id);
+      $kategori->nama_kategori = $request->kategori;
+      $kategori->save();
+      return redirect ('/daftarkategori')->with('success', 'Kategori lama terupdate,
+      dengan nama: '. $request->kategori);
     }
 
     /**
@@ -93,6 +106,9 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        //
+      //hapus berdasarkan ID
+      $kategori = Kategori::find($id);
+      $kategori->delete();
+      return redirect ('/daftarkategori')->with('alert', 'Kategori '. $kategori->nama_kategori .' telah dihapus');
     }
 }

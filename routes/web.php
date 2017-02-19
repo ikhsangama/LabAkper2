@@ -40,8 +40,10 @@ Route::group(['middleware' => 'admin'], function(){
   Route::post('/pengguna', 'PenggunaController@store');
   //kategori
   Route::get('/kategori/create', 'KategoriController@create');
+  Route::get('/kategori/{id}/edit', 'KategoriController@edit');
   Route::post('/daftarkategori', 'KategoriController@store');
-
+  Route::get('/kategori/{id}/delete', 'KategoriController@destroy');
+  Route::PUT('/kategori/{id}', 'KategoriController@update');
 });
 
 Auth::routes();
