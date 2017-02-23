@@ -43,6 +43,7 @@ Route::group(['middleware' => 'admin'], function(){
   Route::get('/kategori/{id}/edit', 'KategoriController@edit');
   Route::post('/daftarkategori', 'KategoriController@store');
   Route::get('/kategori/{id}/delete', 'KategoriController@destroy');
+  Route::get('/kategori/{id}', 'KategoriController@show');
   Route::PUT('/kategori/{id}', 'KategoriController@update');
 });
 

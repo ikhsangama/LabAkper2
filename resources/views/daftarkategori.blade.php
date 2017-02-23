@@ -44,14 +44,14 @@
             <div id="del{{$kategori->id}}" class="modal red lighten-5">
               <div class="modal-content">
                 <b>PERINGATAN</b><br>
-                <p>Pengguna <b>{{$kategori->nama}}</b> akan dihapus?</p><br><hr>
+                <p>Kategori <b>{{$kategori->nama_kategori}}</b> akan dihapus?</p><br><hr>
                 <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
                 <a href="kategori/{{$kategori->id}}/delete" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
               </div>
             </div>
             <a href="kategori/{{$kategori->id}}/edit" class="tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
             @endif
-            <a href="#lock{{$kategori->id}}" class="tooltipped" data-tooltip="Detail"><i class="material-icons">zoom_in</i></a>
+            <a href="kategori/{{$kategori->id}}" class="tooltipped" data-tooltip="Detail"><i class="material-icons">zoom_in</i></a>
           </td>
         </tr>@endforeach
       </tbody>
