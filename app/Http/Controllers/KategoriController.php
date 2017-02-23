@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Kategori;
-use App\AlatBahan;
+// use App\AlatBahan;
 use Illuminate\Http\Request;
 
 class KategoriController extends Controller
@@ -59,12 +59,9 @@ class KategoriController extends Controller
      */
     public function show($id)
     {
-        $kategori = AlatBahan::find($id);
-        if(!$kategori){
-          abort(404);
-        }
-        dd($kategori);
-        return view('single_kategori', ['kategori' => $kategori])
+        $kategori = Kategori::findOrFail($id);
+        // dd($kategori);
+        return view ('single_kategori', ['kategori'=> $kategori]);
     }
 
     /**
