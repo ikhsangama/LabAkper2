@@ -56,7 +56,11 @@
         </tr>@endforeach
       </tbody>
     </table>
-
+    <ul class="pagination">
+      <li>
+        {{ $kategoris->fragment('kategori')->links() }}
+      </li>
+    </ul>
   </div>
 </div>
 <!-- akhircoba -->

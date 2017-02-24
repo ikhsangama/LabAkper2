@@ -15,7 +15,7 @@ class KategoriController extends Controller
      */
     public function index()
     {
-      $kategoris = Kategori::orderBy('nama_kategori')->paginate(10);
+      $kategoris = Kategori::orderBy('nama_kategori')->paginate(20);
 
       return view('daftarkategori', [
       'kategoris'=>$kategoris,
@@ -59,8 +59,12 @@ class KategoriController extends Controller
      */
     public function show($id)
     {
-        $kategori = Kategori::findOrFail($id);
-        // dd($kategori);
+        // $kategori = Kategori::findOrFail($id)->toArray();
+        $limit = 2;
+        $kategori = Kategori::with(array('alatbahan' => function($q) use ($limit)
+        {
+            $q->paginate($limit);
+        }))->find(1);
         return view ('single_kategori', ['kategori'=> $kategori]);
     }
 
@@ -93,7 +97,7 @@ class KategoriController extends Controller
         'kategori' => 'required',
       ]);
       // dd('sini');
-      $kategori = Kategori::find($id);
+      $kategori = Kategori::findOrFail($id);
       $kategori->nama_kategori = $request->kategori;
       $kategori->save();
       return redirect ('/daftarkategori')->with('success', 'Kategori lama terupdate,
