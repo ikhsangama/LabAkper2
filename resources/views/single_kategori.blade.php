@@ -2,53 +2,39 @@
 
 @section('content')
 <body class="blue lighten-5">
-  <h3>Kategori: {{$kategori->nama_kategori}}</h3>
+  <h3>Kategori: </h3>
   <hr>
 <!-- <div class="container"> -->
 <!-- coba -->
 <h4>Daftar Alat Bahan</h4>
-<div class="row">
-  <table>
-    <tbody>
-      <tr>
-<!-- belumdiisi -->
-      </tr>
-    </tbody>
-  </table>
-  <ul>
-    @foreach($kategori->alatbahan as $alatbahan)
-    <li>
-      <div class="col s6 m6 l6">
-        <div class="card horizontal">
-            <img src="http://lorempixel.com/100/190/nature/6" class="circle responsive-img materialboxed">
-          <div class="card-stacked">
-          <div class="card-content">
-            <!-- <h5>{!!str_limit($alatbahan->nama_alatbahan,18)!!}</h5> -->
-            <label>Stock: {{$alatbahan->stok}}</label>
-            <br><label>Dipinjam: {{$alatbahan->dipinjam}}</label>
-            <br><label>Total: {{$alatbahan->total}}</label>
-          </div>
-          <div class="card-action">
-            <a href="#">Detail</a>
-          </div>
+<ul>
+  @foreach($kategori as $alatbahan)
+  <li>
+    <div class="col s6 m6 l6">
+      <div class="card horizontal">
+          <img src="http://lorempixel.com/100/190/nature/6" class="circle responsive-img materialboxed">
+        <div class="card-stacked">
+        <div class="card-content">
+          <h5>{!!str_limit($alatbahan->nama_alatbahan,18)!!}</h5>
+          <label>{{$alatbahan->stok}}</label><br>
+          <label>{{$alatbahan->dipinjam}}</label><br>
+          <label>{{$alatbahan->total}}</label>
         </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
         </div>
       </div>
-    </li>
-    @endforeach
-  </ul>
-</div>
-<ul class="pagination">
-  <li>
-    {{ $alatbahan->fragment('d3')->links() }}
+      </div>
+    </div>
   </li>
-</ul>
-<ul>
-  @foreach($kategori->alatbahan as $alatbahan)
-  <li>{{$alatbahan->nama_alatbahan}}</li>
-  <li>{{$alatbahan->created_at}}</li>
   @endforeach
 </ul>
+<ul class="pagination">
+  <li>
+    {{ $kategori->links() }}
+  </li>
+</ul>
+</div>
 <!-- akhircoba -->
 <!-- </div> -->
 

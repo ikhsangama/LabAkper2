@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Kategori;
-// use App\AlatBahan;
+use App\AlatBahan;
 use Illuminate\Http\Request;
 
 class KategoriController extends Controller
@@ -16,7 +16,6 @@ class KategoriController extends Controller
     public function index()
     {
       $kategoris = Kategori::orderBy('nama_kategori')->paginate(20);
-
       return view('daftarkategori', [
       'kategoris'=>$kategoris,
     ]);
@@ -59,12 +58,17 @@ class KategoriController extends Controller
      */
     public function show($id)
     {
-        // $kategori = Kategori::findOrFail($id)->toArray();
-        $limit = 2;
-        $kategori = Kategori::with(array('alatbahan' => function($q) use ($limit)
-        {
-            $q->paginate($limit);
-        }))->find(1);
+        // $kategori = AlatBahan::findOrFail($id);
+        // $kategori->paginate(1);
+        // dd($alatbahans);
+        // $limit = 2;
+        // $kategori = Kategori::with(array('alatbahan' => function($q) use ($limit)
+        // {
+        //     $q->paginate($limit);
+        // }))->find(1);
+        // dd($kategori->paginate(2));
+        $kategori = AlatBahan::where('id_kategori',$id)->paginate(1);
+        // dd($kategori);
         return view ('single_kategori', ['kategori'=> $kategori]);
     }
 
