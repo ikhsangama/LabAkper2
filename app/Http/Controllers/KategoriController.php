@@ -58,18 +58,14 @@ class KategoriController extends Controller
      */
     public function show($id)
     {
-        // $kategori = AlatBahan::findOrFail($id);
-        // $kategori->paginate(1);
-        // dd($alatbahans);
-        // $limit = 2;
-        // $kategori = Kategori::with(array('alatbahan' => function($q) use ($limit)
-        // {
-        //     $q->paginate($limit);
-        // }))->find(1);
-        // dd($kategori->paginate(2));
-        $kategori = AlatBahan::where('id_kategori',$id)->paginate(1);
-        // dd($kategori);
-        return view ('single_kategori', ['kategori'=> $kategori]);
+        $alatbahans = AlatBahan::where('id_kategori',$id)->paginate(2);
+        $nama_kategori = Kategori::find($id)->nama_kategori;
+        // $nama_kategori = $kategori;
+        // dd($kategori, $nama_kategori);
+        return view ('single_kategori', [
+        'alatbahans'=> $alatbahans,
+        'nama_kategori' => $nama_kategori
+      ]);
     }
 
     /**

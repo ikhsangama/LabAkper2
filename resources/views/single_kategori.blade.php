@@ -2,13 +2,14 @@
 
 @section('content')
 <body class="blue lighten-5">
-  <h3>Kategori: </h3>
+  <h3>Kategori: {{$nama_kategori}}</h3>
   <hr>
 <!-- <div class="container"> -->
 <!-- coba -->
 <h4>Daftar Alat Bahan</h4>
+<div class="row">
 <ul>
-  @foreach($kategori as $alatbahan)
+  @foreach($alatbahans as $alatbahan)
   <li>
     <div class="col s6 m6 l6">
       <div class="card horizontal">
@@ -29,9 +30,10 @@
   </li>
   @endforeach
 </ul>
+</div>
 <ul class="pagination">
   <li>
-    {{ $kategori->links() }}
+    {{ $alatbahans->links() }}
   </li>
 </ul>
 </div>
