@@ -3,13 +3,34 @@
 @section('content')
 <body class="blue lighten-5">
 
+  <hr>
+    <nav>
+      <div class="nav-wrapper light-blue lighten-1 z-depth-2">
+        <div class="col s12 m12 l12">
+          <a class="breadcrumb"><b>Inventaris</b></a>
+          <a href="/kategori" class="breadcrumb">Kategori</a>
+          <a href="/kategori" class="breadcrumb">Edit</a>
+        </div>
+      </div>
+    </nav>
+  <hr>
+  <!-- <div class="col s12 m12 l12 ">
+    <h3>Daftar Kategori</h3>
+    <hr>
+    <i class="blue-text text-lighten-1">home  → </i>
+    <a href="/kategori" class="blue-text text-lighten-1">Inventaris → </a>
+    <a class="blue-text text-lighten-1"><b>Kategori</b></a>
+    <hr>
+  </div> -->
+    <!-- HEADER TETAP ATAS + BREADCRUMP-->
     <div class="row">
-        <div class=""><h2>Daftar Kategori Alat & Bahan</h2>
-          <a href="{{ url('/daftarkategori') }}" class="flat-btn waves-effect waves-light"><i class="material-icons">refresh</i></a>
+        <div class="">
+          <a href="{{ url('/kategori') }}" class="flat-btn waves-effect waves-light"><i class="material-icons">refresh</i></a>
           @if(Auth::user()->isAdmin(true))
-          <a href="{{ url('/kategori/create') }}" class="btn waves-effect waves-light light-blue darken-1">Tambah</a>
+          <a href="{{ url('/kategori/create') }}" class="btn waves-effect waves-light">Tambah</a>
           @endif
         </div>
+
 <!-- <hr> -->
 @if(session('success'))
 <div class="card-panel green lighten-4">

@@ -101,7 +101,7 @@ class KategoriController extends Controller
       $kategori = Kategori::findOrFail($id);
       $kategori->nama_kategori = $request->kategori;
       $kategori->save();
-      return redirect ('/kategori')->with('success', 'Kategori lama terupdate,
+      return redirect ('/daftarkategori')->with('success', 'Kategori lama terupdate,
       dengan nama: '. $request->kategori);
     }
 

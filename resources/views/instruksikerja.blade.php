@@ -7,7 +7,7 @@
           <div class="col-md-8 col-md-offset-2">
               <div class="">
                   <div class=""><h2>Daftar Instruksi Kerja</h2>
-                    <a href="{{ url('/instruksikerja/create') }}" class="btn waves-effect waves-light light-blue darken-1">Tambah</a>
+                    <a href="{{ url('/instruksikerja/create') }}" class="btn waves-effect waves-light">Tambah</a>
                     </div>
 <!-- <hr> -->
 @if(session('success'))

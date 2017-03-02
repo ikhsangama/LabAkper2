@@ -52,7 +52,7 @@
                             <br>{{$alatbahan}} Daftar Alat & Bahan</p>
                           </div>
                           <div class="card-action">
-                              <a href="{{ url('/daftarkategori') }}">Atur</a>
+                              <a href="{{ url('/kategori') }}">Atur</a>
                           </div>
                         </div>
                       </div>

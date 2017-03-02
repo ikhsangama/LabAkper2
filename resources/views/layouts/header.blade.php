@@ -1,6 +1,6 @@
 <head>
 @if (Auth::guest())
-<nav class="blue accent-3" role="navigation">
+<nav class="blue accent-3 z-depth-3" role="navigation">
   <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">{{ config('app.name', 'Laravel') }}</a>
 		<span class="section scrollspy" id="backtotop">
 
@@ -18,7 +18,7 @@
 	</div>
 </nav>
 @elseif(Auth::user())
-<nav class="blue accent-3" role="navigation">
+<nav class="blue accent-3 z-depth-3" role="navigation">
   <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">{{ config('app.name', 'Laravel') }}</a>
 		<span class="section scrollspy" id="backtotop">
       <!-- dropdown profil-->
@@ -52,8 +52,13 @@
       <ul class="right hide-on-med-and-down">
         <ul id="dropdown2" class="dropdown-content">
           <li>
+            <a href="{{ url('/kategori') }}">
+                Kategori
+            </a>
+          </li>
+          <li>
             <a href="{{ url('/daftarkategori') }}">
-                Daftar
+                Alat & Bahan
             </a>
           </li>
           <li>
@@ -72,7 +77,7 @@
             <li><a class="dropdown-button" href="#!" data-activates="dropdown3" data-beloworigin="true" data-hover="true"><b>Dokumen</b></a></li>
           </li>
           <li>
-            <li><a class="dropdown-button" href="#!" data-activates="dropdown2" data-beloworigin="true" data-hover="true"><b>Alat & Bahan</b></a></li>
+            <li><a class="dropdown-button" href="#!" data-activates="dropdown2" data-beloworigin="true" data-hover="true"><b>Inventaris</b></a></li>
           </li>
           <!-- akhir tambahan navigasi -->
 

@@ -2,8 +2,21 @@
 
 @section('content')
 <body class="blue lighten-5">
+  <hr>
+    <nav>
+      <div class="nav-wrapper light-blue lighten-1 z-depth-2">
+        <div class="col s12 m12 l12">
+          <a class="breadcrumb"><b>Inventaris</b></a>
+          <a href="/kategori" class="breadcrumb">Kategori</a>
+          <a href="/kategori/{{$kategori->id}}" class="breadcrumb">{{$kategori->nama_kategori}}</a>
+          <a href="/kategori" class="breadcrumb">Edit</a>
+        </div>
+      </div>
+    </nav>
+  <hr>
+
   <div class="container">
-<h3>Kategori Alat & Bahan</h3>
+<!-- <h3>Kategori Alat & Bahan</h3> -->
 <!-- coba -->
 <div class="card-panel s12 m12 l12">
   <h3 class="center blue-text text accent-5">Form Edit:</h3>

@@ -2,11 +2,21 @@
 
 @section('content')
 <body class="blue lighten-5">
-  <h3>Kategori: {{$nama_kategori}}</h3>
-  <hr>
+<hr>
+  <nav>
+    <div class="nav-wrapper light-blue lighten-1 z-depth-2">
+      <div class="col s12 m12 l12">
+        <a class="breadcrumb"><b>Inventaris</b></a>
+        <a href="/kategori" class="breadcrumb">Kategori</a>
+        <a href="/kategori/{{$kategori->id}}" class="breadcrumb">{{$kategori->nama_kategori}}</a>
+      </div>
+    </div>
+  </nav>
+<hr>
+  <!-- HEADER TETAP ATAS + BREADCRUMP-->
+
 <!-- <div class="container"> -->
 <!-- coba -->
-<h4>Daftar Alat Bahan</h4>
 <div class="row">
 <ul>
   @foreach($alatbahans as $alatbahan)
@@ -15,16 +25,16 @@
       <div class="card horizontal">
           <img src="http://lorempixel.com/100/190/nature/6" class="circle responsive-img materialboxed">
         <div class="card-stacked">
-        <div class="card-content">
-          <h5>{!!str_limit($alatbahan->nama_alatbahan,18)!!}</h5>
-          <label>{{$alatbahan->stok}}</label><br>
-          <label>{{$alatbahan->dipinjam}}</label><br>
-          <label>{{$alatbahan->total}}</label>
+          <div class="card-content">
+            <h5>{!!str_limit($alatbahan->nama_alatbahan,18)!!}</h5>
+            <label>Total: {{$alatbahan->total}}</label><br>
+            <label>Stok: {{$alatbahan->stok}}</label><br>
+            <label>Dipinjam: {{$alatbahan->dipinjam}}</label><br>
+          </div>
+          <div class="card-action">
+            <a href="/alatbahan/{{$alatbahan->id}}" class="btn waves-effect waves-light light-blue darken-1 right">Detail</a>
+          </div>
         </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
-        </div>
-      </div>
       </div>
     </div>
   </li>
