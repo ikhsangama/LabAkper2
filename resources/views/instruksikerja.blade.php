@@ -2,13 +2,20 @@
 
 @section('content')
 <body class="blue lighten-5">
-  <div class="container">
-      <div class="row">
-          <div class="col-md-8 col-md-offset-2">
-              <div class="">
-                  <div class=""><h2>Daftar Instruksi Kerja</h2>
-                    <a href="{{ url('/instruksikerja/create') }}" class="btn waves-effect waves-light">Tambah</a>
-                    </div>
+  <hr>
+    <nav>
+      <div class="nav-wrapper blue accent-3 z-depth-2">
+        <div class="col s12 m12 l12">
+          <a href="/" class="breadcrumb"><i class="material-icons">home</i></a>
+          <a class="breadcrumb"><b>Dokumen</b></a>
+          <a href="/instruksikerja" class="breadcrumb">Instruksi Kerja</a>
+        </div>
+      </div>
+    </nav>
+  <hr>
+<div class="">
+  <a href="{{ url('/instruksikerja/create') }}" class="btn waves-effect waves-light indigo lighten-1">Tambah</a>
+</div>
 <!-- <hr> -->
 @if(session('success'))
 <div class="card-panel green lighten-4">
@@ -28,11 +35,11 @@
     <div class="collapsible-body collection">
         @foreach($ik_alat as $alat)
         <div class="collection-item"><strong>{{$alat->judul}}</strong>
-          <a href="instruksikerja/{{$alat->id}}" class="secondary-content tooltipped" data-tooltip="Detail"><i class="material-icons">zoom_in</i></a>
+          <a href="instruksikerja/{{$alat->id}}" class="secondary-content tooltipped" data-tooltip="Detail"><i class="material-icons indigo-text text-lighten-1">zoom_in</i></a>
 
           @if(Auth::user()->isAdmin(true))
-          <a href="instruksikerja/{{$alat->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
-          <a href="#{{$alat->id}}" class="secondary-content tooltipped" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+          <a href="instruksikerja/{{$alat->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons green-text text-lighten-1">edit</i></a>
+          <a href="#{{$alat->id}}" class="secondary-content tooltipped" data-tooltip="Delete"><i class="material-icons red-text text-lighten-1">delete</i></a>
           <div id="{{$alat->id}}" class="modal red lighten-5">
             <div class="modal-content">
               <b>PERINGATAN</b><br>
@@ -56,11 +63,11 @@
     <div class="collapsible-body collection">
       @foreach($ik_anak as $anak)
       <div class="collection-item"><strong>{{$anak->judul}}</strong>
-        <a href="instruksikerja/{{$anak->id}}" class="secondary-content tooltipped" data-tooltip="Detail"><i class="material-icons">zoom_in</i></a>
+        <a href="instruksikerja/{{$anak->id}}" class="secondary-content tooltipped" data-tooltip="Detail"><i class="material-icons indigo-text text-lighten-1">zoom_in</i></a>
 
         @if(Auth::user()->isAdmin(true))
-        <a href="instruksikerja/{{$anak->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
-        <a href="#{{$anak->id}}" class="secondary-content tooltipped" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+        <a href="instruksikerja/{{$anak->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons green-text text-lighten-1">edit</i></a>
+        <a href="#{{$anak->id}}" class="secondary-content tooltipped" data-tooltip="Delete"><i class="material-icons red-text text-lighten-1">delete</i></a>
         <div id="{{$anak->id}}" class="modal red lighten-5">
           <div class="modal-content">
             <b>PERINGATAN</b><br>
@@ -84,11 +91,11 @@
   <div class="collapsible-body collection">
     @foreach($ik_dasar as $dasar)
     <div class="collection-item"><strong>{{$dasar->judul}}</strong>
-      <a href="instruksikerja/{{$dasar->id}}" class="secondary-content tooltipped" data-tooltip="Detail"><i class="material-icons">zoom_in</i></a>
+      <a href="instruksikerja/{{$dasar->id}}" class="secondary-content tooltipped" data-tooltip="Detail"><i class="material-icons indigo-text text-lighten-1">zoom_in</i></a>
 
       @if(Auth::user()->isAdmin(true))
-      <a href="instruksikerja/{{$dasar->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
-      <a href="#{{$dasar->id}}" class="secondary-content tooltipped" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+      <a href="instruksikerja/{{$dasar->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons green-text text-lighten-1">edit</i></a>
+      <a href="#{{$dasar->id}}" class="secondary-content tooltipped" data-tooltip="Delete"><i class="material-icons red-text text-lighten-1">delete</i></a>
       <div id="{{$dasar->id}}" class="modal red lighten-5">
         <div class="modal-content">
           <b>PERINGATAN</b><br>
@@ -112,11 +119,11 @@
   <div class="collapsible-body collection">
     @foreach($ik_maternitas as $maternitas)
     <div class="collection-item"><strong>{{$maternitas->judul}}</strong>
-      <a href="instruksikerja/{{$alat->id}}" class="secondary-content tooltipped" data-tooltip="Detail"><i class="material-icons">zoom_in</i></a>
+      <a href="instruksikerja/{{$alat->id}}" class="secondary-content tooltipped" data-tooltip="Detail"><i class="material-icons indigo-text text-lighten-1">zoom_in</i></a>
 
       @if(Auth::user()->isAdmin(true))
-      <a href="instruksikerja/{{$maternitas->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
-      <a href="#{{$maternitas->id}}" class="secondary-content tooltipped" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+      <a href="instruksikerja/{{$maternitas->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons green-text text-lighten-1">edit</i></a>
+      <a href="#{{$maternitas->id}}" class="secondary-content tooltipped" data-tooltip="Delete"><i class="material-icons red-text text-lighten-1">delete</i></a>
       <div id="{{$maternitas->id}}" class="modal red lighten-5">
         <div class="modal-content">
           <b>PERINGATAN</b><br>
@@ -140,11 +147,11 @@
   <div class="collapsible-body collection">
     @foreach($ik_bedah as $bedah)
     <div class="collection-item"><strong>{{$bedah->judul}}</strong>
-      <a href="instruksikerja/{{$bedah->id}}" class="secondary-content tooltipped" data-tooltip="Detail"><i class="material-icons">zoom_in</i></a>
+      <a href="instruksikerja/{{$bedah->id}}" class="secondary-content tooltipped" data-tooltip="Detail"><i class="material-icons indigo-text text-lighten-1">zoom_in</i></a>
 
       @if(Auth::user()->isAdmin(true))
-      <a href="instruksikerja/{{$bedah->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
-      <a href="#{{$bedah->id}}" class="secondary-content tooltipped" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+      <a href="instruksikerja/{{$bedah->id}}/edit" class="secondary-content tooltipped" data-tooltip="Edit"><i class="material-icons green-text text-lighten-1">edit</i></a>
+      <a href="#{{$bedah->id}}" class="secondary-content tooltipped" data-tooltip="Delete"><i class="material-icons red-text text-lighten-1">delete</i></a>
       <div id="{{$bedah->id}}" class="modal red lighten-5">
         <div class="modal-content">
           <b>PERINGATAN</b><br>
@@ -163,10 +170,10 @@
 </li>
 </ul>
 <!-- akhircoba -->
-              </div>
-          </div>
-      </div>
-  </div>
+
+
+
+
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="{{asset('js/materialize.js')}}"></script>

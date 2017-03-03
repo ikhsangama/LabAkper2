@@ -311,7 +311,7 @@
         <td><label>{{$kunci->created_at}}</label></td>
         <td><label>{{$kunci->updated_at}}</label></td>
         <td>
-          <a href="#del{{$kunci->id}}" class="tooltipped" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+          <a href="#del{{$kunci->id}}" class="tooltipped" data-tooltip="Hapus"><i class="material-icons">delete</i></a>
           <div id="del{{$kunci->id}}" class="modal red lighten-5">
             <div class="modal-content">
               <b>PERINGATAN</b><br>
@@ -321,7 +321,7 @@
             </div>
           </div>
           <a href="pengguna/{{$kunci->id}}/edit" class="tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
-          <a href="#lock{{$kunci->id}}" class="tooltipped" data-tooltip="Kunci"><i class="material-icons">lock_open</i></a>
+          <a href="#lock{{$kunci->id}}" class="tooltipped" data-tooltip="Buka Kunci"><i class="material-icons">lock_open</i></a>
           <div id="lock{{$kunci->id}}" class="modal red lighten-5">
             <div class="modal-content">
               <b>PERINGATAN</b><br>

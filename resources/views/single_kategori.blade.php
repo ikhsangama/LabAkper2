@@ -2,17 +2,18 @@
 
 @section('content')
 <body class="blue lighten-5">
-<hr>
-  <nav>
-    <div class="nav-wrapper light-blue lighten-1 z-depth-2">
-      <div class="col s12 m12 l12">
-        <a class="breadcrumb"><b>Inventaris</b></a>
-        <a href="/kategori" class="breadcrumb">Kategori</a>
-        <a href="/kategori/{{$kategori->id}}" class="breadcrumb">{{$kategori->nama_kategori}}</a>
+  <hr>
+    <nav>
+      <div class="nav-wrapper blue accent-3 lighten-1 z-depth-2">
+        <div class="col s12 m12 l12">
+          <a href="/" class="breadcrumb"><i class="material-icons">home</i></a>
+          <a class="breadcrumb"><b>Inventaris</b></a>
+          <a href="/kategori" class="breadcrumb">Kategori</a>
+          <a href="/kategori" class="breadcrumb">{{$kategori->nama_kategori}}</a>
+        </div>
       </div>
-    </div>
-  </nav>
-<hr>
+    </nav>
+  <hr>
   <!-- HEADER TETAP ATAS + BREADCRUMP-->
 
 <!-- <div class="container"> -->
@@ -32,7 +33,7 @@
             <label>Dipinjam: {{$alatbahan->dipinjam}}</label><br>
           </div>
           <div class="card-action">
-            <a href="/alatbahan/{{$alatbahan->id}}" class="btn waves-effect waves-light light-blue darken-1 right">Detail</a>
+            <a href="/alatbahan/{{$alatbahan->id}}" class="btn waves-effect waves-light indigo lighten-1 right">Detail</a>
           </div>
         </div>
       </div>

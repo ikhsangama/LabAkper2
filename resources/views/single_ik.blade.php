@@ -2,8 +2,19 @@
 
 @section('content')
 <body class="blue lighten-5">
+  <hr>
+    <nav>
+      <div class="nav-wrapper blue accent-3 z-depth-2">
+        <div class="col s12 m12 l12">
+          <a href="/" class="breadcrumb"><i class="material-icons">home</i></a>
+          <a class="breadcrumb"><b>Dokumen</b></a>
+          <a href="/instruksikerja" class="breadcrumb">Instruksi Kerja</a>
+          <a href="/instruksikerja/{$instruksikerja->id}" class="breadcrumb">{!!str_limit($instruksikerja->judul,14)!!}</a>
+        </div>
+      </div>
+    </nav>
+  <hr>
   <div class="container">
-<h3>Instruksi Kerja</h3>
 <!-- coba -->
 <div class="card-panel s12 m12 l12">
   <h5 class="center"><b>{{$instruksikerja->judul}}</b></h5>

@@ -4,7 +4,7 @@
 <body class="blue lighten-5">
   <hr>
     <nav>
-      <div class="nav-wrapper light-blue lighten-1 z-depth-2">
+      <div class="nav-wrapper blue accent-3 z-depth-2">
         <div class="col s12 m12 l12">
           <a class="breadcrumb"><b>Inventaris</b></a>
           <a href="/kategori" class="breadcrumb">Kategori</a>
@@ -50,7 +50,7 @@
         <input type="hidden" name="_method" value="PUT">
           <div class="col l4 m4 s4 offset-l8 offset-m8 offset-s8">
             {{ csrf_field() }}
-              <input type="submit" class="btn" value="Edit Kategori">
+              <input type="submit" class="btn indigo lighten-1" value="Edit Kategori">
           </div>
       </div>
     </div>

@@ -5,11 +5,11 @@
 
   <hr>
     <nav>
-      <div class="nav-wrapper light-blue lighten-1 z-depth-2">
+      <div class="nav-wrapper blue accent-3 lighten-1 z-depth-2">
         <div class="col s12 m12 l12">
+          <a href="/" class="breadcrumb"><i class="material-icons">home</i></a>
           <a class="breadcrumb"><b>Inventaris</b></a>
           <a href="/kategori" class="breadcrumb">Kategori</a>
-          <a href="/kategori" class="breadcrumb">Edit</a>
         </div>
       </div>
     </nav>
@@ -25,9 +25,8 @@
     <!-- HEADER TETAP ATAS + BREADCRUMP-->
     <div class="row">
         <div class="">
-          <a href="{{ url('/kategori') }}" class="flat-btn waves-effect waves-light"><i class="material-icons">refresh</i></a>
           @if(Auth::user()->isAdmin(true))
-          <a href="{{ url('/kategori/create') }}" class="btn waves-effect waves-light">Tambah</a>
+          <a href="{{ url('/kategori/create') }}" class="btn waves-effect waves-light indigo lighten-1">Tambah</a>
           @endif
         </div>
 
@@ -61,7 +60,7 @@
           <td><label>{{$kategori->updated_at}}</label></td>
           <td>
             @if(Auth::user()->isAdmin(true))
-            <a href="#del{{$kategori->id}}" class="tooltipped" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+            <a href="#del{{$kategori->id}}" class="tooltipped" data-tooltip="Delete"><i class="material-icons red-text text-lighten-1">delete</i></a>
             <div id="del{{$kategori->id}}" class="modal red lighten-5">
               <div class="modal-content">
                 <b>PERINGATAN</b><br>
@@ -70,9 +69,9 @@
                 <a href="kategori/{{$kategori->id}}/delete" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
               </div>
             </div>
-            <a href="kategori/{{$kategori->id}}/edit" class="tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
+            <a href="kategori/{{$kategori->id}}/edit" class="tooltipped" data-tooltip="Edit"><i class="material-icons green-text text-lighten-1">edit</i></a>
             @endif
-            <a href="kategori/{{$kategori->id}}" class="tooltipped" data-tooltip="Detail"><i class="material-icons">zoom_in</i></a>
+            <a href="kategori/{{$kategori->id}}" class="tooltipped" data-tooltip="Detail"><i class="material-icons indigo-text text-lighten-1">zoom_in</i></a>
           </td>
         </tr>@endforeach
       </tbody>
