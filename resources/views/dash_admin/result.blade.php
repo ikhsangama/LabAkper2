@@ -1,5 +1,5 @@
-@extends('dash_admin.pengguna')
-@section('dash_admin.search')
+@extends('layouts.app')
+@section('content')
 
 <div class="section">
 @if (count($hasil))

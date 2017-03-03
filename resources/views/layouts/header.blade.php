@@ -72,6 +72,9 @@
           <li>
             <li><a href="{{ url('/dashboard') }}"><b>Dashboard</b></a></li>
           </li>
+          <li>
+            <li><a href="{{ url('/pengguna') }}"><b>Pengguna</b></a></li>
+          </li>
       @endif
           <li>
             <li><a class="dropdown-button" href="#!" data-activates="dropdown3" data-beloworigin="true" data-hover="true"><b>Dokumen</b></a></li>

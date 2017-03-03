@@ -3,10 +3,19 @@
 @section('content')
 <body class="blue lighten-5">
 
+<hr>
+  <nav>
+    <div class="nav-wrapper blue accent-3 lighten-1 z-depth-2">
+      <div class="col s12 m12 l12">
+        <a href="/" class="breadcrumb"><i class="material-icons">home</i></a>
+        <a href="/pengguna" class="breadcrumb"><b>Pengguna</b></a>
+      </div>
+    </div>
+  </nav>
+<hr>
     <div class="row">
-        <div class=""><h2>Daftar Pengguna</h2>
-          <a href="{{ url('/pengguna') }}" class="flat-btn waves-effect waves-light"><i class="material-icons">refresh</i></a>
-          <a href="{{ url('/pengguna/create') }}" class="btn waves-effect waves-light light-blue darken-1">Tambah</a>
+        <div class="">
+          <a href="{{ url('/pengguna/create') }}" class="btn waves-effect waves-light indigo lighten-1">Tambah</a>
         </div>
 <!-- <hr> -->
 @if(session('success'))
