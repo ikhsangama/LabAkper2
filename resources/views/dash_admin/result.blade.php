@@ -33,7 +33,7 @@
         <td><label>{{$data->created_at}}</label></td>
         <td><label>{{$data->updated_at}}</label></td>
         <td>
-          <a href="#del{{$data->id}}" class="tooltipped" data-tooltip="Delete"><i class="material-icons">delete</i></a>
+          <a href="#del{{$data->id}}" class="tooltipped" data-tooltip="Delete"><i class="material-icons red-text text-lighten-1">delete</i></a>
           <div id="del{{$data->id}}" class="modal red lighten-5">
             <div class="modal-content">
               <b>PERINGATAN</b><br>
@@ -42,16 +42,8 @@
               <a href="pengguna/{{$data->id}}/delete" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
             </div>
           </div>
-          <a href="pengguna/{{$data->id}}/edit" class="tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
-          <a href="#lock{{$data->id}}" class="tooltipped" data-tooltip="Kunci"><i class="material-icons">lock_outline</i></a>
-          <div id="lock{{$data->id}}" class="modal red lighten-5">
-            <div class="modal-content">
-              <b>PERINGATAN</b><br>
-              <p>Pengguna <b>{{$data->nama}}</b> akan dikunci?</p><br><hr>
-              <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
-              <a href="pengguna/{{$data->id}}/lock" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
-            </div>
-          </div>
+          <a href="pengguna/{{$data->id}}/edit" class="tooltipped" data-tooltip="Edit"><i class="material-icons green-text text-lighten-1">edit</i></a>
+          <a href="pengguna/{{$blm_ver->id}}" class="tooltipped" data-tooltip="Detail"><i class="material-icons indigo-text text-lighten-1">zoom_in</i></a>
         </td>
       </tr>@endforeach
     </tbody>
