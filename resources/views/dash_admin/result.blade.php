@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+<body class="blue lighten-5">
 <div class="section">
 @if (count($hasil))
 <h5>Hasil pencarian : <b>{{$query}}</b></h5>
@@ -61,5 +61,5 @@
 <h5>Pencarian <b>{{$query}}</b> tidak ditemukan</h5>
 @endif
 </div>
-
+</body>
 @endsection

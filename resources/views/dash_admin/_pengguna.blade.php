@@ -94,11 +94,18 @@
                   <p>Pengguna <b>{{$dosen->nama}}</b> akan dihapus?</p><br><hr>
                   <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
                   <a href="pengguna/{{$dosen->id}}/delete" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
-                  <br>
                 </div>
               </div>
               <a href="pengguna/{{$dosen->id}}/edit" class="tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
-              <a href="pengguna/{{$dosen->id}}" class="tooltipped" data-tooltip="Detail"><i class="material-icons">zoom_in</i></a>
+              <a href="#lock{{$dosen->id}}" class="tooltipped" data-tooltip="Kunci"><i class="material-icons">lock_outline</i></a>
+              <div id="lock{{$dosen->id}}" class="modal red lighten-5">
+                <div class="modal-content">
+                  <b>PERINGATAN</b><br>
+                  <p>Pengguna <b>{{$dosen->nama}}</b> akan dikunci?</p><br><hr>
+                  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
+                  <a href="pengguna/{{$dosen->id}}/lock" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
+                </div>
+              </div>
             </td>
           </tr>@endforeach
         </tbody>
@@ -145,7 +152,6 @@
                 <p>Pengguna <b>{{$mhs_d3->nama}}</b> akan dihapus?</p><br><hr>
                 <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
                 <a href="pengguna/{{$mhs_d3->id}}/delete" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
-                <br>
               </div>
             </div>
             <a href="pengguna/{{$mhs_d3->id}}/edit" class="tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
@@ -156,7 +162,6 @@
                 <p>Pengguna <b>{{$mhs_d3->nama}}</b> akan dikunci?</p><br><hr>
                 <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
                 <a href="pengguna/{{$mhs_d3->id}}/lock" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
-                <br>
               </div>
             </div>
           </td>
@@ -205,7 +210,6 @@
               <p>Pengguna <b>{{$d4->nama}}</b> akan dihapus?</p><br><hr>
               <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
               <a href="pengguna/{{$d4->id}}/delete" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
-              <br>
             </div>
           </div>
           <a href="pengguna/{{$d4->id}}/edit" class="tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
@@ -216,7 +220,6 @@
               <p>Pengguna <b>{{$d4->nama}}</b> akan dikunci?</p><br><hr>
               <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
               <a href="pengguna/{{$d4->id}}/lock" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
-              <br>
             </div>
           </div>
         </td>
@@ -265,11 +268,19 @@
                 <p>Pengguna <b>{{$blm_ver->nama}}</b> akan dihapus?</p><br><hr>
                 <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
                 <a href="pengguna/{{$blm_ver->id}}/delete" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
-                <br>
               </div>
             </div>
             <a href="pengguna/{{$blm_ver->id}}/edit" class="tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
-            <a href="pengguna/{{$blm_ver->id}}" class="tooltipped" data-tooltip="Detail"><i class="material-icons">zoom_in</i></a>
+            <a href="#lock{{$blm_ver->id}}" class="tooltipped" data-tooltip="Verifikasi"><i class="material-icons">verified_user</i></a>
+            <div id="lock{{$blm_ver->id}}" class="modal red lighten-5">
+              <div class="modal-content">
+                <b>PERINGATAN</b><br>
+                <p>Pengguna <b>{{$blm_ver->nama}}</b> akan diverifikasi secara langsung?
+                <br>jika <b>{{$blm_ver->nama}}</b> lupa password, link untuk reset password akan dikirimkan di <b>{{$blm_ver->email}}</b><hr></p>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
+                <a href="pengguna/{{$blm_ver->id}}/verify" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
+              </div>
+            </div>
           </td>
         </tr>@endforeach
       </tbody>
@@ -316,7 +327,6 @@
               <p>Pengguna <b>{{$kunci->nama}}</b> akan dihapus?</p><br><hr>
               <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
               <a href="pengguna/{{$kunci->id}}/delete" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
-              <br>
             </div>
           </div>
           <a href="pengguna/{{$kunci->id}}/edit" class="tooltipped" data-tooltip="Edit"><i class="material-icons">edit</i></a>
@@ -327,7 +337,6 @@
               <p>Perbolehkan <b>{{$kunci->nama}}</b> untuk meminjam?</p><br><hr>
               <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat right"><b>Batal</b></a>
               <a href="pengguna/{{$kunci->id}}/unlock" class=" modal-action modal-close waves-effect waves-red btn-flat right"><b>Setuju</b></a>
-              <br>
             </div>
           </div>
         </td>

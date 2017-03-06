@@ -143,15 +143,9 @@ class InstruksiKerjaController extends Controller
     {
         //hapus berdasarkan ID
         $instruksikerja = InstruksiKerja::find($id);
+        File::delete(public_path('storage/instruksikerja/' .$instruksikerja->file_ik));
+        dd($instruksikerja->file_ik);
         $instruksikerja->delete();
         return redirect ('/instruksikerja')->with('alert', 'Data '. $instruksikerja->judul .' pada kategori: '. $instruksikerja->kategori_ik . ' telah dihapus');
-    }
-    //DOWNLOAD
-    public function download($id)
-    {
-      $instruksikerja = InstruksiKerja::find($id);
-      $fileName = $instruksikerja->file_ik;
-      // dd($instruksikerja);
-      return view('single_ik', ['instruksikerja' => $instruksikerja]);
     }
 }

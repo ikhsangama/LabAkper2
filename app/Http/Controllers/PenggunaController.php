@@ -237,6 +237,17 @@ class PenggunaController extends Controller
         // "{{ asset('storage/ktm/' .$pengguna->ktm) }}"
     }
 
+    public function unverify($id)
+    {
+      $pengguna = User::find($id);
+      $pengguna->status = 0;
+      $pengguna->save();
+      if($pengguna->status<>1){
+        Mail::to($pengguna->email)->send(new userRegistered($pengguna));
+      }
+      return redirect ('/pengguna')->with('success', 'alert '. $pengguna->nama .' telah di-unverifikasi, silahkan cek email ' . $pengguna->email . 'untuk verifikasi');
+    }
+
     public function search(Request $request)
     {
         $query = $request->get('q');

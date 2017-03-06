@@ -35,6 +35,7 @@ Route::group(['middleware' => 'admin'], function(){
   Route::get('/pengguna/{id}/lock', 'PenggunaController@lock');
   Route::get('/pengguna/{id}/unlock', 'PenggunaController@unlock');
   Route::get('/pengguna/{id}/verify', 'PenggunaController@verify');
+  Route::get('/pengguna/{id}/unverify', 'PenggunaController@unverify');
   Route::get('/pengguna/{id}', 'PenggunaController@show');
   Route::PUT('/pengguna/{id}', 'PenggunaController@update');
   Route::post('/pengguna', 'PenggunaController@store');
