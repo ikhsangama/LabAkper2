@@ -57,7 +57,7 @@
             </a>
           </li>
           <li>
-            <a href="{{ url('/daftarkategori') }}">
+            <a href="{{ url('/alatbahan') }}">
                 Alat & Bahan
             </a>
           </li>

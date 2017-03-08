@@ -46,6 +46,7 @@ Route::group(['middleware' => 'admin'], function(){
   Route::get('/kategori/{id}/delete', 'KategoriController@destroy');
   Route::get('/kategori/{id}', 'KategoriController@show');
   Route::PUT('/kategori/{id}', 'KategoriController@update');
+  //alatbahan
 });
 
 Auth::routes();
@@ -54,7 +55,8 @@ Route::get('/sop', 'SOPController@index');
 Route::get('/kategori', 'KategoriController@index');
 Route::get('/peminjaman', 'PeminjamanController@index');
 Route::get('/instruksikerja/{id}', 'InstruksiKerjaController@show');
-Route::get('/alatbahan/{$id}', 'AlatBahanController@show');
+Route::get('/alatbahan', 'AlatBahanController@index');
+Route::get('/alatbahan/{id}', 'AlatBahanController@show');
 //instruksikerja
 Route::get('/instruksikerja', 'InstruksiKerjaController@index');
 // Route::get('/instruksikerja/{id}', 'InstruksiKerjaController@show');

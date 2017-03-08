@@ -15,7 +15,7 @@ class KategoriController extends Controller
      */
     public function index()
     {
-      $kategoris = Kategori::orderBy('nama_kategori')->paginate(20);
+      $kategoris = Kategori::orderBy('nama_kategori')->paginate(10);
       return view('kategori', [
       'kategoris'=>$kategoris,
     ]);

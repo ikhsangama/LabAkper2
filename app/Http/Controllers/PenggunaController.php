@@ -251,22 +251,9 @@ class PenggunaController extends Controller
     public function search(Request $request)
     {
         $query = $request->get('q');
-        $hasil = User::where('nama', 'LIKE', '%' . $query . '%')->paginate();
-        //tambah
-        $penggunas = User::all();
-        // dd($penggunas);
-        $list_dosen = User::where('level', 'Dosen')->where('status',1)->where('setuju',1)->orderBy('nim')->paginate(1);
-        $list_mhs_d3 = User::where('level', 'D III')->where('status',1)->where('setuju',1)->orderBy('nim')->paginate(1);
-        $list_mhs_d4 = User::where('level', 'D IV')->where('status',1)->where('setuju',1)->orderBy('nim')->paginate(1);
-        $list_blm_ver = User::where('status', 0)->orderBy('nim')->paginate(1);
-        $list_terkunci = User::where('setuju', 0)->where('status',1)->orderBy('nim')->paginate(1);
+        $hasil = User::where('nama', 'LIKE', '%' . $query . '%')->paginate(1);
 
-        return view('dash_admin/result', [
-        'dosens'=>$list_dosen,
-        'mhs_d3s'=>$list_mhs_d3,
-        'mhs_d4s'=>$list_mhs_d4,
-        'blm_verifs'=>$list_blm_ver,
-        'terkuncis'=>$list_terkunci,
+        return view('dash_admin/resultpengguna', [
         'hasil'=>$hasil,
         'query'=>$query
       ]);

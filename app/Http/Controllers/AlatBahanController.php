@@ -6,7 +6,7 @@ use App\Kategori;
 use App\AlatBahan;
 use Illuminate\Http\Request;
 
-class KategoriController extends Controller
+class AlatBahanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class KategoriController extends Controller
      */
     public function index()
     {
-      $kategoris = Kategori::orderBy('nama_kategori')->paginate(20);
-      return view('kategori', [
-      'kategoris'=>$kategoris,
+      $alatbahans = AlatBahan::orderBy('nama_alatbahan')->paginate(10);
+      return view('alatbahan', [
+      'alatbahans'=>$alatbahans,
     ]);
     }
 
@@ -58,14 +58,13 @@ class KategoriController extends Controller
      */
     public function show($id)
     {
-        $alatbahans = AlatBahan::where('id_kategori',$id)->paginate(2);
-        $nama_kategori = Kategori::find($id)->nama_kategori;
-        $kategori = Kategori::find($id);
+      $alatbahan = AlatBahan::find($id);
+        // $alatbahans = AlatBahan::find('id_kategori',$id)->paginate(2);
+        // $kategori = Kategori::find($id);
         // dd($kategori, $nama_kategori);
-        return view ('single_kategori', [
-        'alatbahans'=> $alatbahans,
-        'nama_kategori' => $nama_kategori,
-        'kategori' => $kategori
+        return view ('single_alatbahan', [
+        'alatbahan'=> $alatbahan,
+        // 'kategori' => $kategori
       ]);
     }
 

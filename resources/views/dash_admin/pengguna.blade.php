@@ -303,7 +303,7 @@
             </div>
           </div>
           <a href="pengguna/{{$kunci->id}}/edit" class="tooltipped" data-tooltip="Edit"><i class="material-icons green-text text-lighten-1">edit</i></a>
-          <a href="pengguna/{{$blm_ver->id}}" class="tooltipped" data-tooltip="Detail"><i class="material-icons indigo-text text-lighten-1">zoom_in</i></a>
+          <a href="pengguna/{{$kunci->id}}" class="tooltipped" data-tooltip="Detail"><i class="material-icons indigo-text text-lighten-1">zoom_in</i></a>
         </td>
       </tr>@endforeach
     </tbody>
