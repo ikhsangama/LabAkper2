@@ -2,7 +2,6 @@
 
 @section('content')
 <body class="blue lighten-5">
-
   <hr>
     <nav>
       <div class="nav-wrapper input-field blue accent-3 lighten-1 z-depth-2">
@@ -20,6 +19,11 @@
         <div class="col s6 m6 l6">
           <table class="bordered responsive-table left-align">
             <tbody>
+              <tr>
+                <td>Kode AlatBahan</td>
+                <td>:</td>
+                <td>{{$alatbahan->kode_alatbahan}}</td>
+              </tr>
               <tr>
                 <td>Nama</td>
                 <td>:</td>

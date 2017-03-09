@@ -8,7 +8,7 @@
         <div class="col s12 m12 l12">
           <a href="/" class="breadcrumb"><i class="material-icons">home</i></a>
           <a class="breadcrumb"><b>Dokumen</b></a>
-          <a href="/instruksikerja" class="breadcrumb">Instruksi Kerja</a>
+          <a href="/instruksikerja" class="breadcrumb">Inst. Kerja</a>
         </div>
       </div>
     </nav>

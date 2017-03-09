@@ -28,7 +28,7 @@ class AlatBahanController extends Controller
      */
     public function create()
     {
-        return view ('dash_admin/create_kategori');
+        return view ('dash_admin/create_alatbahan');
     }
 
     /**

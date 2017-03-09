@@ -13,6 +13,10 @@
       </div>
     </nav>
   <hr>
+
+  <div class="">
+    <a href="{{ url('/alatbahan/create') }}" class="btn waves-effect waves-light indigo lighten-1">Tambah</a>
+  </div>
   <!-- HEADER TETAP ATAS + BREADCRUMP-->
 
 <!-- <div class="container"> -->

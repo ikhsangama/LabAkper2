@@ -2,8 +2,19 @@
 
 @section('content')
 <body class="blue lighten-5">
+  <hr>
+    <nav>
+      <div class="nav-wrapper input-field blue accent-3 lighten-1 z-depth-2">
+        <div class="col s12 m12 l12">
+          <a href="/" class="breadcrumb"><i class="material-icons">home</i></a>
+          <a class="breadcrumb"><b>Inventaris</b></a>
+          <a href="/alatbahan" class="breadcrumb"><b>Kategori</b></a>
+          <a href="/alatbahan/create" class="breadcrumb">Tambah</a>
+        </div>
+      </div>
+    </nav>
+  <hr>
   <div class="container">
-<h3>Kategori Alat & Bahan</h3>
 <!-- coba -->
 <div class="card-panel s12 m12 l12">
   <h3 class="center blue-text text accent-5">Form Tambah:</h3>

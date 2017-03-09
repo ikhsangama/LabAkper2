@@ -47,6 +47,7 @@ Route::group(['middleware' => 'admin'], function(){
   Route::get('/kategori/{id}', 'KategoriController@show');
   Route::PUT('/kategori/{id}', 'KategoriController@update');
   //alatbahan
+  Route::get('/alatbahan/create', 'AlatBahanController@create');
 });
 
 Auth::routes();
