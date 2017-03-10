@@ -14,22 +14,20 @@
       </div>
     </nav>
   <hr>
-  <div class="container">
 <!-- coba -->
-<div class="card-panel s12 m12 l12">
+<div class="card-panel col s12 m12 l12">
   <h5 class="center"><b>{{$instruksikerja->judul}}</b></h5>
   <p>Kategori :{{$instruksikerja->kategori_ik}}<br>
   Dibuat :{{$instruksikerja->created_at}}<br>
   Diupdate :{{$instruksikerja->updated_at}}</p>
 <hr>
 <!-- coba -->
-        <div class="center">
-        <iframe src="{{ asset('storage/instruksikerja/' .$instruksikerja->file_ik) }}"
-        style="width:600px; height:700px;" frameborder="0"></iframe>
-        </div>
-<!-- akhircoba -->
+    <div class="center col s12 m12 l12">
+    <iframe src="{{ asset('storage/instruksikerja/' .$instruksikerja->file_ik) }}"
+    style="max-width:100%; width:100%; height:700px;" frameborder="0"></iframe>
     </div>
   </div>
+<!-- akhircoba -->
 
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

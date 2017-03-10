@@ -133,7 +133,7 @@
             <div class="form-group">
                 <div class="col l4 m4 s4 offset-l8 offset-m8 offset-s8">
                   {{ csrf_field() }}
-                    <input type="submit" class="btn" value="Tambah Pengguna">
+                    <input type="submit" class="btn" value="Tambah">
                 </div>
             </div>
           </div>

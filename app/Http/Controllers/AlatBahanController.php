@@ -59,11 +59,10 @@ class AlatBahanController extends Controller
     public function show($id)
     {
       $alatbahan = AlatBahan::find($id);
-        // $alatbahans = AlatBahan::find('id_kategori',$id)->paginate(2);
-        // $kategori = Kategori::find($id);
-        // dd($kategori, $nama_kategori);
+      $nama_kategori = Kategori::find($alatbahan->id_kategori)->nama_kategori;
         return view ('single_alatbahan', [
         'alatbahan'=> $alatbahan,
+        'nama_kategori' => $nama_kategori
         // 'kategori' => $kategori
       ]);
     }

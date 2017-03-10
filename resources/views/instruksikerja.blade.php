@@ -13,9 +13,9 @@
       </div>
     </nav>
   <hr>
-<div class="">
+  @if(Auth::user()->isAdmin(true))
   <a href="{{ url('/instruksikerja/create') }}" class="btn waves-effect waves-light indigo lighten-1">Tambah</a>
-</div>
+  @endif
 <!-- <hr> -->
 @if(session('success'))
 <div class="card-panel green lighten-4">

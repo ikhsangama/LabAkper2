@@ -20,7 +20,7 @@
           <table class="bordered responsive-table left-align">
             <tbody>
               <tr>
-                <td>Kode AlatBahan</td>
+                <td>Kode</td>
                 <td>:</td>
                 <td>{{$alatbahan->kode_alatbahan}}</td>
               </tr>
@@ -34,13 +34,41 @@
                   Kategori
                 </td>
                 <td>:</td>
-
+                <td>{{$nama_kategori}}</td>
+              </tr>
+              <tr>
+                <td>
+                  Spesifikasi
+                </td>
+                <td>:</td>
+                <td>{{$alatbahan->spesifikasi}}</td>
+              </tr>
+              <tr>
+                <td>
+                  Stok
+                </td>
+                <td>:</td>
+                <td>{{$alatbahan->stok}}</td>
+              </tr>
+              <tr>
+                <td>
+                  Dipinjam
+                </td>
+                <td>:</td>
+                <td>{{$alatbahan->dipinjam}}</td>
+              </tr>
+              <tr>
+                <td>
+                  Total
+                </td>
+                <td>:</td>
+                <td>{{$alatbahan->total}}</td>
               </tr>
             </tbody>
           </table>
         </div>
         <div class="col s6 m6 l6">
-          <img class="materialboxed" width="300">
+          <img src="http://lorempixel.com/100/190/nature/6" class="responsive-img materialboxed">
         <table>
           <tbody>
             <tr>
@@ -56,6 +84,7 @@
         </div>
       </div>
       <div class="container">
+        @if(Auth::user()->isAdmin(true))
         <br>
         <a href="#del{{$alatbahan->id}}" class="btn waves-effect waves-light red lighten-1">Hapus</a>
         <div id="del{{$alatbahan->id}}" class="modal red lighten-5">
@@ -69,6 +98,7 @@
         </div>
         <a class="btn" href="/alatbahan/{{$alatbahan->id}}/edit">Edit</a>
         <br>
+        @endif
       </div>
 <hr>
 

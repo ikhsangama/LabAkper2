@@ -14,9 +14,9 @@
     </nav>
   <hr>
 
-  <div class="">
+  @if(Auth::user()->isAdmin(true))
     <a href="{{ url('/alatbahan/create') }}" class="btn waves-effect waves-light indigo lighten-1">Tambah</a>
-  </div>
+  @endif
   <!-- HEADER TETAP ATAS + BREADCRUMP-->
 
 <!-- <div class="container"> -->
