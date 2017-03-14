@@ -9,6 +9,7 @@
           <a href="/" class="breadcrumb"><i class="material-icons">home</i></a>
           <a href="/alatbahan" class="breadcrumb"><b>Alat & Bahan</b></a>
           <a href="/alatbahan/{{$alatbahan->id}}" class="breadcrumb">{{$alatbahan->nama_alatbahan}}</a>
+          <a href="/alatbahan/{{$alatbahan->id}}/edit" class="breadcrumb">Edit</a>
         </div>
       </div>
     </nav>
@@ -16,57 +17,25 @@
 <!-- coba -->
     <div class="card-panel s12 m12 l12">
       <div class="row">
-        <div class="col s6 m6 l6">
-          <table class="bordered responsive-table left-align">
-            <tbody>
-              <tr>
-                <td>Kode</td>
-                <td>:</td>
-                <td>{{$alatbahan->kode_alatbahan}}</td>
-              </tr>
-              <tr>
-                <td>Nama</td>
-                <td>:</td>
-                <td>{{$alatbahan->nama_alatbahan}}</td>
-              </tr>
-              <tr>
-                <td>
-                  Kategori
-                </td>
-                <td>:</td>
-                <td>{{$nama_kategori}}</td>
-              </tr>
-              <tr>
-                <td>
-                  Spesifikasi
-                </td>
-                <td>:</td>
-                <td>{{$alatbahan->spesifikasi}}</td>
-              </tr>
-              <tr>
-                <td>
-                  Stok
-                </td>
-                <td>:</td>
-                <td>{{$alatbahan->stok}}</td>
-              </tr>
-              <tr>
-                <td>
-                  Dipinjam
-                </td>
-                <td>:</td>
-                <td>{{$alatbahan->dipinjam}}</td>
-              </tr>
-              <tr>
-                <td>
-                  Total
-                </td>
-                <td>:</td>
-                <td>{{$alatbahan->total}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+
+        <form class="col s12 m12 l12" action="/alatbahan/{{$alatbahan->id}}" method="POST" enctype="multipart/form-data">
+          <div class="row">
+            <!-- mulai form -->
+            <div class="input-field col s6 m6 l6">
+              <i class="material-icons prefix">local_pharmacy</i>
+              <input name="nama" placeholder="Gunakan nama lengkap" id="icon_prefix" type="text" class="validate" autofocus maxlength="30" value="{{$alatbahan->nama_alatbahan}}" required>
+            </div>
+  <!-- validation             -->
+              @if ($errors->has('nama'))
+              <div class="container red-text text accent-3">
+                {{ $errors->first('nama') }}
+              </div>
+              @endif
+  <!-- endvalidation             -->
+            <!-- akhirform -->
+          </div>
+        </form>
+
         <div class="col s6 m6 l6">
           <img src="http://lorempixel.com/100/190/nature/6" class="responsive-img materialboxed">
         <table>

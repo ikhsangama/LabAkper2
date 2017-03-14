@@ -18,7 +18,6 @@
               <i class="material-icons prefix">account_circle</i>
               <input name="nama" placeholder="Gunakan nama lengkap" id="icon_prefix" type="text" class="validate" autofocus maxlength="30" value="{{$pengguna->nama}}" required>
               <label for="icon_prefix">Nama</label>
-
   <!-- validation             -->
               @if ($errors->has('nama'))
               <div class="container red-text text accent-3">
