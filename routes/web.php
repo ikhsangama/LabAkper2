@@ -22,6 +22,7 @@ Route::group(['middleware' => 'admin'], function(){
   Route::get('/dashboard', 'DashboardController@index');
   //instruksikerja
   Route::get('/instruksikerja/create', 'InstruksiKerjaController@create');
+  Route::get('/instruksikerja/chart', 'InstruksiKerjaController@chart');
   Route::post('/instruksikerja', 'InstruksiKerjaController@store');
   Route::get('/instruksikerja/{id}/delete', 'InstruksiKerjaController@destroy');
   Route::get('/instruksikerja/{id}/edit', 'InstruksiKerjaController@edit');

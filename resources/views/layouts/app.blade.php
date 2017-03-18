@@ -5,6 +5,7 @@
 	<title>{{ config('app.name', 'Laravel') }}</title>
 	<link rel="stylesheet" href="{{asset('css/materialize.css')}}">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
 	@section('css')

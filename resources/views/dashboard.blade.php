@@ -25,7 +25,7 @@
                           </div>
                           <div class="card-action">
                             <a href="{{ url('/instruksikerja') }}">Atur</a>
-                            <a href="{{ url('/instruksikerja/grafik') }}">Grafik</a>
+                            <a href="{{ url('/instruksikerja/chart') }}">Grafik</a>
                           </div>
                         </div>
                       </div>

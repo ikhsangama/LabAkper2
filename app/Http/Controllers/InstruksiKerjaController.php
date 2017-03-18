@@ -148,4 +148,57 @@ class InstruksiKerjaController extends Controller
         $instruksikerja->delete();
         return redirect ('/instruksikerja')->with('alert', 'Data '. $instruksikerja->judul .' pada kategori: '. $instruksikerja->kategori_ik . ' telah dihapus');
     }
+
+    // instruksikerja chart
+    public function chart()
+    {
+      $instruksikerjas = InstruksiKerja::all();
+      $count_instruksikerja = $instruksikerjas->count();
+      $count_ik_alat = $instruksikerjas->where('kategori_ik', 'IK Alat')->count();
+      $count_ik_anak = $instruksikerjas->where('kategori_ik', 'IK Kep. Anak')->count();
+      $count_ik_dasar = $instruksikerjas->where('kategori_ik', 'IK Kep. Dasar')->count();
+      $count_ik_maternitas = $instruksikerjas->where('kategori_ik', 'IK Kep. Maternitas')->count();
+      $count_ik_bedah = $instruksikerjas->where('kategori_ik', 'IK Medikal Bedah')->count();
+
+      // Chart
+      $chartjs = app()->chartjs
+       ->name('barChartTest')
+       ->type('bar')
+      //  ->size(['width' => 400, 'height' => 200])
+       ->datasets([
+           [
+               "label" => "IK Alat",
+               'backgroundColor' => ['rgba(233, 30, 99, 0.5)'],
+               'data' => [$count_ik_alat, 0]
+           ],
+           [
+               "label" => "IK Anak",
+               'backgroundColor' => ['rgba(103, 58, 183, 0.5)'],
+               'data' => [$count_ik_anak, 0]
+           ],
+           [
+               "label" => "IK Dasar",
+               'backgroundColor' => ['rgba(33, 150, 243, 0.5)'],
+               'data' => [$count_ik_dasar, 0]
+           ],
+           [
+               "label" => "IK Maternitas",
+               'backgroundColor' => ['rgba(33, 150, 243, 0.5)'],
+               'data' => [$count_ik_maternitas, 0]
+           ],
+           [
+               "label" => "IK Dasar",
+               'backgroundColor' => ['rgba(76, 175, 80, 0.5)'],
+               'data' => [$count_ik_bedah, 0]
+           ],
+       ])
+       ->labels(['Instruksi Kerja'])
+       ->options([
+         'responsive' => true,
+       ]);
+
+// return view('example', compact('chartjs'));
+      // dd("sini");
+      return view('dash_admin/chart_instruksikerja', compact('chartjs'));
+    }
 }

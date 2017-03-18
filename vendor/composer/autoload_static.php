@@ -76,6 +76,7 @@ class ComposerStaticInit10d27ee0d5d14d2be9b5f1d6ac611663
         ),
         'F' => 
         array (
+            'Fx3costa\\LaravelChartJs\\' => 24,
             'Faker\\' => 6,
         ),
         'D' => 
@@ -202,6 +203,10 @@ class ComposerStaticInit10d27ee0d5d14d2be9b5f1d6ac611663
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
         ),
+        'Fx3costa\\LaravelChartJs\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fx3costa/laravelchartjs/src',
+        ),
         'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
@@ -272,11 +277,13 @@ class ComposerStaticInit10d27ee0d5d14d2be9b5f1d6ac611663
     );
 
     public static $classMap = array (
+        'App\\AlatBahan' => __DIR__ . '/../..' . '/app/AlatBahan.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/_AdminController.php',
-        'App\\Http\\Controllers\\AuthAdmin\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthAdmin/AuthController.php',
-        'App\\Http\\Controllers\\AuthAdmin\\PasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthAdmin/PasswordController.php',
+        'App\\Http\\Controllers\\AlatBahanController' => __DIR__ . '/../..' . '/app/Http/Controllers/AlatBahanController.php',
+        'App\\Http\\Controllers\\AuthAdmin\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/_AuthAdmin/AuthController.php',
+        'App\\Http\\Controllers\\AuthAdmin\\PasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/_AuthAdmin/PasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
@@ -286,7 +293,9 @@ class ComposerStaticInit10d27ee0d5d14d2be9b5f1d6ac611663
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\InstruksiKerjaController' => __DIR__ . '/../..' . '/app/Http/Controllers/InstruksiKerjaController.php',
+        'App\\Http\\Controllers\\KategoriController' => __DIR__ . '/../..' . '/app/Http/Controllers/KategoriController.php',
         'App\\Http\\Controllers\\PeminjamanController' => __DIR__ . '/../..' . '/app/Http/Controllers/PeminjamanController.php',
+        'App\\Http\\Controllers\\PenggunaController' => __DIR__ . '/../..' . '/app/Http/Controllers/PenggunaController.php',
         'App\\Http\\Controllers\\SOPController' => __DIR__ . '/../..' . '/app/Http/Controllers/SOPController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -294,6 +303,7 @@ class ComposerStaticInit10d27ee0d5d14d2be9b5f1d6ac611663
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\InstruksiKerja' => __DIR__ . '/../..' . '/app/InstruksiKerja.php',
+        'App\\Kategori' => __DIR__ . '/../..' . '/app/Kategori.php',
         'App\\Mail\\userRegistered' => __DIR__ . '/../..' . '/app/Mail/userRegistered.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -752,6 +762,8 @@ class ComposerStaticInit10d27ee0d5d14d2be9b5f1d6ac611663
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
+        'Fx3costa\\LaravelChartJs\\Builder' => __DIR__ . '/..' . '/fx3costa/laravelchartjs/src/Builder.php',
+        'Fx3costa\\LaravelChartJs\\Providers\\ChartjsServiceProvider' => __DIR__ . '/..' . '/fx3costa/laravelchartjs/src/Providers/ChartjsServiceProvider.php',
         'Hamcrest\\Arrays\\IsArray' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
         'Hamcrest\\Arrays\\IsArrayContaining' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
         'Hamcrest\\Arrays\\IsArrayContainingInAnyOrder' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContainingInAnyOrder.php',
