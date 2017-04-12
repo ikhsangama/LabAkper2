@@ -192,13 +192,11 @@ class InstruksiKerjaController extends Controller
                'data' => [$count_ik_bedah, 0]
            ],
        ])
-       ->labels(['Instruksi Kerja'])
+       ->labels(['Total Instruksi Kerja: '. + $count_instruksikerja])
        ->options([
          'responsive' => true,
        ]);
 
-// return view('example', compact('chartjs'));
-      // dd("sini");
       return view('dash_admin/chart_instruksikerja', compact('chartjs'));
     }
 }

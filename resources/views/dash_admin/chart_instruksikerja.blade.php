@@ -9,13 +9,13 @@
         <div class="col s12 m12 l12">
           <a href="/" class="breadcrumb"><i class="material-icons">home</i></a>
           <a href="/instruksikerja" class="breadcrumb"><b>InstruksiKerja</b></a>
-          <a href="/instruksikerja/chart" class="breadcrumb"><b>Chart</b></a>
+          <a href="/instruksikerja/chart" class="breadcrumb"><b>Grafik</b></a>
         </div>
       </div>
     </nav>
   <hr>
 <!-- coba -->
-<div style="width:75%;">
+<div class="container" style="width:100%;">
 {!! $chartjs->render() !!}
 </div>
 

@@ -79,8 +79,6 @@
   </div>
 </div>
 <!-- divakhirform -->
-
-
     <hr>
     <!-- agar ke route PUT -->
     <input type="hidden" name="_method" value="PUT">
