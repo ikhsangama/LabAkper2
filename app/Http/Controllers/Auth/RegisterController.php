@@ -14,7 +14,8 @@ use Illuminate\Auth\Events\Registered; //event, RegistersUsers
 //
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+//load Models
+use App\Models\Mahasiswa;
 
 
 class RegisterController extends Controller
@@ -59,10 +60,10 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'nama' => 'required|string|max:35',
-            'email' => 'required|email|max:35|unique:pengguna',
+            'email' => 'required|email|max:35|unique:users',
             'password' => 'required|min:3|confirmed',
             'ktm' => 'required|mimes:jpeg,jpg,png|max:4000',
-            'nim' => 'required|unique:pengguna|numeric',
+            'nim' => 'required|unique:users,username|numeric',
             'tatatertib' => 'required',
         ]);
     }
@@ -76,40 +77,54 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
+        // dd($request);
+        $user = new User;
+        $user->username = $request->nim;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->level = $request->level;
+        $user->token=str_random(10);
+        $user->status=0;
+        // dd($request->level==3 || 4);
+        if($request->level==3||4)
+        {
+          $mahasiswa = new Mahasiswa;
+          $mahasiswa->nama = $request->nama;
+          $mahasiswa->nim = $request->nim;
+          //gambar
+          $file       = $request->file('ktm');
+          $fileName   = $request->nim . "-" . time() .".png";
+          $request->file('ktm')->storeAs("public/ktm", $fileName);
+          //endgambar
+          $mahasiswa->ktm = $fileName;
+          $mahasiswa->telp = $request->telp;
+          $mahasiswa->setuju = 0;
+        }
 
-        $pengguna = new User;
-        $pengguna->nama = $request->nama;
-        $pengguna->level = $request->level;
-        $pengguna->email = $request->email;
-        $pengguna->password = bcrypt($request->password);
-        $pengguna->nim = $request->nim;
-        $pengguna->telp = $request->telp;
-        //gambar
-        $file       = $request->file('ktm');
-        $fileName   = $request->nim . "-" . time() .".png";
-        $request->file('ktm')->storeAs("public/ktm", $fileName);
-        //endgambar
-        $pengguna->ktm = $fileName;
-        $pengguna->token=str_random(10);
+        Mail::to($user->email)->send(new userRegistered($user));
 
-        $pengguna->save();
-        Mail::to($pengguna->email)->send(new userRegistered($pengguna));
+        $user->save();
+        $mahasiswa->user_id = $user->id;
+        $mahasiswa->save();
+
         return redirect('/login')->with('warning', 'Silahkan lakukan verifikasi email untuk login');;
     }
 
-    protected function verify_register($token, $id)
+    protected function verify_register($token, $username)
     {
-      $pengguna = User::find($id);
+      $user_id = User::where('username', $username)->first()->id;
+      $user = User::find($user_id);
       //menguji token verifikasi
-      if ($pengguna->token != $token){
+      if ($user->token != $token){
         return redirect('login')->with('warning', 'Verifikasi email tidak cocok');
       }
       //status user jadi 1
-      $pengguna->status =1;
-      $pengguna->setuju =1;
-      $pengguna->save();
+      $user->status =1;
+      //diperbolehkan meminjam
+      // $user->setuju =1;
+      $user->save();
       //login
-      $this->guard()->login($pengguna);
+      $this->guard()->login($user);
       return redirect ('/');
       //redirect
     }

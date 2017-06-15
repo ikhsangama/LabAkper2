@@ -90,14 +90,14 @@
           <!-- endvalidation             -->
         </div>
       </div>
-      <div class="row">
+      <div class="row container ">
         <div class="input-field col s3 m3 l3">
           <!-- Modal Trigger -->
           <a class="waves-effect waves-light" href="#modal1">Stok</a>
         </div>
         <div class="input-field col s3 m3 l3">
           <!-- Modal Trigger -->
-          <a class="waves-effect waves-light" href="#modal1">Stok</a>
+          <a class="waves-effect waves-light" href="#modal1">Dipakai</a>
         </div>
         <div class="input-field col s3 m3 l3">
           <!-- Modal Trigger -->
@@ -143,7 +143,8 @@
     </div>
 <hr>
   </div>
-</div> end class container
+</div>
+<!-- end class container -->
 
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

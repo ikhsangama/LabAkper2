@@ -61,7 +61,6 @@ class PenggunaController extends Controller
      */
     public function store(Request $request)
     {
-
       $this->validate($request, [
         'nama' => 'required',
         'email' => 'required|email|max:35|unique:pengguna',

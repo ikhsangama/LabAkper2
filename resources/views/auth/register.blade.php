@@ -30,8 +30,8 @@
                 <i id="program studi" class="material-icons prefix" required>school</i>
                 <select name="level">
                   <option value="" disabled selected>Pilih</option>
-                  <option value="D III">D III</option>
-                  <option value="D IV">D IV</option>
+                  <option value="3">D III</option>
+                  <option value="4">D IV</option>
                 </select>
                 <label for="icon_prefix">Program Studi</label>
 

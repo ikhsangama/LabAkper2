@@ -53,5 +53,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'admin' => \App\Http\Middleware\RedirectIfAdmin::class, //menuju folder middleware
+        'dosen' => \App\Http\Middleware\RedirectIfDosen::class, //menuju folder middleware
+        'mahasiswa' => \App\Http\Middleware\RedirectIfMahasiswa::class, //menuju folder middleware
     ];
 }

@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/verify/{token}/{id}', 'Auth\RegisterController@verify_register');
+Route::get('/verify/{token}/{username}', 'Auth\RegisterController@verify_register');
 
 //admin
 Route::group(['middleware' => 'admin'], function(){

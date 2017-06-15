@@ -144,7 +144,7 @@ class InstruksiKerjaController extends Controller
         //hapus berdasarkan ID
         $instruksikerja = InstruksiKerja::find($id);
         File::delete(public_path('storage/instruksikerja/' .$instruksikerja->file_ik));
-        dd($instruksikerja->file_ik);
+        // dd($instruksikerja->file_ik);
         $instruksikerja->delete();
         return redirect ('/instruksikerja')->with('alert', 'Data '. $instruksikerja->judul .' pada kategori: '. $instruksikerja->kategori_ik . ' telah dihapus');
     }

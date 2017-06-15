@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    protected $table = 'pengguna';
+    // protected $table = 'pengguna';
     use Notifiable;
 
     /**
@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nama', 'level', 'email', 'password', 'nim', 'ktm', 'telp', 'token', 'status'
+        'username', 'level', 'email', 'password', 'token', 'status'
     ];
 
     /**
@@ -30,9 +30,27 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-      if ($this->level == '1') {
+      if ($this->level == 1) {
         return true; //jika admin
           return false;
       }
+    }
+
+
+    public function isDosen()
+    {
+      if ($this->level == 2) {
+        return true; //jika dosen
+          return false;
+      }
+    }
+
+    public function isMahasiswa()
+    {
+      if ($this->level == 3 || 4) {
+        return true; //jika d3
+          return false;
+      }
+    }
 
 }

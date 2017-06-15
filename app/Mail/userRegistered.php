@@ -11,16 +11,16 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class userRegistered extends Mailable
 {
     use Queueable, SerializesModels;
-    public $pengguna;
+    public $user;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(User $pengguna)
+    public function __construct(User $user)
     {
-        $this->pengguna = $pengguna;
+        $this->user = $user;
     }
 
     /**

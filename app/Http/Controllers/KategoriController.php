@@ -78,7 +78,6 @@ class KategoriController extends Controller
     public function edit($id)
     {
       $kategori = Kategori::find($id);
-// dd($kategori);
       if(!$kategori){
         abort(404);
       }

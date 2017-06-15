@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class RedirectIfAdmin
+class RedirectIfMahasiswa
 {
   /**
    * Handle an incoming request.
@@ -20,7 +20,7 @@ class RedirectIfAdmin
       $user = $request->user();
       // dd($request);
       if ($user) {
-        if ($user->isAdmin()) {
+        if ($user->isMahasiswa()) {
          return $next($request);
         }
       }
