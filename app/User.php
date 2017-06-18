@@ -28,6 +28,23 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    //RELATION
+    public function admin()
+    {
+      return $this->hasOne('App\Models\Admin', 'user_id', 'id');
+    }
+
+    public function dosen()
+    {
+      return $this->hasOne('App\Models\Dosen', 'user_id', 'id');
+    }
+
+    public function mahasiswa()
+    {
+      return $this->hasOne('App\Models\Mahasiswa', 'user_id', 'id');
+    }
+
+    //ROLE
     public function isAdmin()
     {
       if ($this->level == 1) {
@@ -47,8 +64,8 @@ class User extends Authenticatable
 
     public function isMahasiswa()
     {
-      if ($this->level == 3 || 4) {
-        return true; //jika d3
+      if ($this->level == 3) {
+        return true; //jika mahasiswa
           return false;
       }
     }

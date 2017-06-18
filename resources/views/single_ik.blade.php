@@ -9,7 +9,7 @@
           <a href="/" class="breadcrumb"><i class="material-icons">home</i></a>
           <a class="breadcrumb"><b>Dokumen</b></a>
           <a href="/instruksikerja" class="breadcrumb">Instruksi Kerja</a>
-          <a href="/instruksikerja/{$instruksikerja->id}" class="breadcrumb">{!!str_limit($instruksikerja->judul,14)!!}</a>
+          <a href="/instruksikerja/{{$instruksikerja->id}}" class="breadcrumb">{!!str_limit($instruksikerja->judul,14)!!}</a>
         </div>
       </div>
     </nav>
@@ -17,9 +17,13 @@
 <!-- coba -->
 <div class="card-panel col s12 m12 l12">
   <h5 class="center"><b>{{$instruksikerja->judul}}</b></h5>
-  <p>Kategori :{{$instruksikerja->kategori_ik}}<br>
-  Dibuat :{{$instruksikerja->created_at}}<br>
-  Diupdate :{{$instruksikerja->updated_at}}</p>
+  <table>
+    <tr>
+      <td><b>Kategori:</b> {{$instruksikerja->kategori_ik}}</td>
+      <td><b>Dibuat:</b> {{$instruksikerja->created_at}}</td>
+      <td><b>Diupdate:</b> {{$instruksikerja->updated_at}}</td>
+    </tr>
+  </table>
 <hr>
 <!-- coba -->
     <div class="center col s12 m12 l12">

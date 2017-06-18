@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class Admin extends Model
 {
-    // protected $table = 'pengguna';
-    use Notifiable;
+    protected $table = 'admin';
+    //RELATION
+    public function user()
+    {
+      return $this->belongsTo('App\User', 'user_id', 'id');
+    }
 
     /**
      * The attributes that are mass assignable.

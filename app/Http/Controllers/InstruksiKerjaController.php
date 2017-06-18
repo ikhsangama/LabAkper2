@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\InstruksiKerja;
+use App\Models\InstruksiKerja;
 use Illuminate\Http\Request;
 //tambah
 use App\Http\Requests;
@@ -81,7 +81,6 @@ class InstruksiKerjaController extends Controller
     public function show($id)
     {
       $instruksikerja = InstruksiKerja::find($id);
-      $fileName = $instruksikerja->file_ik;
       // dd($instruksikerja);
       return view('single_ik', ['instruksikerja' => $instruksikerja]);
     }

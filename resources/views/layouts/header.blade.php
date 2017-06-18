@@ -85,7 +85,14 @@
           <!-- akhir tambahan navigasi -->
 
       <!-- Dropdown Trigger -->
-          <li><a class="dropdown-button" href="#!" data-activates="dropdown1" data-beloworigin="true" data-hover="true"><b>{{ Auth::user()->nama }}</b>
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown1" data-beloworigin="true" data-hover="true">
+            @if(Auth::user()->isAdmin(true))
+            <b>{{ Auth::user()->admin->nama }}</b>
+            @elseif(Auth::user()->isDosen(true))
+            <b>{{ Auth::user()->dosen->nama }}</b>
+            @elseif(Auth::user()->isMahasiswa(true))
+            <b>{{ Auth::user()->mahasiswa->nama }}</b>
+            @endif
             <i class="material-icons right">arrow_drop_down</i></a></li>
 
       <!-- </div> -->

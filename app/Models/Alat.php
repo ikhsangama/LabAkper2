@@ -4,9 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AlatBahan extends Model
+class Alat extends Model
 {
-    protected $table = 'alatbahan';
+    protected $table = 'alat';
+
+    public function alatbahan()
+    {
+      return $this->belongsTo('App\Models\AlatBahan');
+    }
+
     public function kategori()
     {
       return $this->belongsTo('App\Kategori');

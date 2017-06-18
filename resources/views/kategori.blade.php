@@ -14,32 +14,24 @@
       </div>
     </nav>
   <hr>
-  <!-- <div class="col s12 m12 l12 ">
-    <h3>Daftar Kategori</h3>
-    <hr>
-    <i class="blue-text text-lighten-1">home  → </i>
-    <a href="/kategori" class="blue-text text-lighten-1">Inventaris → </a>
-    <a class="blue-text text-lighten-1"><b>Kategori</b></a>
-    <hr>
-  </div> -->
-    <!-- HEADER TETAP ATAS + BREADCRUMP-->
-    <div class="row">
-        <div class="">
-          @if(Auth::user()->isAdmin(true))
-          <a href="{{ url('/kategori/create') }}" class="btn waves-effect waves-light indigo lighten-1">Tambah</a>
-          @endif
-        </div>
 
-<!-- <hr> -->
-@if(session('success'))
-<div class="card-panel green lighten-4">
-{{session('success')}}
-</div>
-@elseif(session('alert'))
-<div class="card-panel red lighten-4">
-{{session('alert')}}
-</div>
-@endif
+  <!-- HEADER TETAP ATAS + BREADCRUMP-->
+  <div class="row">
+    <div class="">
+      @if(Auth::user()->isAdmin(true))
+      <a href="{{ url('/kategori/create') }}" class="btn waves-effect waves-light indigo lighten-1">Tambah</a>
+      @endif
+    </div>
+    <!-- <hr> -->
+    @if(session('success'))
+    <div class="card-panel green lighten-4">
+      {{session('success')}}
+    </div>
+    @elseif(session('alert'))
+    <div class="card-panel red lighten-4">
+      {{session('alert')}}
+    </div>
+    @endif
 <!-- coba -->
 <div class="row">
   <div class="card-panel white col s12 m12 l12">
@@ -78,7 +70,7 @@
     </table>
     <ul class="pagination">
       <li>
-        {{ $kategoris->fragment('kategori')->links() }}
+        {{ $kategoris->links() }}
       </li>
     </ul>
   </div>

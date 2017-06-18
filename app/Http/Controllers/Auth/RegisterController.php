@@ -86,7 +86,7 @@ class RegisterController extends Controller
         $user->token=str_random(10);
         $user->status=0;
         // dd($request->level==3 || 4);
-        if($request->level==3||4)
+        if($request->level==3)
         {
           $mahasiswa = new Mahasiswa;
           $mahasiswa->nama = $request->nama;
@@ -120,8 +120,6 @@ class RegisterController extends Controller
       }
       //status user jadi 1
       $user->status =1;
-      //diperbolehkan meminjam
-      // $user->setuju =1;
       $user->save();
       //login
       $this->guard()->login($user);

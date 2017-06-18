@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Kategori;
-use App\AlatBahan;
+use App\Models\Kategori;
+use App\Models\AlatBahan;
 use Illuminate\Http\Request;
 
 class KategoriController extends Controller
@@ -15,7 +15,7 @@ class KategoriController extends Controller
      */
     public function index()
     {
-      $kategoris = Kategori::orderBy('nama_kategori')->paginate(10);
+      $kategoris = Kategori::orderBy('nama_kategori')->paginate(1);
       return view('kategori', [
       'kategoris'=>$kategoris,
     ]);
@@ -58,11 +58,12 @@ class KategoriController extends Controller
      */
     public function show($id)
     {
-        $alatbahans = AlatBahan::where('id_kategori',$id)->paginate(2);
-        $nama_kategori = Kategori::find($id)->nama_kategori;
-        $kategori = Kategori::find($id);
-        // dd($kategori, $nama_kategori);
-        return view ('single_kategori', [
+      $alatbahans = AlatBahan::where('kategori_id',$id)->paginate(2);
+      $nama_kategori = Kategori::find($id)->nama_kategori;
+      $kategori = Kategori::find($id);
+      // dd($kategori, $nama_kategori);
+      return view ('single_kategori',
+      [
         'alatbahans'=> $alatbahans,
         'nama_kategori' => $nama_kategori,
         'kategori' => $kategori
@@ -78,7 +79,8 @@ class KategoriController extends Controller
     public function edit($id)
     {
       $kategori = Kategori::find($id);
-      if(!$kategori){
+      if(!$kategori)
+      {
         abort(404);
       }
       return view('dash_admin/edit_kategori', ['kategori' => $kategori]);
@@ -93,7 +95,8 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $this->validate($request, [
+      $this->validate($request,
+      [
         'kategori' => 'required',
       ]);
       // dd('sini');

@@ -11,10 +11,10 @@
 |
 */
 
+Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::get('/verify/{token}/{username}', 'Auth\RegisterController@verify_register');
 
 //admin
@@ -45,21 +45,28 @@ Route::group(['middleware' => 'admin'], function(){
   Route::get('/kategori/{id}/edit', 'KategoriController@edit');
   Route::post('/kategori', 'KategoriController@store');
   Route::get('/kategori/{id}/delete', 'KategoriController@destroy');
-  Route::get('/kategori/{id}', 'KategoriController@show');
   Route::PUT('/kategori/{id}', 'KategoriController@update');
   //alatbahan
   Route::get('/alatbahan/create', 'AlatBahanController@create');
   Route::get('/alatbahan/{id}/edit', 'AlatBahanController@edit');
 });
 
-Auth::routes();
+//admin
+Route::group(['middleware' => 'auth'], function()
+{
+  //instruksikerja
+  Route::get('/instruksikerja', 'InstruksiKerjaController@index');
+  Route::get('/instruksikerja/{id}', 'InstruksiKerjaController@show');
+  //SOP
+  Route::get('/sop', 'SOPController@index');
+  //kategori
+  Route::get('/kategori/{id}', 'KategoriController@show');
+});
 
-Route::get('/sop', 'SOPController@index');
 Route::get('/kategori', 'KategoriController@index');
 Route::get('/peminjaman', 'PeminjamanController@index');
-Route::get('/instruksikerja/{id}', 'InstruksiKerjaController@show');
+
 Route::get('/alatbahan', 'AlatBahanController@index');
 Route::get('/alatbahan/{id}', 'AlatBahanController@show');
-//instruksikerja
-Route::get('/instruksikerja', 'InstruksiKerjaController@index');
+
 // Route::get('/instruksikerja/{id}', 'InstruksiKerjaController@show');
