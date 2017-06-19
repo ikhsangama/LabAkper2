@@ -59,14 +59,14 @@ Route::group(['middleware' => 'auth'], function()
   Route::get('/instruksikerja/{id}', 'InstruksiKerjaController@show');
   //SOP
   Route::get('/sop', 'SOPController@index');
+  //Alat
+  Route::get('/alatbahan', 'AlatBahanController@index');
+  Route::get('/alatbahan/{id}', 'AlatBahanController@show');
   //kategori
-  Route::get('/kategori/{id}', 'KategoriController@show');
+  // Route::get('/kategori/{id}', 'KategoriController@show');
 });
 
 Route::get('/kategori', 'KategoriController@index');
 Route::get('/peminjaman', 'PeminjamanController@index');
-
-Route::get('/alatbahan', 'AlatBahanController@index');
-Route::get('/alatbahan/{id}', 'AlatBahanController@show');
 
 // Route::get('/instruksikerja/{id}', 'InstruksiKerjaController@show');

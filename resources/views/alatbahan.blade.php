@@ -1,81 +1,80 @@
 @extends('layouts.app')
 
 @section('content')
-<body class="blue lighten-5">
-  <hr>
-    <nav>
-      <div class="nav-wrapper blue accent-3 lighten-1 z-depth-2">
-        <div class="col s12 m12 l12">
-          <a href="/" class="breadcrumb"><i class="material-icons">home</i></a>
-          <a class="breadcrumb"><b>Inventaris</b></a>
-          <a href="/alatbahan" class="breadcrumb">Alat & Bahan</a>
+<div class="container bsa">
+  <div class="row">
+    <div class="col s12 m9 l10">
+
+      <div id="introduction" class="section scrollspy">
+        <p class="caption">Provide value and encourage return visits by introducing users to new features and functionality at contextually relevant moments.</p>
+
+        <h2 class="header">Tap Target</h2>
+        <p class="caption">Feature discovery prompts have more impact when they are presented to the right users at contextually relevant moments. When presented to the wrong user at the wrong time, they can be intrusive and annoying.</p>
+
+        <a class="waves-effect waves-light btn" onclick="$('.tap-target').tapTarget('open')">Open tap target</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="waves-effect waves-light btn" onclick="$('.tap-target').tapTarget('close')">Close tap target</a>
+
+        <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+          <a id="menu" class="btn btn-floating btn-large cyan"><i class="material-icons">menu</i></a>
+        </div>
+
+        <div class="tap-target cyan" data-activates="menu">
+          <div class="tap-target-content white-text">
+            <h5>I am here</h5>
+            <p class="white-text">Provide value and encourage return visits by introducing users to new features and functionality at contextually relevant moments.</p>
+          </div>
         </div>
       </div>
-    </nav>
-  <hr>
 
-  @if(Auth::user()->isAdmin(true))
-    <a href="{{ url('/alatbahan/create') }}" class="btn waves-effect waves-light indigo lighten-1">Tambah</a>
-  @endif
-  <!-- HEADER TETAP ATAS + BREADCRUMP-->
 
-<!-- <div class="container"> -->
-<!-- coba -->
-<div class="row">
-<ul>
-  @foreach($alatbahans as $alatbahan)
-  <li>
-    <div class="col s6 m6 l6">
-      <div class="card horizontal">
-          <img src="http://lorempixel.com/100/190/nature/6" class="circle responsive-img materialboxed">
-        <div class="card-stacked">
-          <div class="card-content">
-            <h5>{!!str_limit($alatbahan->nama_alatbahan,18)!!}</h5>
-            <label>Total: {{$alatbahan->total}}</label><br>
-            <label>Stok: {{$alatbahan->stok}}</label><br>
-            <label>Dipinjam: {{$alatbahan->dipinjam}}</label><br>
-          </div>
-          <div class="card-action">
-            <a href="/alatbahan/{{$alatbahan->id}}" class="btn waves-effect waves-light indigo lighten-1 right">Detail</a>
-          </div>
+
+        <div id="structure" class="scrollspy section">
+          <h4>Tap Target HTML Structure</h4>
+          <pre><code class="language-markup">
+  &lt;!-- Element Showed -->
+  &lt;a id="menu" class="waves-effect waves-light btn btn-floating" >&lt;i class="material-icons">menu&lt;/i>&lt;/a>
+
+  &lt;!-- Tap Target Structure -->
+  &lt;div class="tap-target" data-activates="menu">
+    &lt;div class="tap-target-content">
+      &lt;h5>Title&lt;/h5>
+      &lt;p>A bunch of text&lt;/p>
+    &lt;/div>
+  &lt;/div>
+          </code></pre>
         </div>
+
+
+
+        <div id="methods" class="scrollspy section">
+          <h4>jQuery Plugin Methods</h4>
+          <p class="caption">To open/close a tap target:</p>
+          <pre><code class="language-javascript">
+  $('.tap-target').tapTarget('open');
+  $('.tap-target').tapTarget('close');
+        </code></pre>
+      </div>
+
+</div>
+
+<!-- Table of Contents -->
+  <div class="col hide-on-small-only m3 l2">
+    <div class="toc-wrapper">
+      <div class="buysellads hide-on-small-only">
+        <!-- CarbonAds Zone Code -->
+        <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
+      </div>
+      <div style="height: 1px;">
+        <ul class="section table-of-contents">
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#structure">Structure</a></li>
+          <li><a href="#methods">Methods</a></li>
+        </ul>
       </div>
     </div>
-  </li>
-  @endforeach
-</ul>
+  </div>
+
 </div>
-<ul class="pagination">
-  <li>
-    {{ $alatbahans->links() }}
-  </li>
-</ul>
 </div>
-<!-- akhircoba -->
-<!-- </div> -->
-
-
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="{{asset('js/materialize.js')}}"></script>
-  <script>
-
-  	$(document).ready(function(){
-      // $('.materialboxed').materialbox({
-      //
-      // });
-      $('.button-collapse').sideNav({
-
-      });
-      // $('.carousel').carousel({
-      //   dist:0,
-      // });
-      // $('.carousel').carousel('next', 5);
-      $('.scrollspy').scrollSpy();
-      $(".dropdown-button").dropdown({
-
-      });
-    }); // end of document ready // end of jQuery name space
-  </script>
 </body>
 
 @endsection

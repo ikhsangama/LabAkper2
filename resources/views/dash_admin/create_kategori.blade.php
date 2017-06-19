@@ -5,12 +5,10 @@
   <hr>
     <nav>
       <div class="nav-wrapper input-field blue accent-3 lighten-1 z-depth-2">
-        <div class="col s12 m12 l12">
           <a href="/" class="breadcrumb"><i class="material-icons">home</i></a>
           <a class="breadcrumb"><b>Inventaris</b></a>
-          <a href="/alatbahan" class="breadcrumb"><b>Kategori</b></a>
-          <a href="/alatbahan/create" class="breadcrumb">Tambah</a>
-        </div>
+          <a href="/kategori" class="breadcrumb"><b>Kategori</b></a>
+          <a href="/kategori/create" class="breadcrumb">Tambah</a>
       </div>
     </nav>
   <hr>
@@ -20,11 +18,11 @@
   <h3 class="center blue-text text accent-5">Form Tambah:</h3>
 <hr>
   <div class="row">
-    <form class="col s12 m12 l12" action="/daftarkategori" method="POST">
+    <form class="col s12 m12 l12" action="/kategori" method="POST">
       <div class="row">
         <div class="input-field col s12 m12 l12">
           <i class="material-icons prefix">title</i>
-          <input name="kategori" id="icon_prefix" type="text" class="validate" autofocus maxlength="50"
+          <input name="nama" id="icon_prefix" type="text" class="validate" autofocus maxlength="50"
           value="" required>
           <label for="icon_prefix">Nama Kategori</label>
   <!-- validation             -->

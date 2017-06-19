@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Kategori;
-use App\AlatBahan;
+use App\Models\Alat;
+use App\Models\Bahan;
+use App\Models\Kategori;
+use App\Models\AlatBahan;
 use Illuminate\Http\Request;
 
 class AlatBahanController extends Controller
@@ -15,7 +17,7 @@ class AlatBahanController extends Controller
      */
     public function index()
     {
-      $alatbahans = AlatBahan::orderBy('nama_alatbahan')->paginate(10);
+      $alatbahans = AlatBahan::orderBy('id')->paginate(10);
       return view('alatbahan', [
       'alatbahans'=>$alatbahans,
     ]);
@@ -28,7 +30,10 @@ class AlatBahanController extends Controller
      */
     public function create()
     {
-        return view ('dash_admin/create_alatbahan');
+      $kategoris = Kategori::orderBy('nama')->get();
+        return view ('dash_admin/create_alatbahan', [
+          'kategoris' => $kategoris,
+        ]);
     }
 
     /**

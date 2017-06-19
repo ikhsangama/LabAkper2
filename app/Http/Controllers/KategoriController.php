@@ -15,7 +15,7 @@ class KategoriController extends Controller
      */
     public function index()
     {
-      $kategoris = Kategori::orderBy('nama_kategori')->paginate(1);
+      $kategoris = Kategori::orderBy('nama')->paginate(1);
       return view('kategori', [
       'kategoris'=>$kategoris,
     ]);
@@ -40,14 +40,14 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
       $this->validate($request, [
-        'kategori' => 'required',
+        'nama' => 'required',
       ]);
 
       $kategori = new Kategori;
-      $kategori->nama_kategori = $request->kategori;
+      $kategori->nama = $request->nama;
       $kategori->save();
       return redirect ('/kategori')->with('success', 'Kategori baru ditambahkan,
-      dengan nama: '. $request->kategori);
+      dengan nama: '. $kategori->nama);
     }
 
     /**
@@ -59,13 +59,13 @@ class KategoriController extends Controller
     public function show($id)
     {
       $alatbahans = AlatBahan::where('kategori_id',$id)->paginate(2);
-      $nama_kategori = Kategori::find($id)->nama_kategori;
+      $nama = Kategori::find($id)->nama;
       $kategori = Kategori::find($id);
       // dd($kategori, $nama_kategori);
       return view ('single_kategori',
       [
         'alatbahans'=> $alatbahans,
-        'nama_kategori' => $nama_kategori,
+        'nama' => $nama,
         'kategori' => $kategori
       ]);
     }
@@ -101,7 +101,7 @@ class KategoriController extends Controller
       ]);
       // dd('sini');
       $kategori = Kategori::findOrFail($id);
-      $kategori->nama_kategori = $request->kategori;
+      $kategori->nama = $request->kategori;
       $kategori->save();
       return redirect ('/kategori')->with('success', 'Kategori lama terupdate,
       dengan nama: '. $request->kategori);
@@ -118,6 +118,6 @@ class KategoriController extends Controller
       //hapus berdasarkan ID
       $kategori = Kategori::find($id);
       $kategori->delete();
-      return redirect ('/kategori')->with('alert', 'Kategori '. $kategori->nama_kategori .' telah dihapus');
+      return redirect ('/kategori')->with('alert', 'Kategori '. $kategori->nama .' telah dihapus');
     }
 }

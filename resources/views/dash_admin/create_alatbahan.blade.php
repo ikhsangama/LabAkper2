@@ -22,13 +22,46 @@
       <h3 class="center blue-text text accent-5">Tambah Alat & Bahan</h3>
       <hr>
       <div class="row">
-        <form action="{{ url('/pengguna') }}" class="col s12" method="POST" enctype="multipart/form-data">
+        <form action="{{ url('/alatbahan') }}" class="col s12" method="POST" enctype="multipart/form-data">
+
+          <div class="row">
+            <div class="input-field col s4 m4 l4">
+              <i class="material-icons prefix">account_circle</i>
+              <input name="kode_alatbahan" placeholder="Kode alat/bahan" id="icon_prefix" type="text" class="validate" autofocus maxlength="30" required>
+              <label for="icon_prefix">Kode Alat Bahan</label>
+
+  <!-- validation             -->
+              @if ($errors->has('kode_alatbahan'))
+              <div class="container red-text text accent-3">
+                {{ $errors->first('kode') }}
+              </div>
+              @endif
+  <!-- endvalidation             -->
+            </div>
+              <div class="input-field col s4 m4 l4 offset-s2 offset-m2 offset-l2">
+                <i id="Status" class="material-icons prefix" required>school</i>
+                <select name="jenis">
+                  <option value="" disabled selected>Pilih Jenis</option>
+                  <option value="alat">Alat</option>
+                  <option value="bahan">Bahan</option>
+                </select>
+                <label for="icon_prefix">Jenis</label>
+
+                <!-- validation             -->
+                @if ($errors->has('jenis'))
+                <div class="container red-text text accent-3">
+                  {{ $errors->first('jenis') }}
+                </div>
+                @endif
+                <!-- endvalidation             -->
+              </div>
+          </div>
 
           <div class="row">
             <div class="input-field col s6 m6 l6">
               <i class="material-icons prefix">account_circle</i>
-              <input name="nama" placeholder="Gunakan nama lengkap" id="icon_prefix" type="text" class="validate" autofocus maxlength="30" required>
-              <label for="icon_prefix">Nama</label>
+              <input name="nama" placeholder="Nama Alat Bahan" id="icon_prefix" type="text" class="validate" autofocus maxlength="30" required>
+              <label for="icon_prefix">Nama Alat Bahan</label>
 
   <!-- validation             -->
               @if ($errors->has('nama'))
@@ -40,18 +73,18 @@
             </div>
               <div class="input-field col s4 m4 l4">
                 <i id="Status" class="material-icons prefix" required>school</i>
-                <select name="level">
-                  <option value="" disabled selected>Pilih</option>
-                  <option value="Dosen">Dosen</option>
-                  <option value="D III">D III</option>
-                  <option value="D IV">D IV</option>
+                <select name="kategori">
+                  <option value="" disabled selected>Pilih Kategori</option>
+                  @foreach($kategoris as $kategori)
+                  <option value="{{$kategori->id}}">{{$kategori->nama}}</option>
+                  @endforeach
                 </select>
-                <label for="icon_prefix">Program Studi</label>
+                <label for="icon_prefix">Kategori</label>
 
                 <!-- validation             -->
-                @if ($errors->has('level'))
+                @if ($errors->has('kategori'))
                 <div class="container red-text text accent-3">
-                  {{ $errors->first('level') }}
+                  {{ $errors->first('kategori') }}
                 </div>
                 @endif
                 <!-- endvalidation             -->
@@ -59,46 +92,47 @@
           </div>
 
           <div class="row">
-            <div class="input-field col s6">
-              <i class="material-icons prefix">contact_mail</i>
-              <input name="email" placeholder="contoh@email.com" id="icon_prefix" type="email" class="validate" length="30"   >
-              <label for="icon_prefix">Email</label>
-              <!-- validation             -->
-              @if ($errors->has('email'))
-              <div class="container red-text text accent-3">
-                {{ $errors->first('email') }}
-              </div>
-              @endif
-              <!-- endvalidation             -->
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="input-field col s6">
+            <div class="input-field col s4 m4 l4">
               <i class="material-icons prefix">lock</i>
-              <input name="password" id="icon_prefix" type="password" class="validate" required>
-              <label for="icon_prefix">Password</label>
+              <input name="stok" id="stok" type="text" class="validate" required>
+              <label for="stok">Stok Awal</label>
               <!-- validation             -->
-              @if ($errors->has('password'))
+              @if ($errors->has('stok'))
               <div class="container red-text text accent-3">
-                {{ $errors->first('password') }}
+                {{ $errors->first('stok') }}
               </div>
               @endif
               <!-- endvalidation             -->
             </div>
-            <div class="input-field col s6">
-              <input  name="password_confirmation" placeholder="ulangi password secara benar" id="icon_prefix" type="password" class="validate" required>
-              <label for="icon_prefix">Konfirmasi Password</label>
+            <div class="input-field col s4 m4 l4">
+              <input  name="dipinjam" id="dipinjam" type="text" class="validate" placeholder="0" disabled>
+              <label for="dipinjam">Dipinjam</label>
               <!-- validation             -->
-              @if ($errors->has('password_confirmation'))
+              @if ($errors->has('dipinjam'))
               <div class="container red-text text accent-3">
-                {{ $errors->first('password_confirmation') }}
+                {{ $errors->first('dipinjam') }}
+              </div>
+              @endif
+              <!-- endvalidation             -->
+            </div>
+            <div class="input-field col s4 m4 l4">
+              <input  name="total" id="total" type="text" class="validate" placeholder="0" disabled>
+              <label for="total">Total</label>
+              <!-- validation             -->
+              @if ($errors->has('total'))
+              <div class="container red-text text accent-3">
+                {{ $errors->first('total') }}
               </div>
               @endif
               <!-- endvalidation             -->
             </div>
           </div>
 
+<!-- coba -->
+<div class="col-sm-10">
+                                    <!-- <p id="total"></p> -->
+</div>
+<!-- endcoba -->
           <div class="row">
             <div class="input-field col s6">
               <i class="material-icons prefix">credit_card</i>
@@ -176,6 +210,11 @@
       });
 
       $('.modal').modal();
+
+      $("#stok").keyup(function(){
+              var total = $(this).val();
+              $("#total").val(total);
+      });
     }); // end of document ready // end of jQuery name space
   </script>
   <!-- akhirscript -->

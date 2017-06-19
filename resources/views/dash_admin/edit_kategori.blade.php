@@ -8,8 +8,8 @@
         <div class="col s12 m12 l12">
           <a class="breadcrumb"><b>Inventaris</b></a>
           <a href="/kategori" class="breadcrumb">Kategori</a>
-          <a href="/kategori/{{$kategori->id}}" class="breadcrumb">{{$kategori->nama_kategori}}</a>
-          <a href="/kategori" class="breadcrumb">Edit</a>
+          <a href="/kategori/{{$kategori->id}}" class="breadcrumb">{!!str_limit($kategori->nama,18)!!}</a>
+          <a href="/kategori/{{$kategori->id}}/edit" class="breadcrumb">Edit</a>
         </div>
       </div>
     </nav>
@@ -20,7 +20,7 @@
 <!-- coba -->
 <div class="card-panel s12 m12 l12">
   <h3 class="center blue-text text accent-5">Form Edit:</h3>
-  <h4 class="center blue-text text accent-5">{{$kategori->nama_kategori}}</h4>
+  <h4 class="center blue-text text accent-5">{!!str_limit($kategori->nama,30)!!}</h4>
 <hr>
   <div class="row">
     <form class="col s12 m12 l12" action="/kategori/{{$kategori->id}}" method="POST">
@@ -28,7 +28,7 @@
         <div class="input-field col s12 m12 l12">
           <i class="material-icons prefix">title</i>
           <input name="kategori" id="icon_prefix" type="text" class="validate" autofocus maxlength="50"
-          value="{{$kategori->nama_kategori}}" required>
+          value="{{$kategori->nama}}" required>
           <label for="icon_prefix">Nama Kategori</label>
   <!-- validation             -->
           @if ($errors->has('kategori'))

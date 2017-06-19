@@ -1,0 +1,81 @@
+@extends('layouts.app')
+
+@section('content')
+<body class="blue lighten-5">
+  <hr>
+    <nav>
+      <div class="nav-wrapper blue accent-3 lighten-1 z-depth-2">
+        <div class="col s12 m12 l12">
+          <a href="/" class="breadcrumb"><i class="material-icons">home</i></a>
+          <a class="breadcrumb"><b>Inventaris</b></a>
+          <a href="/alat" class="breadcrumb">Alat</a>
+        </div>
+      </div>
+    </nav>
+  <hr>
+
+  @if(Auth::user()->isAdmin(true))
+    <a href="{{ url('/alat/create') }}" class="btn waves-effect waves-light indigo lighten-1">Tambah</a>
+  @endif
+  <!-- HEADER TETAP ATAS + BREADCRUMP-->
+
+<!-- <div class="container"> -->
+<!-- coba -->
+<div class="row">
+<ul>
+  @foreach($alats as $alat)
+  <li>
+    <div class="col s6 m6 l6">
+      <div class="card horizontal">
+          <img src="http://lorempixel.com/100/190/nature/6" class="circle responsive-img materialboxed">
+        <div class="card-stacked">
+          <div class="card-content">
+            <h5>{!!str_limit($alat->nama,18)!!}</h5>
+            <label>Total: {{$alat->total}}</label><br>
+            <label>Stok: {{$alat->stok}}</label><br>
+            <label>Dipinjam: {{$alat->dipinjam}}</label><br>
+          </div>
+          <div class="card-action">
+            <a href="/alat/{{$alat->id}}" class="btn waves-effect waves-light indigo lighten-1 right">Detail</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+  @endforeach
+</ul>
+</div>
+<ul class="pagination">
+  <li>
+    {{ $alats->links() }}
+  </li>
+</ul>
+</div>
+<!-- akhircoba -->
+<!-- </div> -->
+
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{{asset('js/materialize.js')}}"></script>
+  <script>
+
+  	$(document).ready(function(){
+      // $('.materialboxed').materialbox({
+      //
+      // });
+      $('.button-collapse').sideNav({
+
+      });
+      // $('.carousel').carousel({
+      //   dist:0,
+      // });
+      // $('.carousel').carousel('next', 5);
+      $('.scrollspy').scrollSpy();
+      $(".dropdown-button").dropdown({
+
+      });
+    }); // end of document ready // end of jQuery name space
+  </script>
+</body>
+
+@endsection
