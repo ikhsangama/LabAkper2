@@ -101,7 +101,7 @@
 @endif
 
 	<div class="fixed-action-btn">
-	    <a href="#backtotop" class="btn-floating btn-large indigo">
+	    <a href="#backtotop" id="info" class="btn-floating btn-large indigo">
 	      <i class="large material-icons">publish</i>
 	    </a>
 	  </div>

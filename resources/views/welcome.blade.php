@@ -8,19 +8,19 @@
     <div class="section scrollspy" id="menucarousel "name="menucarousel">
       <ul class="carousel">
         <li class="carousel-item">
-          <a href="#sejarah"><img src="{{asset('images/homecarousel/6.png')}}" alt=""></a>
+          <a href="#sejarah"><img width=100% src="{{asset('images/homecarousel/6.png')}}" alt=""></a>
         </li>
         <li class="carousel-item">
-          <a href="#visimisi"><img src="{{asset('images/homecarousel/7.png')}}" alt=""></a>
+          <a href="#visimisi"><img width=100% src="{{asset('images/homecarousel/7.png')}}" alt=""></a>
         </li>
         <li class="carousel-item">
-          <a href="#layanan"><img src="{{asset('images/homecarousel/8.png')}}" alt=""></a>
+          <a href="#layanan"><img width=100% src="{{asset('images/homecarousel/8.png')}}" alt=""></a>
         </li>
         <li class="carousel-item">
-          <a href="#saranaprasarana"><img src="{{asset('images/homecarousel/9.png')}}" alt=""></a>
+          <a href="#saranaprasarana"><img width=100% src="{{asset('images/homecarousel/9.png')}}" alt=""></a>
         </li>
         <li class="carousel-item">
-          <a href="#tata"><img src="{{asset('images/homecarousel/10.png')}}" alt=""></a>
+          <a href="#tata"><img width=100% src="{{asset('images/homecarousel/10.png')}}" alt=""></a>
         </li>
       </ul>
     </div>
@@ -82,7 +82,7 @@
             Keperawatan Kegawatdaruratan / Kritis<br>
             </p></div>
         </li>
-        <li>
+        <li class="white">
           <div class="collapsible-header waves-effect indigo lighten-5"><i class="material-icons">check</i>
             <h4>Penelitian</h4>
           </div>
@@ -90,7 +90,7 @@
             <p class="white">Penyediaan sarana dan prasarana penelitian untuk dosen dan mahasiswa di bidang keperawatan</p>
           </div>
         </li>
-        <li>
+        <li class="white">
           <div class="collapsible-header waves-effect indigo lighten-5"><i class="material-icons">check</i>
             <h4>Pengabdian Kepada Masyarakat</h4>
           </div>
@@ -211,7 +211,7 @@
 
   <!-- script -->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="{{asset('js/materialize.min.js')}}"></script>
+  <script src="{{asset('js/materialize.js')}}"></script>
   <script>
 
   	$(document).ready(function(){

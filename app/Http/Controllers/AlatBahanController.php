@@ -6,6 +6,7 @@ use App\Models\Alat;
 use App\Models\Bahan;
 use App\Models\Kategori;
 use App\Models\AlatBahan;
+use App\Models\SatuanAlat;
 use Illuminate\Http\Request;
 
 class AlatBahanController extends Controller
@@ -28,11 +29,13 @@ class AlatBahanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createalat()
     {
       $kategoris = Kategori::orderBy('nama')->get();
-        return view ('dash_admin/create_alatbahan', [
+      $satuan_alats = SatuanAlat::get();
+        return view ('dash_admin/create_alat', [
           'kategoris' => $kategoris,
+          'satuan_alats' => $satuan_alats,
         ]);
     }
 
