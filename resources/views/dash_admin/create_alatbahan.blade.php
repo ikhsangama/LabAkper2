@@ -19,30 +19,31 @@
 <br>
 <br>
     <div class="card-panel s12 m12 l12">
-      <h3 class="center blue-text text accent-5">Tambah Alat</h3>
+      <h3 class="center blue-text text accent-5">Tambah Alat Bahan</h3>
       <hr>
       <div class="row">
         <form action="{{ url('/alatbahan') }}" class="col s12" method="POST" enctype="multipart/form-data">
 
           <div class="row">
-            <div class="input-field col s4 m4 l4">
-              <i class="material-icons prefix">playlist_add</i>
-              <input name="kode_alatbahan" id="icon_prefix" type="text" class="validate" autofocus maxlength="30" required>
-              <label for="icon_prefix">Kode Alat Bahan</label>
-
-  <!-- validation             -->
-              @if ($errors->has('kode_alatbahan'))
+            <div class="input-field col s6 m6 l6">
+              <i id="jenis" class="material-icons prefix" required>local_offer</i>
+              <select name="jenis" id="alat">
+                <option value="" disabled selected>Pilih Jenis</option>
+                <option value="alat">Alat</option>
+                <option value="bahan">Bahan</option>
+              </select>
+              <label for="icon_prefix">Jenis</label>
+              <!-- validation             -->
+              @if ($errors->has('jenis'))
               <div class="container red-text text accent-3">
-                {{ $errors->first('kode') }}
+                {{ $errors->first('jenis') }}
               </div>
               @endif
-  <!-- endvalidation             -->
+              <!-- endvalidation             -->
             </div>
-          </div>
 
-          <div class="row">
             <div class="input-field col s6 m6 l6">
-              <i id="Status" class="material-icons prefix" required>local_offer</i>
+              <i class="material-icons prefix">label</i>
               <select name="kategori">
                 <option value="" disabled selected>Pilih Kategori</option>
                 @foreach($kategoris as $kategori)
@@ -50,7 +51,6 @@
                 @endforeach
               </select>
               <label for="icon_prefix">Kategori</label>
-
               <!-- validation             -->
               @if ($errors->has('kategori'))
               <div class="container red-text text accent-3">
@@ -62,7 +62,32 @@
           </div>
 
           <div class="row">
-            <div class="input-field col s10 m10 l10">
+            <div class="input-field col s6 m6 l6">
+              <i class="material-icons prefix">playlist_add</i>
+              <input name="kode_alatbahan" id="icon_prefix" type="text" class="validate" maxlength="30" required>
+              <label for="icon_prefix">Kode Alat Bahan</label>
+    <!-- validation             -->
+              @if ($errors->has('kode_alatbahan'))
+              <div class="container red-text text accent-3">
+                {{ $errors->first('kode_alatbahan') }}
+              </div>
+              @endif
+    <!-- endvalidation             -->
+            </div>
+
+            <div class="file-field input-field col s6 m6 l6">
+              <div class="btn">
+                <span><i class="material-icons prefix">add_a_photo</i></span>
+                <input type="file" id="inputgambar" name="ktm" class="validate"/>
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" placeholder="masukkan foto alat">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12 m12 l12">
               <i class="material-icons prefix">local_pharmacy</i>
               <input name="nama" id="icon_prefix" type="text" class="validate" maxlength="30" required>
               <label for="icon_prefix">Nama Alat</label>
@@ -121,16 +146,6 @@
               <input type="text" id="satuan" class="autocomplete">
               <label for="satuan">Satuan</label>
             </div>
-
-            <div class="file-field input-field col s6 m6 l6 offset-s2 offset-m2 offset-l2">
-              <div class="btn">
-                <span><i class="material-icons prefix">add_a_photo</i></span>
-                <input type="file" id="inputgambar" name="ktm" class="validate"/>
-              </div>
-              <div class="file-path-wrapper">
-                <input class="file-path validate" type="text" placeholder="masukkan foto alat">
-              </div>
-            </div>
           </div>
 
           <div class="row">
@@ -165,6 +180,7 @@
   <script src="{{asset('js/materialize.js')}}"></script>
   <script>
 
+        var tempData = {};
   	$(document).ready(function(){
       $('.button-collapse').sideNav({
 
@@ -182,8 +198,25 @@
               var total = $(this).val();
               $("#total").val(total);
       });
+      $('#satuan').attr("disabled",true);
+      $('#alat').change(function(){
 
-      $('input.autocomplete').autocomplete({
+        var tempValue = $(this).val();
+        //alert(tempValue);
+         if(tempValue == ""){
+           $('#satuan').attr("disabled",true);
+         }else{
+           $('#satuan').removeAttr("disabled");
+           $('#satuan').off('keyup');
+           $('#satuan').off('keypress');
+           if(tempValue =='alat')
+            $('#satuan').autocomplete(tempData.alat);
+          else
+            $('#satuan').autocomplete(tempData.bahan);
+
+         }
+      });
+      tempData.alat = {
         data: {
           @foreach ($satuan_alats as $satuan_alat)
           "{{$satuan_alat->nama}}": null,
@@ -194,9 +227,23 @@
           // Callback function when value is autcompleted.
         },
         minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
-      });
+      };
+      tempData.bahan = {
+        data: {
+          @foreach ($satuan_bahans as $satuan_bahan)
+          "{{$satuan_bahan->nama}}": null,
+          @endforeach
+        },
+        limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+        onAutocomplete: function(val) {
+          // Callback function when value is autcompleted.
+        },
+        minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+      };
+      //$('input.autocomplete').autocomplete();
 
     }); // end of document ready // end of jQuery name space
+
   </script>
   <!-- akhirscript -->
 </body>

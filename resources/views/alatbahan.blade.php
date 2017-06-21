@@ -19,12 +19,12 @@
   <a href="{{ url('/alatbahan/createbahan') }}" class="btn waves-effect waves-light indigo lighten-1">Tambah Bahan</a>
 
 <!-- coba reveal -->
-  <!-- <a href="#info" onclick="$('.tap-target').tapTarget('open')"><i class="material-icons">search</i></a> -->
-  <!-- <div class="tap-target blue" data-activates="info"> -->
-    <!-- <div class="tap-target-content white-text"> -->
-      <!-- <h5>Lihat Disini</h5> -->
-    <!-- </div> -->
-  <!-- </div> -->
+  <a href="#info" onclick="$('.tap-target').tapTarget('open')"><i class="material-icons">search</i></a>
+  <div class="tap-target blue" data-activates="info">
+    <div class="tap-target-content white-text">
+      <h5>Lihat Disini</h5>
+    </div>
+  </div>
 <!-- endcoba -->
   @endif
   <!-- HEADER TETAP ATAS + BREADCRUMP-->
@@ -85,7 +85,7 @@
       $(".dropdown-button").dropdown({
       });
       // $('.tap-target').tapTarget('open');
-      $('.tap-target').tapTarget('close');
+      $('.tap-target').tapTarget('open');
     }); // end of document ready // end of jQuery name space
   </script>
 </body>

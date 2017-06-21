@@ -79,21 +79,18 @@
 
   <!-- script -->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="{{asset('js/materialize.min.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.js"></script>
   <script>
 
   	$(document).ready(function(){
       $('.button-collapse').sideNav({
-
       });
       $('.scrollspy').scrollSpy({
-
       });
       $('select').material_select({
-
       });
-
       $('.modal').modal();
+      $('.tap-target').tapTarget('close');
     }); // end of document ready // end of jQuery name space
   </script>
   <!-- akhirscript -->

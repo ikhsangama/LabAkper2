@@ -207,11 +207,17 @@
    </p>
   </div>
 
+  <div class="tap-target blue" data-activates="info">
+    <div class="tap-target-content white-text">
+      <h5>Lihat Disini</h5>
+    </div>
+  </div>
+
   <hr>
 
   <!-- script -->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="{{asset('js/materialize.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.js"></script>
   <script>
 
   	$(document).ready(function(){
@@ -226,7 +232,7 @@
       });
       $('.carousel').carousel('next', 5);
       $('.scrollspy').scrollSpy();
-
+      $('.tap-target').tapTarget('close');
     }); // end of document ready // end of jQuery name space
   </script>
   <!-- akhirscript -->

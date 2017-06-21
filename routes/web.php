@@ -49,6 +49,9 @@ Route::group(['middleware' => 'admin'], function(){
   //alatbahan
   Route::get('/alatbahan/createalat', 'AlatBahanController@createalat');
   Route::get('/alatbahan/{id}/edit', 'AlatBahanController@edit');
+  
+  Route::get('/alatbahan/createbahan', 'AlatBahanController@createbahan');
+  Route::get('/alatbahan/{id}/edit', 'AlatBahanController@edit');
 });
 
 //admin

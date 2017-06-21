@@ -7,6 +7,7 @@ use App\Models\Bahan;
 use App\Models\Kategori;
 use App\Models\AlatBahan;
 use App\Models\SatuanAlat;
+use App\Models\SatuanBahan;
 use Illuminate\Http\Request;
 
 class AlatBahanController extends Controller
@@ -36,9 +37,27 @@ class AlatBahanController extends Controller
         return view ('dash_admin/create_alat', [
           'kategoris' => $kategoris,
           'satuan_alats' => $satuan_alats,
+          'satuan_bahans' => $satuan_bahans,
         ]);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createbahan()
+    {
+      $kategoris = Kategori::orderBy('nama')->get();
+      $satuan_alats = SatuanAlat::get();
+      $satuan_bahans = SatuanBahan::get();
+      // dd($kategoris, $satuan_alats, $satuan_bahans);
+        return view ('dash_admin/create_alatbahan', [
+          'kategoris' => $kategoris,
+          'satuan_alats' => $satuan_alats,
+          'satuan_bahans' => $satuan_bahans,
+        ]);
+    }
     /**
      * Store a newly created resource in storage.
      *
