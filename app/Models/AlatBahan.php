@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class AlatBahan extends Model
 {
     protected $table = 'alatbahan';
-    public function kategori()
+    public function fkategori()
     {
-      return $this->belongsTo('App\Kategori');
+      return $this->belongsTo('App\Models\Kategori', 'kategori_id', 'id');
     }
 }

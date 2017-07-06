@@ -18,10 +18,10 @@
   <a href="{{ url('/alatbahan/create') }}" class="btn waves-effect waves-light indigo lighten-1">Tambah</a>
 
 <!-- coba reveal -->
-  <a href="#info" onclick="$('.tap-target').tapTarget('open')"><i class="material-icons">search</i></a>
-  <div class="tap-target blue" data-activates="info">
-    <div class="tap-target-content white-text">
-      <h5>Lihat Disini</h5>
+  <div class="tap-target blue lighten-4" data-activates="info">
+    <div class="tap-target-content">
+      <h5>Sukses</h5>
+      {{session('success')}}
     </div>
   </div>
 <!-- endcoba -->
@@ -84,7 +84,10 @@
       $(".dropdown-button").dropdown({
       });
       // $('.tap-target').tapTarget('open');
+      $('.tap-target').tapTarget('close');
+      @if(session('success'))
       $('.tap-target').tapTarget('open');
+      @endif
     }); // end of document ready // end of jQuery name space
   </script>
 </body>

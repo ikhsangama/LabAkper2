@@ -20,7 +20,7 @@ class AlatBahanController extends Controller
      */
     public function index()
     {
-      $alatbahans = AlatBahan::orderBy('id')->paginate(10);
+      $alatbahans = AlatBahan::orderBy('id')->paginate(5);
       return view('alatbahan', [
       'alatbahans'=>$alatbahans,
     ]);
@@ -51,7 +51,18 @@ class AlatBahanController extends Controller
      */
     public function store(Request $request)
     {
-      
+      // dd($request);
+      Validator::make($request->all(), [
+        'jenis' => 'required',
+        'kategori' => 'required',
+        'kode_alatbahan' => 'required',
+        'foto' => 'required',
+        'nama' => 'required',
+        'stok' => 'required',
+        'satuan' => 'required',
+        'spesifikasi' => 'required',
+      ])->validate();
+
       if($request->jenis == "alat"){
         $unique = Validator::make($request->all(), [
           'satuan' => 'required|unique:satuan_alat,nama',
@@ -81,7 +92,48 @@ class AlatBahanController extends Controller
         $alat->stok = $request->stok;
         $alat->total = $request->stok;
         $alat->save();
-        dd($alat);
+        return redirect ('/alatbahan')->with('success', 'Alat baru ditambahkan,
+        dengan nama: '. $alat->nama.
+        ', kategori: '. $alatbahan->fkategori->nama.
+        ', sejumlah: '. $alat->stok.
+        ' '. $alat->fsatuanalat->nama);
+      }
+
+      if($request->jenis == "bahan"){
+        $unique = Validator::make($request->all(), [
+          'satuan' => 'required|unique:satuan_bahan,nama',
+        ])->passes();
+
+        $alatbahan = new AlatBahan;
+        $alatbahan->kategori_id = $request->kategori;
+        $alatbahan->kode_alatbahan = $request->kode_alatbahan;
+        $alatbahan->jenis = "bahan";
+        $alatbahan->save();
+
+        $bahan = new Bahan;
+        $bahan->alatbahan_id = $alatbahan->id;
+        if($unique==true) {
+          $satuan_bahan = new SatuanBahan;
+          $satuan_bahan->nama = $request->satuan;
+          $satuan_bahan->save();
+          $bahan->satuanbahan_id = $satuan_bahan->id;
+        }
+        else {
+          $satuanbahan_id = SatuanBahan::where('nama', $request->satuan)->first()->id;
+          $bahan->satuanbahan_id = $satuanbahan_id;
+        }
+        $bahan->nama = $request->nama;
+        $bahan->foto = $request->foto;
+        $bahan->spesifikasi = $request->spesifikasi;
+        $bahan->stok = $request->stok;
+        $bahan->total = $request->stok;
+        $bahan->save();
+        // dd($alatbahan->kategori->nama);
+        return redirect ('/alatbahan')->with('success', 'Bahan baru ditambahkan,
+        dengan nama: '. $bahan->nama.
+        ', kategori: '. $alatbahan->fkategori->nama.
+        ', sejumlah: '. $bahan->stok.
+        ' '. $bahan->fsatuanbahan->nama);
       }
     }
 

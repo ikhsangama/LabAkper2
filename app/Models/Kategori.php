@@ -9,6 +9,6 @@ class Kategori extends Model
     protected $table = 'kategori';
     public function alatbahan()
     {
-      return $this->hasMany('App\AlatBahan', 'id_kategori', 'id');
+      return $this->hasMany('App\Models\AlatBahan');
     }
 }

@@ -8,13 +8,18 @@ class Alat extends Model
 {
     protected $table = 'alat';
 
-    public function alatbahan()
+    public function falatbahan()
     {
       return $this->belongsTo('App\Models\AlatBahan');
     }
 
-    public function kategori()
+    public function fkategori()
     {
       return $this->belongsTo('App\Kategori');
+    }
+
+    public function fsatuanalat()
+    {
+      return $this->belongsTo('App\Models\SatuanAlat', 'satuanalat_id', 'id');
     }
 }

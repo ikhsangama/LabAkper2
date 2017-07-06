@@ -13,8 +13,8 @@ class SatuanBahan extends Model
       return $this->belongsTo('App\Models\Alat');
     }
 
-    // public function kategori()
-    // {
-    //   return $this->belongsTo('App\Kategori');
-    // }
+    public function fbahan()
+    {
+      return $this->hasMany('App\Models\Bahan');
+    }
 }

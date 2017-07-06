@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Alat extends Model
+class Bahan extends Model
 {
-    protected $table = 'alat';
-    public function kategori()
+    protected $table = 'bahan';
+
+    public function fsatuanbahan()
     {
-      return $this->belongsTo('App\Kategori');
+      return $this->belongsTo('App\Models\SatuanBahan', 'satuanbahan_id', 'id');
     }
 }

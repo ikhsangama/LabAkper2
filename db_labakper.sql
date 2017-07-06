@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2017 at 11:59 PM
+-- Generation Time: Jul 06, 2017 at 05:54 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -28,11 +28,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
-  `nama_admin` varchar(35) NOT NULL,
+  `nama` varchar(35) NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `nama`, `created_at`, `updated_at`, `user_id`) VALUES
+(1, 'admin', '2017-06-18 03:39:44', NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -42,18 +49,32 @@ CREATE TABLE `admin` (
 
 CREATE TABLE `alat` (
   `id` int(11) NOT NULL,
-  `kode_alatbahan` varchar(10) DEFAULT NULL,
-  `nama_alatbahan` varchar(50) NOT NULL,
-  `foto_alatbahan` varchar(255) DEFAULT NULL,
+  `nama` varchar(50) NOT NULL,
+  `foto` varchar(255) DEFAULT NULL,
   `spesifikasi` text,
-  `stok` int(4) NOT NULL DEFAULT '0',
-  `dipinjam` int(4) NOT NULL DEFAULT '0',
-  `total` int(4) NOT NULL DEFAULT '0',
+  `stok` int(10) NOT NULL DEFAULT '0',
+  `dipinjam` int(10) NOT NULL DEFAULT '0',
+  `total` int(10) NOT NULL DEFAULT '0',
   `keterangan` text,
-  `id_kategori` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `kategori_id` int(11) NOT NULL
+  `alatbahan_id` int(11) NOT NULL,
+  `satuanalat_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `alatbahan`
+--
+
+CREATE TABLE `alatbahan` (
+  `id` int(11) NOT NULL,
+  `kode_alatbahan` varchar(20) DEFAULT NULL,
+  `jenis` set('alat','bahan') NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `kategori_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -64,17 +85,17 @@ CREATE TABLE `alat` (
 
 CREATE TABLE `bahan` (
   `id` int(11) NOT NULL,
-  `kode_alatbahan` varchar(10) DEFAULT NULL,
-  `nama_alatbahan` varchar(50) NOT NULL,
-  `foto_alatbahan` varchar(255) DEFAULT NULL,
+  `nama` varchar(50) NOT NULL,
+  `foto` varchar(255) DEFAULT NULL,
   `spesifikasi` text,
-  `stok` int(4) NOT NULL DEFAULT '0',
-  `dipinjam` int(4) NOT NULL DEFAULT '0',
-  `total` int(4) NOT NULL DEFAULT '0',
+  `stok` int(10) NOT NULL DEFAULT '0',
+  `dipinjam` int(10) NOT NULL DEFAULT '0',
+  `total` int(10) NOT NULL DEFAULT '0',
   `keterangan` text,
-  `id_kategori` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `alatbahan_id` varchar(20) DEFAULT NULL,
+  `satuanbahan_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -87,7 +108,7 @@ CREATE TABLE `dosen` (
   `id` int(11) NOT NULL,
   `nama` varchar(35) NOT NULL,
   `nip` varchar(20) NOT NULL,
-  `foto_dosen` varchar(255) NOT NULL,
+  `foto` varchar(255) NOT NULL,
   `telp` int(20) NOT NULL,
   `setuju` tinyint(1) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -106,7 +127,7 @@ CREATE TABLE `instruksi_kerja` (
   `judul` varchar(50) NOT NULL,
   `deskripsi` text,
   `file_ik` varchar(255) DEFAULT NULL,
-  `kategori_ik` enum('IK Alat','IK Kep. Anak','IK Kep. Dasar','IK Kep. Maternitas','IK Medikal Bedah') NOT NULL,
+  `kategori_ik` set('IK Alat','IK Kep. Anak','IK Kep. Dasar','IK Kep. Maternitas','IK Medikal Bedah') NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -145,10 +166,18 @@ INSERT INTO `instruksi_kerja` (`id`, `judul`, `deskripsi`, `file_ik`, `kategori_
 
 CREATE TABLE `kategori` (
   `id` int(11) NOT NULL,
-  `nama_kategori` varchar(50) NOT NULL,
+  `nama` varchar(50) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kategori`
+--
+
+INSERT INTO `kategori` (`id`, `nama`, `created_at`, `updated_at`) VALUES
+(3, 'Alat Bantu Jalan', '2017-06-18 05:23:46', '2017-06-18 05:40:51'),
+(4, 'Alat Mandi', '2017-06-18 16:21:00', '2017-06-18 16:21:00');
 
 -- --------------------------------------------------------
 
@@ -197,6 +226,48 @@ INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `satuan_alat`
+--
+
+CREATE TABLE `satuan_alat` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `satuan_alat`
+--
+
+INSERT INTO `satuan_alat` (`id`, `nama`, `created_at`, `updated_at`) VALUES
+(1, 'buah', '2017-06-19 18:55:57', '0000-00-00 00:00:00'),
+(2, 'kwintal', '2017-06-19 18:55:57', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `satuan_bahan`
+--
+
+CREATE TABLE `satuan_bahan` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `satuan_bahan`
+--
+
+INSERT INTO `satuan_bahan` (`id`, `nama`, `created_at`, `updated_at`) VALUES
+(1, 'ons', '2017-06-21 04:00:40', '0000-00-00 00:00:00'),
+(2, 'gram', '2017-06-21 04:00:40', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -207,7 +278,7 @@ CREATE TABLE `users` (
   `password` varchar(255) DEFAULT NULL,
   `level` tinyint(1) DEFAULT '0',
   `token` varchar(20) DEFAULT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT '0',
+  `status` tinyint(1) NOT NULL DEFAULT '0',
   `remember_token` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -218,7 +289,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `level`, `token`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, '123123123', 'mhsdiii@email.com', '$2y$10$OzYs9VbgRZlM6sCXL92kmuXHLJ5sRqlJUuJxYwvN0Pc5ymNkI9ZmS', 3, 'Jjho3n8sSj', 1, 'n2YN3NgWuEcRJKOAjPwevvjXQrBhhnjPz4DJKeGjT4iPTwKTBpLZSRKG8O3U', '2017-06-15 21:17:06', '2017-06-15 21:20:54');
+(2, '123123123', 'mhsdiii@email.com', '$2y$10$OzYs9VbgRZlM6sCXL92kmuXHLJ5sRqlJUuJxYwvN0Pc5ymNkI9ZmS', 3, 'Jjho3n8sSj', 1, 'AkUenrQ1sAqhDDWdghSuJedqWc5bOD1r3Gt03Kl96WADE91ZcLrpfiREpMb4', '2017-06-15 21:17:06', '2017-06-15 21:20:54'),
+(3, '000', 'admin@admin.com', '$2y$10$mBdaFYi.e36CfIvz3e.ntuBIOGk4anV6NzBUGNz2L9H4zWHd.QLzu', 1, 'zR17qizPS8', 1, 'iM21a2Y0xV6ztuIcl5Y5Es9VKTnWdcvANTBIUwcVvTvFpg75m8RVmxK8olO8', '2017-06-18 03:37:03', '2017-06-18 03:37:03');
 
 --
 -- Indexes for dumped tables
@@ -235,15 +307,20 @@ ALTER TABLE `admin`
 -- Indexes for table `alat`
 --
 ALTER TABLE `alat`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `kategori_id` (`kategori_id`),
-  ADD KEY `kategori_id_2` (`kategori_id`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `alatbahan`
+--
+ALTER TABLE `alatbahan`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `bahan`
 --
 ALTER TABLE `bahan`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `satuan_bahan_id` (`satuanbahan_id`);
 
 --
 -- Indexes for table `dosen`
@@ -262,8 +339,7 @@ ALTER TABLE `instruksi_kerja`
 -- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `nama_kategori` (`nama_kategori`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `mahasiswa`
@@ -280,6 +356,18 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_token_index` (`token`);
 
 --
+-- Indexes for table `satuan_alat`
+--
+ALTER TABLE `satuan_alat`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `satuan_bahan`
+--
+ALTER TABLE `satuan_bahan`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -294,11 +382,16 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `alat`
 --
 ALTER TABLE `alat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `alatbahan`
+--
+ALTER TABLE `alatbahan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `bahan`
@@ -319,17 +412,49 @@ ALTER TABLE `instruksi_kerja`
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `satuan_alat`
+--
+ALTER TABLE `satuan_alat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `satuan_bahan`
+--
+ALTER TABLE `satuan_bahan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `admin`
+--
+ALTER TABLE `admin`
+  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `dosen`
+--
+ALTER TABLE `dosen`
+  ADD CONSTRAINT `dosen_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `mahasiswa`
+--
+ALTER TABLE `mahasiswa`
+  ADD CONSTRAINT `mahasiswa_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
