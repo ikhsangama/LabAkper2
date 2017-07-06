@@ -47,14 +47,13 @@ Route::group(['middleware' => 'admin'], function(){
   Route::get('/kategori/{id}/delete', 'KategoriController@destroy');
   Route::PUT('/kategori/{id}', 'KategoriController@update');
   //alatbahan
-  Route::get('/alatbahan/createalat', 'AlatBahanController@createalat');
+  Route::get('/alatbahan/create', 'AlatBahanController@create');
   Route::get('/alatbahan/{id}/edit', 'AlatBahanController@edit');
-  
-  Route::get('/alatbahan/createbahan', 'AlatBahanController@createbahan');
-  Route::get('/alatbahan/{id}/edit', 'AlatBahanController@edit');
+  Route::post('/alatbahan', 'AlatBahanController@store');
+
 });
 
-//admin
+//dosen
 Route::group(['middleware' => 'auth'], function()
 {
   //instruksikerja

@@ -9,7 +9,7 @@
           <a href="/" class="breadcrumb"><i class="material-icons">home</i></a>
           <a class="breadcrumb"><b>Inventaris</b></a>
           <a href="/alatbahan" class="breadcrumb"><b>Alat & Bahan</b></a>
-          <a href="/alatbahan/createalat" class="breadcrumb">Tambah Alat</a>
+          <a href="/alatbahan/create" class="breadcrumb">Tambah</a>
         </div>
       </div>
     </nav>
@@ -26,8 +26,8 @@
 
           <div class="row">
             <div class="input-field col s6 m6 l6">
-              <i id="jenis" class="material-icons prefix" required>local_offer</i>
-              <select name="jenis" id="alat">
+              <i class="material-icons prefix" required>local_offer</i>
+              <select name="jenis" id="jenis">
                 <option value="" disabled selected>Pilih Jenis</option>
                 <option value="alat">Alat</option>
                 <option value="bahan">Bahan</option>
@@ -78,10 +78,10 @@
             <div class="file-field input-field col s6 m6 l6">
               <div class="btn">
                 <span><i class="material-icons prefix">add_a_photo</i></span>
-                <input type="file" id="inputgambar" name="ktm" class="validate"/>
+                <input type="file" id="inputgambar" class="validate"/>
               </div>
               <div class="file-path-wrapper">
-                <input class="file-path validate" type="text" placeholder="masukkan foto alat">
+                <input class="file-path validate"  name="foto" type="text" placeholder="masukkan foto alat/bahan">
               </div>
             </div>
           </div>
@@ -116,7 +116,7 @@
               <!-- endvalidation             -->
             </div>
             <div class="input-field col s4 m4 l4">
-              <input  name="dipinjam" id="dipinjam" type="text" class="validate" placeholder="0" disabled>
+              <input  name="dipinjam" id="dipinjam" type="text" class="validate" value="0" disabled>
               <label for="dipinjam">Dipinjam</label>
               <!-- validation             -->
               @if ($errors->has('dipinjam'))
@@ -127,7 +127,7 @@
               <!-- endvalidation             -->
             </div>
             <div class="input-field col s4 m4 l4">
-              <input  name="total" id="total" type="text" class="validate" placeholder="0" disabled>
+              <input  name="total" id="total" type="text" class="validate" value="0" disabled>
               <label for="total">Total</label>
               <!-- validation             -->
               @if ($errors->has('total'))
@@ -141,9 +141,9 @@
 
 
           <div class="row">
-            <div class="input-field col s4 m4 l4">
+            <div class="input-field col s6 m6 l6">
               <i class="material-icons prefix">textsms</i>
-              <input type="text" id="satuan" class="autocomplete">
+              <input name="satuan" type="text" id="satuan" placeholder="Masukkan jenis terlebih dahulu"class="autocomplete">
               <label for="satuan">Satuan</label>
             </div>
           </div>
@@ -151,7 +151,7 @@
           <div class="row">
             <div class="input-field col s6">
               <i class="material-icons prefix">text_fields</i>
-              <textarea id="spesifikasi" class="materialize-textarea"></textarea>
+              <textarea id="spesifikasi" class="materialize-textarea" name="spesifikasi"></textarea>
               <label for="spesifikasi">Spesifikasi</label>
             </div>
           </div>
@@ -161,7 +161,7 @@
             <div class="form-group">
                 <div class="col l4 m4 s4 offset-l8 offset-m8 offset-s8">
                   {{ csrf_field() }}
-                    <input type="submit" class="btn" value="Tambah Alat">
+                    <input type="submit" class="btn" value="Tambah">
                 </div>
             </div>
           </div>
@@ -199,7 +199,7 @@
               $("#total").val(total);
       });
       $('#satuan').attr("disabled",true);
-      $('#alat').change(function(){
+      $('#jenis').change(function(){
 
         var tempValue = $(this).val();
         //alert(tempValue);
@@ -213,7 +213,6 @@
             $('#satuan').autocomplete(tempData.alat);
           else
             $('#satuan').autocomplete(tempData.bahan);
-
          }
       });
       tempData.alat = {
@@ -240,7 +239,6 @@
         },
         minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
       };
-      //$('input.autocomplete').autocomplete();
 
     }); // end of document ready // end of jQuery name space
 

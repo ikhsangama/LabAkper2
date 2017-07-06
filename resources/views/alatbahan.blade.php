@@ -15,8 +15,7 @@
   <hr>
 
   @if(Auth::user()->isAdmin(true))
-  <a href="{{ url('/alatbahan/createalat') }}" class="btn waves-effect waves-light indigo lighten-1">Tambah Alat</a>
-  <a href="{{ url('/alatbahan/createbahan') }}" class="btn waves-effect waves-light indigo lighten-1">Tambah Bahan</a>
+  <a href="{{ url('/alatbahan/create') }}" class="btn waves-effect waves-light indigo lighten-1">Tambah</a>
 
 <!-- coba reveal -->
   <a href="#info" onclick="$('.tap-target').tapTarget('open')"><i class="material-icons">search</i></a>
@@ -67,7 +66,7 @@
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <!-- <script src="{{asset('js/materialize.js')}}"></script> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.js"></script>
+  <script src="{{asset('js/materialize.js')}}"></script>
   <script>
 
   	$(document).ready(function(){

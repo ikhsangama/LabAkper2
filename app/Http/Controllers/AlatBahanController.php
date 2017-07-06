@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use App\Models\Alat;
 use App\Models\Bahan;
 use App\Models\Kategori;
@@ -30,23 +31,7 @@ class AlatBahanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createalat()
-    {
-      $kategoris = Kategori::orderBy('nama')->get();
-      $satuan_alats = SatuanAlat::get();
-        return view ('dash_admin/create_alat', [
-          'kategoris' => $kategoris,
-          'satuan_alats' => $satuan_alats,
-          'satuan_bahans' => $satuan_bahans,
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function createbahan()
+    public function create()
     {
       $kategoris = Kategori::orderBy('nama')->get();
       $satuan_alats = SatuanAlat::get();
@@ -66,15 +51,38 @@ class AlatBahanController extends Controller
      */
     public function store(Request $request)
     {
-      $this->validate($request, [
-        'kategori' => 'required',
-      ]);
+      
+      if($request->jenis == "alat"){
+        $unique = Validator::make($request->all(), [
+          'satuan' => 'required|unique:satuan_alat,nama',
+        ])->passes();
 
-      $kategori = new Kategori;
-      $kategori->nama_kategori = $request->kategori;
-      $kategori->save();
-      return redirect ('/kategori')->with('success', 'Kategori baru ditambahkan,
-      dengan nama: '. $request->kategori);
+        $alatbahan = new AlatBahan;
+        $alatbahan->kategori_id = $request->kategori;
+        $alatbahan->kode_alatbahan = $request->kode_alatbahan;
+        $alatbahan->jenis = "alat";
+        $alatbahan->save();
+
+        $alat = new Alat;
+        $alat->alatbahan_id = $alatbahan->id;
+        if($unique==true) {
+          $satuan_alat = new SatuanAlat;
+          $satuan_alat->nama = $request->satuan;
+          $satuan_alat->save();
+          $alat->satuanalat_id = $satuan_alat->id;
+        }
+        else {
+          $satuanalat_id = SatuanAlat::where('nama', $request->satuan)->first()->id;
+          $alat->satuanalat_id = $satuanalat_id;
+        }
+        $alat->nama = $request->nama;
+        $alat->foto = $request->foto;
+        $alat->spesifikasi = $request->spesifikasi;
+        $alat->stok = $request->stok;
+        $alat->total = $request->stok;
+        $alat->save();
+        dd($alat);
+      }
     }
 
     /**
