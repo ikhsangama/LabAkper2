@@ -77,13 +77,20 @@
 
             <div class="file-field input-field col s6 m6 l6">
               <div class="btn">
-                <span><i class="material-icons prefix">add_a_photo</i></span>
-                <input type="file" id="inputgambar" class="validate"/>
+                  <span><i class="material-icons postfix">add_a_photo</i></span>
+                  <input name="file_ab" type="file" id="inputgambar" class="validate" value=""/>
               </div>
               <div class="file-path-wrapper">
-                <input class="file-path validate"  name="foto" type="text" placeholder="masukkan foto alat/bahan">
+                  <input class="file-path validate" type="text" placeholder="masukkan foto alat/bahan">
               </div>
-            </div>
+              <!-- validation             -->
+              @if ($errors->has('file_ab'))
+              <div class="container red-text text accent-3">
+                {{ $errors->first('file_ab') }}
+              </div>
+              @endif
+              <!-- endvalidation             -->
+              </div>
           </div>
 
           <div class="row">

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+// use Storage;
 use Validator;
+use App\Http\Requests;
 use App\Models\Alat;
 use App\Models\Bahan;
 use App\Models\Kategori;
@@ -51,26 +53,25 @@ class AlatBahanController extends Controller
      */
     public function store(Request $request)
     {
-      // dd($request);
       Validator::make($request->all(), [
         'jenis' => 'required',
         'kategori' => 'required',
         'kode_alatbahan' => 'required',
-        'foto' => 'required',
+        'file_ab' => 'required',
         'nama' => 'required',
         'stok' => 'required',
         'satuan' => 'required',
         'spesifikasi' => 'required',
       ])->validate();
 
+      $alatbahan = new AlatBahan;
+      $alatbahan->kategori_id = $request->kategori;
+      $alatbahan->kode_alatbahan = $request->kode_alatbahan;
+
       if($request->jenis == "alat"){
         $unique = Validator::make($request->all(), [
           'satuan' => 'required|unique:satuan_alat,nama',
         ])->passes();
-
-        $alatbahan = new AlatBahan;
-        $alatbahan->kategori_id = $request->kategori;
-        $alatbahan->kode_alatbahan = $request->kode_alatbahan;
         $alatbahan->jenis = "alat";
         $alatbahan->save();
 
@@ -87,7 +88,11 @@ class AlatBahanController extends Controller
           $alat->satuanalat_id = $satuanalat_id;
         }
         $alat->nama = $request->nama;
-        $alat->foto = $request->foto;
+        //upload file
+        $fileName   = $request->nama . "_" . time() .".png";
+        $request->file('file_ab')->storeAs("public/alat", $fileName);
+        $alat->foto = $fileName;
+        //
         $alat->spesifikasi = $request->spesifikasi;
         $alat->stok = $request->stok;
         $alat->total = $request->stok;
@@ -103,10 +108,6 @@ class AlatBahanController extends Controller
         $unique = Validator::make($request->all(), [
           'satuan' => 'required|unique:satuan_bahan,nama',
         ])->passes();
-
-        $alatbahan = new AlatBahan;
-        $alatbahan->kategori_id = $request->kategori;
-        $alatbahan->kode_alatbahan = $request->kode_alatbahan;
         $alatbahan->jenis = "bahan";
         $alatbahan->save();
 
@@ -123,7 +124,11 @@ class AlatBahanController extends Controller
           $bahan->satuanbahan_id = $satuanbahan_id;
         }
         $bahan->nama = $request->nama;
-        $bahan->foto = $request->foto;
+        //upload file
+        $fileName   = $request->nama . "_" . time() .".png";
+        $request->file('file_ab')->storeAs("public/bahan", $fileName);
+        $alat->foto = $fileName;
+        //
         $bahan->spesifikasi = $request->spesifikasi;
         $bahan->stok = $request->stok;
         $bahan->total = $request->stok;
