@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-// use Storage;
 use Validator;
 use App\Http\Requests;
 use App\Models\Alat;
@@ -127,7 +126,7 @@ class AlatBahanController extends Controller
         //upload file
         $fileName   = $request->nama . "_" . time() .".png";
         $request->file('file_ab')->storeAs("public/bahan", $fileName);
-        $alat->foto = $fileName;
+        $bahan->foto = $fileName;
         //
         $bahan->spesifikasi = $request->spesifikasi;
         $bahan->stok = $request->stok;

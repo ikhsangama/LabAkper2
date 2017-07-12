@@ -39,14 +39,12 @@
           <img src="http://lorempixel.com/100/190/nature/6" class="circle responsive-img materialboxed">
         <div class="card-stacked">
           <div class="card-content">
-            <h5>{!!str_limit($alatbahan->nama_alatbahan,18)!!}</h5>
-            <label>Total: {{$alatbahan->total}}</label><br>
-            <label>Stok: {{$alatbahan->stok}}</label><br>
-            <label>Dipinjam: {{$alatbahan->dipinjam}}</label><br>
+            <h5>{!!str_limit($alatbahan->fjenis->nama,18)!!}</h5>
+            <label>Total: {{$alatbahan->fjenis->total}}</label><br>
+            <label>Stok: {{$alatbahan->fjenis->stok}}</label><br>
+            <label>Dipinjam: {{$alatbahan->fjenis->dipinjam}}</label><br>
           </div>
-          <div class="card-action">
-            <a href="/alatbahan/{{$alatbahan->id}}" class="btn waves-effect waves-light indigo lighten-1 right">Detail</a>
-          </div>
+
         </div>
       </div>
     </div>
@@ -54,11 +52,6 @@
   @endforeach
 </ul>
 </div>
-<ul class="pagination">
-  <li>
-    {{ $alatbahans->links() }}
-  </li>
-</ul>
 </div>
 <!-- akhircoba -->
 <!-- </div> -->

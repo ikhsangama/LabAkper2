@@ -10,7 +10,7 @@ class Alat extends Model
 
     public function falatbahan()
     {
-      return $this->belongsTo('App\Models\AlatBahan');
+      return $this->belongsTo('App\Models\AlatBahan', 'alatbahan_id', 'id');
     }
 
     public function fkategori()
