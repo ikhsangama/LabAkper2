@@ -150,10 +150,10 @@ class AlatBahanController extends Controller
     public function show($id)
     {
       $alatbahan = AlatBahan::find($id);
-      $nama_kategori = Kategori::find($alatbahan->id_kategori)->nama_kategori;
+      // $nama_kategori = Kategori::find($alatbahan->kategori_id)->nama;
         return view ('single_alatbahan', [
         'alatbahan'=> $alatbahan,
-        'nama_kategori' => $nama_kategori
+        // 'nama_kategori' => $nama_kategori
       ]);
     }
 
@@ -166,13 +166,11 @@ class AlatBahanController extends Controller
     public function edit($id)
     {
       $alatbahan = AlatBahan::find($id);
-      $nama_kategori = Kategori::find($alatbahan->id_kategori)->nama_kategori;
       if(!$alatbahan){
         abort(404);
       }
       return view('dash_admin/edit_alatbahan', [
         'alatbahan' => $alatbahan,
-        'nama_kategori' => $nama_kategori
       ]);
     }
 

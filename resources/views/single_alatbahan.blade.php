@@ -8,7 +8,7 @@
         <div class="col s12 m12 l12">
           <a href="/" class="breadcrumb"><i class="material-icons">home</i></a>
           <a href="/alatbahan" class="breadcrumb"><b>Alat & Bahan</b></a>
-          <a href="/alatbahan/{{$alatbahan->id}}" class="breadcrumb">{{$alatbahan->nama_alatbahan}}</a>
+          <a href="/alatbahan/{{$alatbahan->id}}" class="breadcrumb">{{$alatbahan->fjenis->nama}}</a>
         </div>
       </div>
     </nav>
@@ -27,48 +27,48 @@
               <tr>
                 <td>Nama</td>
                 <td>:</td>
-                <td>{{$alatbahan->nama_alatbahan}}</td>
+                <td>{{$alatbahan->fjenis->nama}}</td>
               </tr>
               <tr>
                 <td>
                   Kategori
                 </td>
                 <td>:</td>
-                <td>{{$nama_kategori}}</td>
+                <td>{{$alatbahan->fkategori->nama}}</td>
               </tr>
               <tr>
                 <td>
                   Spesifikasi
                 </td>
                 <td>:</td>
-                <td>{{$alatbahan->spesifikasi}}</td>
+                <td>{{$alatbahan->fjenis->spesifikasi}}</td>
               </tr>
               <tr>
                 <td>
                   Stok
                 </td>
                 <td>:</td>
-                <td>{{$alatbahan->stok}}</td>
+                <td>{{$alatbahan->fjenis->stok}} {{$alatbahan->fjenis->fsatuanalat->nama}}</td>
               </tr>
               <tr>
                 <td>
                   Dipinjam
                 </td>
                 <td>:</td>
-                <td>{{$alatbahan->dipinjam}}</td>
+                <td>{{$alatbahan->fjenis->dipinjam}} {{$alatbahan->fjenis->fsatuanalat->nama}}</td>
               </tr>
               <tr>
                 <td>
                   Total
                 </td>
                 <td>:</td>
-                <td>{{$alatbahan->total}}</td>
+                <td>{{$alatbahan->fjenis->total}} {{$alatbahan->fjenis->fsatuanalat->nama}}</td>
               </tr>
             </tbody>
           </table>
         </div>
         <div class="col s6 m6 l6">
-          <img src="http://lorempixel.com/100/190/nature/6" class="responsive-img materialboxed">
+          <img src="{{ asset('storage/'.$alatbahan->jenis.'/' .$alatbahan->fjenis->foto) }}" class="responsive-img materialboxed col s10">
         <table>
           <tbody>
             <tr>

@@ -21,4 +21,20 @@ class AlatBahan extends Model
       return $this->hasOne('App\Models\Bahan', 'alatbahan_id', 'id');
     }
   }
+
+  public function isAlat()
+  {
+    if ($this->jenis == 'alat') {
+      return true; //jika alat
+        return false;
+    }
+  }
+
+  public function isBahan()
+  {
+    if ($this->jenis == 'bahan') {
+      return true; //jika bahan
+        return false;
+    }
+  }
 }

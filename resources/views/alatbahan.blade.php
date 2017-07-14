@@ -36,7 +36,7 @@
   <li>
     <div class="col s6 m6 l6">
       <div class="card horizontal">
-          <img src="http://lorempixel.com/100/190/nature/6" class="circle responsive-img materialboxed">
+          <img src="{{ asset('storage/'.$alatbahan->jenis.'/' .$alatbahan->fjenis->foto) }}" width="150px"class="circle responsive-img materialboxed">
         <div class="card-stacked">
           <div class="card-content">
             <h5>{!!str_limit($alatbahan->fjenis->nama,18)!!}</h5>

@@ -53,7 +53,6 @@ Route::group(['middleware' => 'admin'], function(){
 
 });
 
-//dosen
 Route::group(['middleware' => 'auth'], function()
 {
   //instruksikerja

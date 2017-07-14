@@ -8,7 +8,7 @@
         <div class="col s12 m12 l12">
           <a href="/" class="breadcrumb"><i class="material-icons">home</i></a>
           <a href="/alatbahan" class="breadcrumb"><b>Alat & Bahan</b></a>
-          <a href="/alatbahan/{{$alatbahan->id}}" class="breadcrumb">{{$alatbahan->nama_alatbahan}}</a>
+          <a href="/alatbahan/{{$alatbahan->id}}" class="breadcrumb">{!!str_limit($alatbahan->fjenis->nama,18)!!}</a>
           <a href="/alatbahan/{{$alatbahan->id}}/edit" class="breadcrumb">Edit</a>
         </div>
       </div>
@@ -18,7 +18,7 @@
 <div class="container">
   <div class="card-panel">
     <h3 class="center blue-text text accent-5">Form Edit: </h3>
-    <h4 class="center blue-text text accent-5">{{$alatbahan->nama_alatbahan}}</h4>
+    <h4 class="center blue-text text accent-5">{!!str_limit($alatbahan->fjenis->nama,18)!!}</h4>
   <hr>
     <div class="row">
         <!-- mulai form -->
@@ -40,7 +40,7 @@
         <div class="row">
           <div class="input-field col s11 m11 l11">
             <i class="material-icons prefix">local_pharmacy</i>
-            <input name="nama" placeholder="Nama Alkes/Bahan/Obat dll" id="icon_prefix" type="text" class="validate" autofocus maxlength="30" value="{{$alatbahan->nama_alatbahan}}" required>
+            <input name="nama" placeholder="Nama Alkes/Bahan/Obat dll" id="icon_prefix" type="text" class="validate" autofocus maxlength="30" value="{{$alatbahan->fjenis->nama}}" required>
             <label for="icon_prefix">Nama</label>
             <!-- validation             -->
               @if ($errors->has('nama'))
